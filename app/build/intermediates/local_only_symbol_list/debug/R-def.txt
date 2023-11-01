@@ -11,6 +11,7 @@ layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string sign_in
 style Base.Theme.MyApplication
 style Theme.MyApplication
 xml backup_rules
