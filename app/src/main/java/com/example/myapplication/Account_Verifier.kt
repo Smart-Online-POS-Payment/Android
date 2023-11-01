@@ -1,10 +1,7 @@
 import com.example.myapplication.Account
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.POST
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.android.gms.tasks.Task
 
 data class VerificationRequest(
     val email: String?,
@@ -16,41 +13,42 @@ data class VerificationResponse(
     val message: String
 )
 
+fun verifyAccount(email: String?, password: String?): Task<AuthResult>? {
+    if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
+        return null
+    }
+
+    val firebaseAuth = FirebaseAuth.getInstance()
+    return firebaseAuth.signInWithEmailAndPassword(email, password)
+}
+
+fun main() {
+    // Example usage:
+    val email = "example@email.com"
+    val password = "yourPassword"
+
+    verifyAccount(email, password)?.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            // Sign-in success
+            val user = task.result?.user
+            // Handle signed-in user
+        } else {
+            // Sign-in failed
+            // Handle error
+        }
+    }
+}
+
+/*
+// The following Retrofit-based authentication code has been commented out as per your request to use Firebase.
 object AuthService {
     fun verifyAccount(email: String?, password: String?): Account? {
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://your-backend-url.com/") // Replace with your actual backend URL
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val authApi: AuthApi = retrofit.create(AuthApi::class.java)
-        var return_account: Account? = null
-        val request = VerificationRequest(email, password)
-        val call: retrofit2.Call<VerificationResponse> = authApi.verifyAccount(request)
-        call.enqueue(object : Callback<VerificationResponse> {
-            override fun onResponse(call: retrofit2.Call<VerificationResponse>, response: Response<VerificationResponse>) {
-                if (response.isSuccessful) {
-                    // Account verification successful
-                    val verificationResponse: VerificationResponse? = response.body()
-                    if (verificationResponse != null) {
-                        return_account = Account(verificationResponse.message) // Assuming Account class has a constructor taking a message
-                    }
-                } else {
-                    // Account verification failed
-                    // Handle the error
-                }
-            }
-
-            override fun onFailure(call: retrofit2.Call<VerificationResponse>, t: Throwable) {
-                // Network request failure
-                // Handle the error
-            }
-        })
-        return return_account
+        // Retrofit implementation
     }
 
     // Define your API interface using Retrofit
     interface AuthApi {
-        @POST("your_verification_endpoint")
-        fun verifyAccount(@Body request: VerificationRequest): retrofit2.Call<VerificationResponse>
+        // Retrofit API interface
     }
 }
+*/
