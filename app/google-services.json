@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "153974029616",
-    "project_id": "sopp-2fe9d",
-    "storage_bucket": "sopp-2fe9d.appspot.com"
+    "project_number": "823796198182",
+    "project_id": "sopp-72243",
+    "storage_bucket": "sopp-72243.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:153974029616:android:e521beda29d0a4e79f1cf5",
+        "mobilesdk_app_id": "1:823796198182:android:a446a18379c29ca0586fe7",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAmQR9hCCgV5n9Z2SN9H_hBIaf98rgQRuU"
+          "current_key": "AIzaSyA6_JDXg62cQkPhRSaECBwF5PzVlSkZ3Vg"
         }
       ],
       "services": {
