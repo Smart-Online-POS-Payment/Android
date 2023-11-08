@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +23,15 @@ class SignUpActivity : AppCompatActivity() {
             val email = editText1.text.toString()
             val password = editText2.text.toString()
 
-            val the_account: Account? = AuthService.sign_up(email, password)
-
-            if (the_account == null) {
-
-                Toast.makeText(this,"unsucceesful", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this,"you have successfully signed up", Toast.LENGTH_SHORT).show()
+            val firebaseAuth = FirebaseAuth.getInstance()
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Sign-in success
+                    Toast.makeText(this, "You have successfully entered your account", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Sign-in failed
+                    Toast.makeText(this, "No account found", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import verifyAccount
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +30,19 @@ class MainActivity : AppCompatActivity() {
             val email = editText1.text.toString()
             val password = editText2.text.toString()
 
-            val the_account: Account? = AuthService.verifyAccount(email, password)
-
-            if (the_account == null) {
-                Toast.makeText(this,"no account found", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this,"you have successfully entered your account", Toast.LENGTH_SHORT).show()
+            verifyAccount(email, password)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this,"no account found", Toast.LENGTH_SHORT).show()
+                    val user = task.result?.user
+                    // Handle signed-in user
+                } else {
+                    Toast.makeText(this,"you have successfully entered your account", Toast.LENGTH_SHORT).show()
+                    // Sign-in failed
+                    // Handle error
+                }
             }
+
+
         }
 
 
