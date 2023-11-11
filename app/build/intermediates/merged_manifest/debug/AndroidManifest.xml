@@ -53,8 +53,15 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
+<<<<<<< HEAD
             android:name="com.example.myapplication.QRScannerActivity"
             android:exported="false" />
+=======
+            android:name="com.example.myapplication.HomePageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_page"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+>>>>>>> origin/main
         <activity
             android:name="com.example.myapplication.MainActivity"
             android:exported="true" >

@@ -28,6 +28,7 @@ class SignUpActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign-in success
                     Toast.makeText(this, "You have successfully entered your account", Toast.LENGTH_SHORT).show()
+
                 } else {
                     // Sign-in failed
                     Toast.makeText(this, "No account found", Toast.LENGTH_SHORT).show()
