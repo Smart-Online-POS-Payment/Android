@@ -228,6 +228,10 @@
     <attr format="dimension" name="height"/>
     <attr format="reference" name="hideMotionSpec"/>
     <attr format="boolean" name="hideNavigationIcon"/>
+    <attr format="enum" name="implementationMode">
+        <enum name="performance" value="0"/>
+        <enum name="compatible" value="1"/>
+    </attr>
     <attr format="boolean" name="isLightTheme"/>
     <attr format="boolean" name="isMaterial3DynamicColorApplied"/>
     <attr format="boolean" name="isMaterial3Theme"/>
@@ -506,6 +510,14 @@
     <attr format="integer" name="quantizeMotionSteps"/>
     <attr format="reference" name="recyclerViewStyle"/>
     <attr format="color" name="rippleColor"/>
+    <attr format="enum" name="scaleType">
+        <enum name="fillStart" value="0"/>
+        <enum name="fillCenter" value="1"/>
+        <enum name="fillEnd" value="2"/>
+        <enum name="fitStart" value="3"/>
+        <enum name="fitCenter" value="4"/>
+        <enum name="fitEnd" value="5"/>
+    </attr>
     <attr format="color|reference" name="scrimBackground"/>
     <attr format="boolean" name="selectionRequired"/>
     <attr format="reference" name="shapeAppearanceCornerExtraLarge"/>
@@ -651,6 +663,7 @@
     <color name="browser_actions_title_color">#646464</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
+    <color name="cadmium_violet">#8541A9</color>
     <color name="call_notification_answer_color">#1d873b</color>
     <color name="call_notification_decline_color">#d93025</color>
     <color name="cardview_dark_background">#FF424242</color>
@@ -970,6 +983,16 @@
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="zxing_custom_possible_result_points">#903A89CF</color>
+    <color name="zxing_custom_result_view">#b0000000</color>
+    <color name="zxing_custom_viewfinder_laser">#1976D2</color>
+    <color name="zxing_custom_viewfinder_mask">#60000000</color>
+    <color name="zxing_possible_result_points">#c0ffbd21</color>
+    <color name="zxing_result_view">#b0000000</color>
+    <color name="zxing_status_text">#ffffffff</color>
+    <color name="zxing_transparent">#00000000</color>
+    <color name="zxing_viewfinder_laser">#ffcc0000</color>
+    <color name="zxing_viewfinder_mask">#60000000</color>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -1879,6 +1902,15 @@
     <id name="view_tree_saved_state_registry_owner"/>
     <id name="view_tree_view_model_store_owner"/>
     <item name="visible_removing_fragment_view_tag" type="id"/>
+    <item name="zxing_back_button" type="id"/>
+    <item name="zxing_camera_closed" type="id"/>
+    <item name="zxing_camera_error" type="id"/>
+    <item name="zxing_decode" type="id"/>
+    <item name="zxing_decode_failed" type="id"/>
+    <item name="zxing_decode_succeeded" type="id"/>
+    <item name="zxing_possible_result_points" type="id"/>
+    <item name="zxing_preview_failed" type="id"/>
+    <item name="zxing_prewiew_size_ready" type="id"/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="app_bar_elevation_anim_duration">150</integer>
@@ -1981,6 +2013,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
     <string name="app_name">My Application</string>
+    <string name="app_version" translatable="false">null</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
     <string description="A description of an accessibility action to collapse the bottom sheet [CHAR LIMIT=NONE]" name="bottomsheet_action_collapse">Collapse the bottom sheet</string>
@@ -2017,6 +2050,8 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="define_zxingandroidembedded" translatable="false"/>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
   </string>
@@ -2024,9 +2059,21 @@
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="fallback_menu_item_copy_link">Copy link</string>
+    <string name="fallback_menu_item_open_in_browser">Open in browser</string>
+    <string name="fallback_menu_item_share_link">Share link</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="library_zxingandroidembedded_author" translatable="false">JourneyApps</string>
+    <string name="library_zxingandroidembedded_authorWebsite" translatable="false">https://journeyapps.com/</string>
+    <string name="library_zxingandroidembedded_isOpenSource" translatable="false">true</string>
+    <string name="library_zxingandroidembedded_libraryDescription" translatable="false">Barcode scanning library for Android, using ZXing for decoding.</string>
+    <string name="library_zxingandroidembedded_libraryName" translatable="false">ZXing Android Embedded</string>
+    <string name="library_zxingandroidembedded_libraryVersion" translatable="false"/>
+    <string name="library_zxingandroidembedded_libraryWebsite" translatable="false">https://github.com/journeyapps/zxing-android-embedded</string>
+    <string name="library_zxingandroidembedded_licenseId" translatable="false">apache_2_0</string>
+    <string name="library_zxingandroidembedded_repositoryLink" translatable="false">https://github.com/journeyapps/zxing-android-embedded</string>
     <string name="m3_exceed_max_badge_text_suffix" translatable="false"><ns2:g example="Some te" id="part of a long text">%1$s</ns2:g><ns2:g example="…" id="suffix">%2$s</ns2:g></string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular" translatable="false">sans-serif</string>
@@ -2148,6 +2195,10 @@
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="sign_in">Sign in</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="zxing_app_name">Barcode Scanner</string>
+    <string name="zxing_button_ok">OK</string>
+    <string name="zxing_msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="zxing_msg_default_status">Place a barcode inside the viewfinder rectangle to scan it.</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -6412,6 +6463,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
+    <style name="Theme.KotlinQRCodeScanner" parent="Theme.Material3.DayNight.NoActionBar"/>
     <style name="Theme.Material3.Dark" parent="Base.Theme.Material3.Dark"/>
     <style name="Theme.Material3.Dark.BottomSheetDialog" parent="Base.Theme.Material3.Dark.BottomSheetDialog"/>
     <style name="Theme.Material3.Dark.Dialog" parent="Base.Theme.Material3.Dark.Dialog"/>
@@ -9176,6 +9228,8 @@
     <style name="Widget.Support.CoordinatorLayout" parent="android:Widget">
         <item name="statusBarBackground">#000000</item>
     </style>
+    <style name="zxing_CaptureTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+  </style>
     <declare-styleable name="ActionBar">
         
         <attr name="navigationMode">
@@ -12590,6 +12644,10 @@
         
         <attr format="boolean" name="state_above_anchor"/>
     </declare-styleable>
+    <declare-styleable name="PreviewView">
+        <attr name="scaleType"/>
+        <attr name="implementationMode"/>
+    </declare-styleable>
     <declare-styleable name="PropertySet">
         
         <attr name="android:visibility"/>
@@ -13607,6 +13665,26 @@
     <declare-styleable name="include">
         <attr name="constraintSet"/>
     </declare-styleable>
+    <declare-styleable name="zxing_camera_preview">
+    <attr format="dimension" name="zxing_framing_rect_width"/>
+    <attr format="dimension" name="zxing_framing_rect_height"/>
+    <attr format="boolean" name="zxing_use_texture_view"/>
+    <attr format="enum" name="zxing_preview_scaling_strategy">
+      <enum name="centerCrop" value="1"/>
+      <enum name="fitCenter" value="2"/>
+      <enum name="fitXY" value="3"/>
+    </attr>
+  </declare-styleable>
+    <declare-styleable name="zxing_finder">
+    <attr format="color" name="zxing_possible_result_points"/>
+    <attr format="color" name="zxing_result_view"/>
+    <attr format="color" name="zxing_viewfinder_laser"/>
+    <attr format="color" name="zxing_viewfinder_mask"/>
+    <attr format="boolean" name="zxing_viewfinder_laser_visibility"/>
+  </declare-styleable>
+    <declare-styleable name="zxing_view">
+    <attr format="reference" name="zxing_scanner_layout"/>
+  </declare-styleable>
     <macro name="m3_comp_assist_chip_container_shape">?attr/shapeAppearanceCornerSmall</macro>
     <macro name="m3_comp_assist_chip_label_text_type">?attr/textAppearanceLabelLarge</macro>
     <macro name="m3_comp_badge_color">?attr/colorError</macro>

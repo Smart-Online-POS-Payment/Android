@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this,"no account found", Toast.LENGTH_SHORT).show()
                     val user = task.result?.user
                     // Handle signed-in user
+
                 } else {
                     Toast.makeText(this,"you have successfully entered your account", Toast.LENGTH_SHORT).show()
                     // Sign-in failed

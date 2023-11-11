@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="cadmium_violet">#8541A9</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">My Application</string>
     <string name="sign_in">Sign in</string>
@@ -8,5 +9,6 @@
         
         
     </style>
+    <style name="Theme.KotlinQRCodeScanner" parent="Theme.Material3.DayNight.NoActionBar"/>
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
 </resources>

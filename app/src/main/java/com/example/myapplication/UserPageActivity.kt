@@ -11,30 +11,9 @@ import com.google.firebase.auth.FirebaseAuth
 class UserPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up) // Make sure this matches your layout file name
-        val signButton: Button = findViewById(R.id.signinButton2)
-        print("****************")
-        signButton.setOnClickListener {
-            print("****************")
+        setContentView(R.layout.user_page_activity) // Make sure this matches your layout file name
+        val signButton: Button = findViewById(R.id.PaymentButton)
 
-
-            val editText1 = findViewById<EditText>(R.id.editText11)
-            val editText2 = findViewById<EditText>(R.id.editText21)
-
-            val email = editText1.text.toString()
-            val password = editText2.text.toString()
-
-            val firebaseAuth = FirebaseAuth.getInstance()
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign-in success
-                    Toast.makeText(this, "You have successfully entered your account", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Sign-in failed
-                    Toast.makeText(this, "No account found", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
 
     }
 }

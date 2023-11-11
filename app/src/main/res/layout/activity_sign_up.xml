@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity">
 
     <!-- First Text Input -->
     <EditText

@@ -1,23 +1,33 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color cadmium_violet
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable qrcode
+id PaymentButton
+id bottomAppBar
 id editText1
 id editText11
 id editText2
 id editText21
+id fab
+id layout_result
 id signUpButton
 id signinButton
 id signinButton2
+id textResult
 layout activity_main
+layout activity_qr_code_scanner
 layout activity_sign_up
+layout user_page_activity
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
 string sign_in
 style Base.Theme.MyApplication
+style Theme.KotlinQRCodeScanner
 style Theme.MyApplication
 xml backup_rules
 xml data_extraction_rules
