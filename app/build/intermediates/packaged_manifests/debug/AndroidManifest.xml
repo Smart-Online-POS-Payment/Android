@@ -53,15 +53,13 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
-<<<<<<< HEAD
             android:name="com.example.myapplication.QRScannerActivity"
             android:exported="false" />
-=======
+        <activity
             android:name="com.example.myapplication.HomePageActivity"
             android:exported="false"
             android:label="@string/title_activity_home_page"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
->>>>>>> origin/main
         <activity
             android:name="com.example.myapplication.MainActivity"
             android:exported="true" >
@@ -84,6 +82,15 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- Add any additional configuration here. -->
+
+        <service
+            android:name="androidx.camera.core.impl.MetadataHolderService"
+            android:enabled="false"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+        </service>
 
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
@@ -136,22 +143,6 @@
                 android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
-
-        <provider
-            android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.example.myapplication.firebaseinitprovider"
-            android:directBootAware="true"
-            android:exported="false"
-            android:initOrder="100" />
-
-        <service
-            android:name="androidx.camera.core.impl.MetadataHolderService"
-            android:enabled="false"
-            android:exported="false" >
-            <meta-data
-                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-        </service>
         <service
             android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
             android:directBootAware="true"
@@ -167,6 +158,12 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.example.myapplication.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
         <provider
             android:name="com.google.mlkit.common.internal.MlKitInitProvider"
             android:authorities="com.example.myapplication.mlkitinitprovider"

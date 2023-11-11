@@ -1,203 +1,122 @@
 [
     {
-<<<<<<< HEAD
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_qr.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/qr.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/xml_backup_rules.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/xml/backup_rules.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/layout_activity_main.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_rectangle_button_background.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/rectangle_button_background.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/layout_activity_qr_code_scanner.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/layout/activity_qr_code_scanner.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/layout_user_page_activity.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/layout/user_page_activity.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_credit_card.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/credit_card.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/layout_activity_qr_code_scanner.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/layout/activity_qr_code_scanner.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/xml/data_extraction_rules.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_qrcode.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/qrcode.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/drawable_qrcode.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/drawable/qrcode.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_logout.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/logout.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/layout_activity_sign_up.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/layout/activity_sign_up.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/layout_user_page_activity.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/layout/user_page_activity.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/layout_activity_sign_up.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/layout/activity_sign_up.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/layout_activity_home_page.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/layout/activity_home_page.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/layout_activity_main.xml.flat",
-        "source": "com.example.myapplication.app-main-43:/layout/activity_main.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-41:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-43:/mipmap-xhdpi/ic_launcher.webp"
-=======
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_payments.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/payments.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/layout_activity_sign_up.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_sign_up.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/xml_backup_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_menu.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/menu.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_finance.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/finance.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/layout_activity_main.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_main.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/xml/data_extraction_rules.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_mail.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/mail.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_logout.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/logout.xml"
+        "merged": "com.example.myapplication.app-merged_res-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_finance.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/finance.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_credit_card.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/credit_card.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/layout_activity_home_page.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_home_page.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_mail.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/mail.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_payments.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/payments.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_qr.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/qr.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xxxhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-mdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_menu.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/menu.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_upload_money.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/upload_money.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/drawable_rectangle_button_background.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/drawable/rectangle_button_background.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-merged_res-37:/layout_activity_home_page.xml.flat",
-        "source": "com.example.myapplication.app-main-39:/layout/activity_home_page.xml"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/mipmap-xhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-37:/xml_backup_rules.xml.flat",
-        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/xml/backup_rules.xml"
->>>>>>> origin/main
+        "merged": "com.example.myapplication.app-merged_res-44:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.myapplication.app-main-46:/drawable/ic_launcher_background.xml"
     }
 ]

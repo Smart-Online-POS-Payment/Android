@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityHomePageBinding
@@ -18,6 +19,10 @@ class HomePageActivity : AppCompatActivity() {
         // Set OnClickListener for the QR ImageView
         binding.qrView.setOnClickListener {
             onImageViewClick("QR ImageView")
+
+            val Intent= Intent(this, QRScannerActivity::class.java)
+            startActivity(Intent)
+
         }
 
         // Set OnClickListener for the Credit Card CardView
