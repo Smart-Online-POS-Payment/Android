@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-36:/layout/activity_sign_up.xml",
+        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-36:/layout/activity_main.xml",
+        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-36:/layout/activity_home_page.xml",
+        "source": "/Users/kaasimsek/.gradle/daemon/8.0/com.example.myapplication.app-main-39:/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-36:/layout/activity_home_page.xml",
+        "source": "com.example.myapplication.app-main-39:/layout/activity_home_page.xml"
+    }
+]
