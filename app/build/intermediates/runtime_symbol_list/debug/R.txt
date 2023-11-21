@@ -3509,6 +3509,7 @@ int id parent_matrix 0x7f080177
 int id password_toggle 0x7f080178
 int id path 0x7f080179
 int id pathRelative 0x7f08017a
+int id paymentsRecyclerView 0x7f080227
 int id paymentsView 0x7f08017b
 int id peekHeight 0x7f08017c
 int id percent 0x7f08017d
@@ -3560,7 +3561,6 @@ int id shortcut 0x7f0801aa
 int id showCustom 0x7f0801ab
 int id showHome 0x7f0801ac
 int id showTitle 0x7f0801ad
-int id signUpButton 0x7f0801ae
 int id signinButton 0x7f0801af
 int id signinButton2 0x7f0801b0
 int id sin 0x7f0801b1
@@ -3617,6 +3617,7 @@ int id textSpacerNoButtons 0x7f0801e3
 int id textSpacerNoTitle 0x7f0801e4
 int id textStart 0x7f0801e5
 int id textTop 0x7f0801e6
+int id textViewSignUp 0x7f080228
 int id text_input_end_icon 0x7f0801e7
 int id text_input_error_icon 0x7f0801e8
 int id text_input_start_icon 0x7f0801e9
@@ -3798,6 +3799,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_home_page 0x7f0b001c
 int layout activity_main 0x7f0b001d
+int layout activity_payment_history 0x7f0b0074
 int layout activity_qr_code_scanner 0x7f0b001e
 int layout activity_sign_up 0x7f0b001f
 int layout browser_actions_context_menu_page 0x7f0b0020

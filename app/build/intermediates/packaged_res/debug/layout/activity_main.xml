@@ -33,24 +33,13 @@
         android:layout_marginTop="16dp"
         android:text="Giriş Yap" />
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <!-- Your existing content goes here, such as text views, images, etc. -->
-
-        <!-- Add the "Sign Up" button at the bottom of the page. -->
-        <Button
-            android:id="@+id/signUpButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"/>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/textViewSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Still don't have an account? Create here"
+        android:textColor="@color/black"
+    android:textSize="16sp" />
 
 </LinearLayout>

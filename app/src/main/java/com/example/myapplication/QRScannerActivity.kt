@@ -16,8 +16,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 import com.example.myapplication.databinding.ActivityQrCodeScannerBinding
 
 class QRScannerActivity: AppCompatActivity() {
-    private val requestPermissionLauncher=registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        isGranted: Boolean ->
+    private val requestPermissionLauncher= this.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
             showCamera()
 
@@ -70,7 +69,7 @@ class QRScannerActivity: AppCompatActivity() {
 
         }
         else if (shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA)) {
-            Toast.makeText(context, "Camear permission is required", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Camera permission is required", Toast.LENGTH_SHORT)
         }
         else {
             requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)

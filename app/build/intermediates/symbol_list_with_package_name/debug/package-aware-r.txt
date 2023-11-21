@@ -3510,6 +3510,7 @@ id parent_matrix
 id password_toggle
 id path
 id pathRelative
+id paymentsRecyclerView
 id paymentsView
 id peekHeight
 id percent
@@ -3561,7 +3562,6 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
-id signUpButton
 id signinButton
 id signinButton2
 id sin
@@ -3618,6 +3618,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewSignUp
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3799,6 +3800,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_home_page
 layout activity_main
+layout activity_payment_history
 layout activity_qr_code_scanner
 layout activity_sign_up
 layout browser_actions_context_menu_page

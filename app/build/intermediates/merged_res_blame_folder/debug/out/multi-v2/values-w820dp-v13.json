@@ -4,7 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-42:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/melihsahin/Desktop/Android-main/app/src/main/res/values-w820dp/dimens.xml",
+                    "source": "/Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/res/values-w820dp/dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",

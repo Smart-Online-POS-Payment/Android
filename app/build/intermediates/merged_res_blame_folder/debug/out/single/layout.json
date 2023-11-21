@@ -1,22 +1,30 @@
 [
     {
-        "merged": "com.example.myapplication.app-mergeDebugResources-43:/layout/activity_home_page.xml",
-        "source": "com.example.myapplication.app-main-46:/layout/activity_home_page.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-mergeDebugResources-43:/layout/user_page_activity.xml",
-        "source": "com.example.myapplication.app-main-46:/layout/user_page_activity.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-mergeDebugResources-43:/layout/activity_sign_up.xml",
-        "source": "com.example.myapplication.app-main-46:/layout/activity_sign_up.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/activity_main.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/activity_main.xml"
     },
     {
         "merged": "com.example.myapplication.app-mergeDebugResources-43:/layout/activity_main.xml",
         "source": "com.example.myapplication.app-main-46:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.myapplication.app-mergeDebugResources-43:/layout/activity_qr_code_scanner.xml",
-        "source": "com.example.myapplication.app-main-46:/layout/activity_qr_code_scanner.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/activity_sign_up.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/activity_home_page.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/activity_qr_code_scanner.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/activity_qr_code_scanner.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/activity_payment_history.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/activity_payment_history.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-43:/layout/user_page_activity.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-46:/layout/user_page_activity.xml"
     }
 ]

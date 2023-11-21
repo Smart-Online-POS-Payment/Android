@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -27,18 +28,18 @@ public final class ActivityMainBinding implements ViewBinding {
   public final EditText editText2;
 
   @NonNull
-  public final Button signUpButton;
-
-  @NonNull
   public final Button signinButton;
 
+  @NonNull
+  public final TextView textViewSignUp;
+
   private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull EditText editText1,
-      @NonNull EditText editText2, @NonNull Button signUpButton, @NonNull Button signinButton) {
+      @NonNull EditText editText2, @NonNull Button signinButton, @NonNull TextView textViewSignUp) {
     this.rootView = rootView;
     this.editText1 = editText1;
     this.editText2 = editText2;
-    this.signUpButton = signUpButton;
     this.signinButton = signinButton;
+    this.textViewSignUp = textViewSignUp;
   }
 
   @Override
@@ -80,20 +81,20 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.signUpButton;
-      Button signUpButton = ViewBindings.findChildViewById(rootView, id);
-      if (signUpButton == null) {
-        break missingId;
-      }
-
       id = R.id.signinButton;
       Button signinButton = ViewBindings.findChildViewById(rootView, id);
       if (signinButton == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((LinearLayout) rootView, editText1, editText2, signUpButton,
-          signinButton);
+      id = R.id.textViewSignUp;
+      TextView textViewSignUp = ViewBindings.findChildViewById(rootView, id);
+      if (textViewSignUp == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((LinearLayout) rootView, editText1, editText2, signinButton,
+          textViewSignUp);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
