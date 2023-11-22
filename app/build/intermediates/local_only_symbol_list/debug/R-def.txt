@@ -20,6 +20,7 @@ drawable qr
 drawable qrcode
 drawable rectangle_button_background
 id PaymentButton
+id amountTextView
 id appName
 id bottomAppBar
 id cardView2
@@ -30,6 +31,7 @@ id editText1
 id editText11
 id editText2
 id editText21
+id explanationTextView
 id fab
 id financeView
 id financial
@@ -51,6 +53,7 @@ layout activity_main
 layout activity_payment_history
 layout activity_qr_code_scanner
 layout activity_sign_up
+layout item_payment
 layout user_page_activity
 mipmap ic_launcher
 mipmap ic_launcher_round

@@ -3210,6 +3210,7 @@ id aligned
 id all
 id allStates
 id always
+id amountTextView
 id animateToEnd
 id animateToStart
 id antiClockwise
@@ -3333,6 +3334,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id explanationTextView
 id fab
 id fade
 id fill
@@ -3823,6 +3825,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_payment
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
