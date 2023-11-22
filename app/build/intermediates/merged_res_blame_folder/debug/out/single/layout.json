@@ -12,6 +12,10 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/user_page_activity.xml"
     },
     {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-44:/layout/item_payment.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/item_payment.xml"
+    },
+    {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-44:/layout/activity_sign_up.xml",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
     },
@@ -24,7 +28,7 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
     },
     {
-        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/item_payment.xml",
-        "source": "com.example.myapplication.app-main-47:/layout/item_payment.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_sign_up.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
     }
 ]

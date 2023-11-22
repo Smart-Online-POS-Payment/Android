@@ -3319,12 +3319,11 @@ int id easeOut 0x7f0800b8
 int id east 0x7f0800b9
 int id edge 0x7f0800ba
 int id editText1 0x7f0800bb
-int id editText11 0x7f0800bc
 int id editText2 0x7f0800bd
-int id editText21 0x7f0800be
 int id edit_query 0x7f0800bf
 int id edit_text_id 0x7f0800c0
 int id elastic 0x7f0800c1
+int id emailEditText 0x7f08022a
 int id embed 0x7f0800c2
 int id end 0x7f0800c3
 int id endToStart 0x7f0800c4
@@ -3508,6 +3507,7 @@ int id parent 0x7f080174
 int id parentPanel 0x7f080175
 int id parentRelative 0x7f080176
 int id parent_matrix 0x7f080177
+int id passwordEditText 0x7f08022b
 int id password_toggle 0x7f080178
 int id path 0x7f080179
 int id pathRelative 0x7f08017a
@@ -3563,8 +3563,8 @@ int id shortcut 0x7f0801ab
 int id showCustom 0x7f0801ac
 int id showHome 0x7f0801ad
 int id showTitle 0x7f0801ae
+int id signUpButton 0x7f08022c
 int id signinButton 0x7f0801af
-int id signinButton2 0x7f0801b0
 int id sin 0x7f0801b1
 int id skipCollapsed 0x7f0801b2
 int id skipped 0x7f0801b3

@@ -28,9 +28,8 @@ id constraintLayout
 id creditCardLayoutView
 id creditCardView
 id editText1
-id editText11
 id editText2
-id editText21
+id emailEditText
 id explanationTextView
 id fab
 id financeView
@@ -39,11 +38,12 @@ id layout_result
 id logoutView
 id menuView
 id notificationView
+id passwordEditText
 id paymentsRecyclerView
 id paymentsView
 id qrView
+id signUpButton
 id signinButton
-id signinButton2
 id textResult
 id textViewSignUp
 id topBar

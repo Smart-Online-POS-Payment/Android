@@ -6,34 +6,52 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up) // Make sure this matches your layout file name
 
-        val signButton: Button = findViewById(R.id.signinButton2)
-        signButton.setOnClickListener {
+        firebaseAuth = FirebaseAuth.getInstance()
 
-            val editTextEmail = findViewById<EditText>(R.id.editText11)
-            val editTextPassword = findViewById<EditText>(R.id.editText21)
+        val signUpButton: Button = findViewById(R.id.signUpButton)
+        signUpButton.setOnClickListener {
+            val emailEditText: EditText = findViewById(R.id.emailEditText)
+            val passwordEditText: EditText = findViewById(R.id.passwordEditText)
 
-            val email = editTextEmail.text.toString()
-            val password = editTextPassword.text.toString()
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
-            // Instance of FirebaseAuth
-            val firebaseAuth = FirebaseAuth.getInstance()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                createAccount(email, password)
+            } else {
+                Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
-            // Creating a new user
-            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+    private fun createAccount(email: String, password: String) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign-up success
-                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
-                    // Optionally, redirect to another activity after sign-up
+                    val user = firebaseAuth.currentUser
+                    sendEmailVerification(user)
                 } else {
-                    // Sign-up failed
-                    Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Account creation failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }
+            }
+    }
+
+    private fun sendEmailVerification(user: FirebaseUser?) {
+        user?.sendEmailVerification()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Verification email sent to ${user.email}. Please verify your email.", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Failed to send verification email: ${task.exception?.message}", Toast.LENGTH_LONG).show()
             }
         }
     }

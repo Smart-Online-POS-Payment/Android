@@ -3320,12 +3320,11 @@ id easeOut
 id east
 id edge
 id editText1
-id editText11
 id editText2
-id editText21
 id edit_query
 id edit_text_id
 id elastic
+id emailEditText
 id embed
 id end
 id endToStart
@@ -3509,6 +3508,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordEditText
 id password_toggle
 id path
 id pathRelative
@@ -3564,8 +3564,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUpButton
 id signinButton
-id signinButton2
 id sin
 id skipCollapsed
 id skipped

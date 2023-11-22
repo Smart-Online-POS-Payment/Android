@@ -4,24 +4,24 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/qrcode.xml"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
-    },
-    {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_user_page_activity.xml.flat",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/user_page_activity.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_qr.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/qr.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-45:/layout_item_payment.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/item_payment.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_user_page_activity.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/user_page_activity.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_item_payment.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/item_payment.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/xml_backup_rules.xml.flat",
@@ -126,5 +126,9 @@
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/xml_data_extraction_rules.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-45:/layout_activity_sign_up.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
     }
 ]

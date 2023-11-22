@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import verifyAccount
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,25 +22,40 @@ class MainActivity : AppCompatActivity() {
 
         setupSignUpTextView()
 
-        val signButton: Button = findViewById(R.id.signinButton)
-        signButton.text = getString(R.string.sign_in)
-        signButton.setOnClickListener {
+        val signInButton: Button = findViewById(R.id.signinButton)
+        signInButton.setOnClickListener {
+            val emailEditText = findViewById<EditText>(R.id.editText1)
+            val passwordEditText = findViewById<EditText>(R.id.editText2)
 
-            val editText1 = findViewById<EditText>(R.id.editText1)
-            val editText2 = findViewById<EditText>(R.id.editText2)
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
-            val email = editText1.text.toString()
-            val password = editText2.text.toString()
-
-            verifyAccount(email, password)?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val intent = Intent(this, HomePageActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, "No account found", Toast.LENGTH_SHORT).show()
-                }
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                signInUser(email, password)
+            } else {
+                Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun signInUser(email: String, password: String) {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = FirebaseAuth.getInstance().currentUser
+                    if (user != null && user.isEmailVerified) {
+                        // Email is verified, proceed to the home page
+                        val intent = Intent(this, HomePageActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        // Email is not verified
+                        Toast.makeText(this, "Please verify your email first.", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // Authentication failed, show an error message
+                    Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
     private fun setupSignUpTextView() {
         val textViewSignUp: TextView = findViewById(R.id.textViewSignUp)

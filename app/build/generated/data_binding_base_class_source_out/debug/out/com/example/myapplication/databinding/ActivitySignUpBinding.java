@@ -21,20 +21,20 @@ public final class ActivitySignUpBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final EditText editText11;
+  public final EditText emailEditText;
 
   @NonNull
-  public final EditText editText21;
+  public final EditText passwordEditText;
 
   @NonNull
-  public final Button signinButton2;
+  public final Button signUpButton;
 
-  private ActivitySignUpBinding(@NonNull LinearLayout rootView, @NonNull EditText editText11,
-      @NonNull EditText editText21, @NonNull Button signinButton2) {
+  private ActivitySignUpBinding(@NonNull LinearLayout rootView, @NonNull EditText emailEditText,
+      @NonNull EditText passwordEditText, @NonNull Button signUpButton) {
     this.rootView = rootView;
-    this.editText11 = editText11;
-    this.editText21 = editText21;
-    this.signinButton2 = signinButton2;
+    this.emailEditText = emailEditText;
+    this.passwordEditText = passwordEditText;
+    this.signUpButton = signUpButton;
   }
 
   @Override
@@ -64,26 +64,26 @@ public final class ActivitySignUpBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.editText11;
-      EditText editText11 = ViewBindings.findChildViewById(rootView, id);
-      if (editText11 == null) {
+      id = R.id.emailEditText;
+      EditText emailEditText = ViewBindings.findChildViewById(rootView, id);
+      if (emailEditText == null) {
         break missingId;
       }
 
-      id = R.id.editText21;
-      EditText editText21 = ViewBindings.findChildViewById(rootView, id);
-      if (editText21 == null) {
+      id = R.id.passwordEditText;
+      EditText passwordEditText = ViewBindings.findChildViewById(rootView, id);
+      if (passwordEditText == null) {
         break missingId;
       }
 
-      id = R.id.signinButton2;
-      Button signinButton2 = ViewBindings.findChildViewById(rootView, id);
-      if (signinButton2 == null) {
+      id = R.id.signUpButton;
+      Button signUpButton = ViewBindings.findChildViewById(rootView, id);
+      if (signUpButton == null) {
         break missingId;
       }
 
-      return new ActivitySignUpBinding((LinearLayout) rootView, editText11, editText21,
-          signinButton2);
+      return new ActivitySignUpBinding((LinearLayout) rootView, emailEditText, passwordEditText,
+          signUpButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
