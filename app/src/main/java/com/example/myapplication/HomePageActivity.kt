@@ -36,7 +36,7 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         // Set OnClickListener for the Wealth CardView
-        binding.paymentsView.setOnClickListener{
+        binding.paymentsView.setOnClickListener {
             onCardViewClick("Payments CardView")
             val intent = Intent(this, PaymentHistoryActivity::class.java)
             startActivity(intent)

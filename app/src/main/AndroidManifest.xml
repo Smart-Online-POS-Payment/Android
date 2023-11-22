@@ -49,20 +49,14 @@
             <!-- Add any additional configuration here. -->
         </activity>
 
+        <activity android:name=".PaymentHistoryActivity">
 
+        </activity>
 
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="android:screenOrientation"/>
-
-
-
-            <!-- Add any additional configuration here. -->
-
-
-
-
 
     </application>
 
