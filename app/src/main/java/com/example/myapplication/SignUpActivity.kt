@@ -32,6 +32,10 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
             }
         }
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()  // This will close the current activity and return to the previous one
+        }
     }
 
     private fun createAccount(email: String, password: String) {

@@ -21,6 +21,9 @@ public final class ActivitySignUpBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button buttonBack;
+
+  @NonNull
   public final EditText emailEditText;
 
   @NonNull
@@ -29,9 +32,11 @@ public final class ActivitySignUpBinding implements ViewBinding {
   @NonNull
   public final Button signUpButton;
 
-  private ActivitySignUpBinding(@NonNull LinearLayout rootView, @NonNull EditText emailEditText,
-      @NonNull EditText passwordEditText, @NonNull Button signUpButton) {
+  private ActivitySignUpBinding(@NonNull LinearLayout rootView, @NonNull Button buttonBack,
+      @NonNull EditText emailEditText, @NonNull EditText passwordEditText,
+      @NonNull Button signUpButton) {
     this.rootView = rootView;
+    this.buttonBack = buttonBack;
     this.emailEditText = emailEditText;
     this.passwordEditText = passwordEditText;
     this.signUpButton = signUpButton;
@@ -64,6 +69,12 @@ public final class ActivitySignUpBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.buttonBack;
+      Button buttonBack = ViewBindings.findChildViewById(rootView, id);
+      if (buttonBack == null) {
+        break missingId;
+      }
+
       id = R.id.emailEditText;
       EditText emailEditText = ViewBindings.findChildViewById(rootView, id);
       if (emailEditText == null) {
@@ -82,8 +93,8 @@ public final class ActivitySignUpBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySignUpBinding((LinearLayout) rootView, emailEditText, passwordEditText,
-          signUpButton);
+      return new ActivitySignUpBinding((LinearLayout) rootView, buttonBack, emailEditText,
+          passwordEditText, signUpButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
