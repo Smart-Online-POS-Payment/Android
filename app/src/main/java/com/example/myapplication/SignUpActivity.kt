@@ -11,31 +11,30 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up) // Make sure this matches your layout file name
+
         val signButton: Button = findViewById(R.id.signinButton2)
-        print("****************")
         signButton.setOnClickListener {
-            print("****************")
 
+            val editTextEmail = findViewById<EditText>(R.id.editText11)
+            val editTextPassword = findViewById<EditText>(R.id.editText21)
 
-            val editText1 = findViewById<EditText>(R.id.editText11)
-            val editText2 = findViewById<EditText>(R.id.editText21)
+            val email = editTextEmail.text.toString()
+            val password = editTextPassword.text.toString()
 
-            val email = editText1.text.toString()
-            val password = editText2.text.toString()
-
+            // Instance of FirebaseAuth
             val firebaseAuth = FirebaseAuth.getInstance()
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign-in success
-                    Toast.makeText(this, "You have successfully entered your account", Toast.LENGTH_SHORT).show()
 
+            // Creating a new user
+            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Sign-up success
+                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
+                    // Optionally, redirect to another activity after sign-up
                 } else {
-                    // Sign-in failed
-                    Toast.makeText(this, "No account found", Toast.LENGTH_SHORT).show()
+                    // Sign-up failed
+                    Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
     }
 }
-
