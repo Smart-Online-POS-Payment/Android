@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityHomePageBinding
-
-
+import com.google.firebase.auth.FirebaseAuth
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -41,6 +40,10 @@ class HomePageActivity : AppCompatActivity() {
             val intent = Intent(this, PaymentHistoryActivity::class.java)
             startActivity(intent)
         }
+
+        binding.logoutView.setOnClickListener {
+            logoutUser()
+        }
     }
 
     private fun onCardViewClick(cardName: String) {
@@ -50,4 +53,14 @@ class HomePageActivity : AppCompatActivity() {
     private fun onImageViewClick(imageName: String) {
         println("Clicked on $imageName")
     }
+    private fun logoutUser() {
+        // Sign out from Firebase
+        FirebaseAuth.getInstance().signOut()
+
+        // Redirect to MainActivity (Sign-in Screen)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK  // Clear the activity stack
+        startActivity(intent)
+    }
+
 }
