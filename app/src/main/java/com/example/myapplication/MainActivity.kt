@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
             }
         }
+        val forgotPasswordTextView: TextView = findViewById(R.id.textViewForgotPassword)
+        forgotPasswordTextView.setOnClickListener {
+            sendPasswordResetEmail()
+        }
     }
 
     private fun signInUser(email: String, password: String) {
@@ -77,5 +81,22 @@ class MainActivity : AppCompatActivity() {
         spannableString.setSpan(clickableSpan, signUpTextStart, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         textViewSignUp.text = spannableString
         textViewSignUp.movementMethod = LinkMovementMethod.getInstance()
+    }
+    private fun sendPasswordResetEmail() {
+        val emailEditText = findViewById<EditText>(R.id.editText1)
+        val email = emailEditText.text.toString().trim()
+
+        if (email.isNotEmpty()) {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Password reset email sent.", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this, "Failed to send reset email: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+        } else {
+            Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_LONG).show()
+        }
     }
 }

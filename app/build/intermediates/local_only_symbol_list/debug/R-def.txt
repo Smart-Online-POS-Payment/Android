@@ -46,6 +46,7 @@ id qrView
 id signUpButton
 id signinButton
 id textResult
+id textViewForgotPassword
 id textViewSignUp
 id topBar
 id walletTextView

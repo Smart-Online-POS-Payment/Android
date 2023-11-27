@@ -31,14 +31,19 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Button signinButton;
 
   @NonNull
+  public final TextView textViewForgotPassword;
+
+  @NonNull
   public final TextView textViewSignUp;
 
   private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull EditText editText1,
-      @NonNull EditText editText2, @NonNull Button signinButton, @NonNull TextView textViewSignUp) {
+      @NonNull EditText editText2, @NonNull Button signinButton,
+      @NonNull TextView textViewForgotPassword, @NonNull TextView textViewSignUp) {
     this.rootView = rootView;
     this.editText1 = editText1;
     this.editText2 = editText2;
     this.signinButton = signinButton;
+    this.textViewForgotPassword = textViewForgotPassword;
     this.textViewSignUp = textViewSignUp;
   }
 
@@ -87,6 +92,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textViewForgotPassword;
+      TextView textViewForgotPassword = ViewBindings.findChildViewById(rootView, id);
+      if (textViewForgotPassword == null) {
+        break missingId;
+      }
+
       id = R.id.textViewSignUp;
       TextView textViewSignUp = ViewBindings.findChildViewById(rootView, id);
       if (textViewSignUp == null) {
@@ -94,7 +105,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((LinearLayout) rootView, editText1, editText2, signinButton,
-          textViewSignUp);
+          textViewForgotPassword, textViewSignUp);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

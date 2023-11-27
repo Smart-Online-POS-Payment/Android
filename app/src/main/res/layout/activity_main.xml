@@ -23,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Şifrenizi Girin"
+        android:inputType="textPassword"
         android:layout_marginTop="16dp"/>
+
 
     <!-- Button -->
     <Button
@@ -32,6 +34,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Giriş Yap" />
+    <TextView
+        android:id="@+id/textViewForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot password?"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/textViewSignUp"
