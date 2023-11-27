@@ -28,6 +28,7 @@ id cardView2
 id constraintLayout
 id creditCardLayoutView
 id creditCardView
+id drawer_layout
 id editText1
 id editText2
 id emailEditText
@@ -38,6 +39,8 @@ id financial
 id layout_result
 id logoutView
 id menuView
+id nav_my_profile
+id nav_view
 id notificationView
 id passwordEditText
 id paymentsRecyclerView
@@ -57,6 +60,7 @@ layout activity_qr_code_scanner
 layout activity_sign_up
 layout item_payment
 layout user_page_activity
+menu drawer_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

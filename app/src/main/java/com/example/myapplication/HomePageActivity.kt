@@ -5,6 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
+import android.view.MenuItem
+import android.view.View
+import android.widget.PopupMenu
+import androidx.core.view.GravityCompat
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -39,6 +43,24 @@ class HomePageActivity : AppCompatActivity() {
             onCardViewClick("Payments CardView")
             val intent = Intent(this, PaymentHistoryActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_my_profile -> {
+                    // Handle the My Profile action
+                    val intent = Intent(this, MyProfileActivity::class.java)
+                    startActivity(intent)
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+                // Add other cases for different menu items if necessary
+                else -> false
+            }
+        }
+
+        binding.menuView.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
         }
 
         binding.logoutView.setOnClickListener {

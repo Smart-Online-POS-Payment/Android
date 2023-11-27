@@ -20,8 +20,8 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
     },
     {
-        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_main.xml",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_main.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_home_page.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_home_page.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-44:/layout/activity_payment_history.xml",

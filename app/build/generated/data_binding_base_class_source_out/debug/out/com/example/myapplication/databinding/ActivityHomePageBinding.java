@@ -11,16 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.myapplication.R;
+import com.google.android.material.navigation.NavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityHomePageBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final DrawerLayout rootView;
 
   @NonNull
   public final TextView appName;
@@ -38,6 +40,9 @@ public final class ActivityHomePageBinding implements ViewBinding {
   public final ImageView creditCardView;
 
   @NonNull
+  public final DrawerLayout drawerLayout;
+
+  @NonNull
   public final CardView financeView;
 
   @NonNull
@@ -48,6 +53,9 @@ public final class ActivityHomePageBinding implements ViewBinding {
 
   @NonNull
   public final ImageView menuView;
+
+  @NonNull
+  public final NavigationView navView;
 
   @NonNull
   public final ImageView notificationView;
@@ -64,11 +72,12 @@ public final class ActivityHomePageBinding implements ViewBinding {
   @NonNull
   public final TextView walletTextView;
 
-  private ActivityHomePageBinding(@NonNull ConstraintLayout rootView, @NonNull TextView appName,
+  private ActivityHomePageBinding(@NonNull DrawerLayout rootView, @NonNull TextView appName,
       @NonNull CardView cardView2, @NonNull ConstraintLayout constraintLayout,
       @NonNull CardView creditCardLayoutView, @NonNull ImageView creditCardView,
-      @NonNull CardView financeView, @NonNull ImageView financial, @NonNull ImageView logoutView,
-      @NonNull ImageView menuView, @NonNull ImageView notificationView,
+      @NonNull DrawerLayout drawerLayout, @NonNull CardView financeView,
+      @NonNull ImageView financial, @NonNull ImageView logoutView, @NonNull ImageView menuView,
+      @NonNull NavigationView navView, @NonNull ImageView notificationView,
       @NonNull ImageView paymentsView, @NonNull ImageView qrView, @NonNull LinearLayout topBar,
       @NonNull TextView walletTextView) {
     this.rootView = rootView;
@@ -77,10 +86,12 @@ public final class ActivityHomePageBinding implements ViewBinding {
     this.constraintLayout = constraintLayout;
     this.creditCardLayoutView = creditCardLayoutView;
     this.creditCardView = creditCardView;
+    this.drawerLayout = drawerLayout;
     this.financeView = financeView;
     this.financial = financial;
     this.logoutView = logoutView;
     this.menuView = menuView;
+    this.navView = navView;
     this.notificationView = notificationView;
     this.paymentsView = paymentsView;
     this.qrView = qrView;
@@ -90,7 +101,7 @@ public final class ActivityHomePageBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public DrawerLayout getRoot() {
     return rootView;
   }
 
@@ -127,7 +138,11 @@ public final class ActivityHomePageBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout constraintLayout = (ConstraintLayout) rootView;
+      id = R.id.constraintLayout;
+      ConstraintLayout constraintLayout = ViewBindings.findChildViewById(rootView, id);
+      if (constraintLayout == null) {
+        break missingId;
+      }
 
       id = R.id.creditCardLayoutView;
       CardView creditCardLayoutView = ViewBindings.findChildViewById(rootView, id);
@@ -140,6 +155,8 @@ public final class ActivityHomePageBinding implements ViewBinding {
       if (creditCardView == null) {
         break missingId;
       }
+
+      DrawerLayout drawerLayout = (DrawerLayout) rootView;
 
       id = R.id.financeView;
       CardView financeView = ViewBindings.findChildViewById(rootView, id);
@@ -162,6 +179,12 @@ public final class ActivityHomePageBinding implements ViewBinding {
       id = R.id.menuView;
       ImageView menuView = ViewBindings.findChildViewById(rootView, id);
       if (menuView == null) {
+        break missingId;
+      }
+
+      id = R.id.nav_view;
+      NavigationView navView = ViewBindings.findChildViewById(rootView, id);
+      if (navView == null) {
         break missingId;
       }
 
@@ -195,9 +218,10 @@ public final class ActivityHomePageBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHomePageBinding((ConstraintLayout) rootView, appName, cardView2,
-          constraintLayout, creditCardLayoutView, creditCardView, financeView, financial,
-          logoutView, menuView, notificationView, paymentsView, qrView, topBar, walletTextView);
+      return new ActivityHomePageBinding((DrawerLayout) rootView, appName, cardView2,
+          constraintLayout, creditCardLayoutView, creditCardView, drawerLayout, financeView,
+          financial, logoutView, menuView, navView, notificationView, paymentsView, qrView, topBar,
+          walletTextView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

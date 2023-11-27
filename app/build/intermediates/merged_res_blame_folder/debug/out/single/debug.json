@@ -4,20 +4,20 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/qrcode.xml"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-xxxhdpi/ic_launcher.webp"
-    },
-    {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_qr.xml.flat",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/qr.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_user_page_activity.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/user_page_activity.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_qr.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/qr.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_item_payment.xml.flat",
@@ -48,6 +48,10 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/menu.xml"
     },
     {
+        "merged": "com.example.myapplication.app-merged_res-45:/layout_activity_home_page.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_home_page.xml"
+    },
+    {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_ic_launcher_foreground.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/ic_launcher_foreground.xml"
     },
@@ -58,10 +62,6 @@
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.myapplication.app-merged_res-45:/layout_activity_main.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_main.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-hdpi_ic_launcher.webp.flat",
@@ -88,12 +88,12 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_finance.xml.flat",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/finance.xml"
-    },
-    {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_activity_main.xml.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/drawable_finance.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/drawable/finance.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -110,6 +110,10 @@
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-45:/menu_drawer_menu.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/menu/drawer_menu.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
