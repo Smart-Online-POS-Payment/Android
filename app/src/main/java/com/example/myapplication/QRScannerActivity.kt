@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract. ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,11 @@ class QRScannerActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initBinding()
         initViews()
+
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()  // Closes the current activity, returning to the previous one in the stack
+        }
     }
     private fun initViews() {
         binding.fab.setOnClickListener {

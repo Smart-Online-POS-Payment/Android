@@ -24,11 +24,11 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_payment_history.xml"
     },
     {
-        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-44:/layout/activity_qr_code_scanner.xml",
-        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_qr_code_scanner.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
     },
     {
-        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_sign_up.xml",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-mergeDebugResources-44:/layout/activity_qr_code_scanner.xml",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
     }
 ]

@@ -4,6 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,9 @@ public final class ActivityQrCodeScannerBinding implements ViewBinding {
   public final BottomAppBar bottomAppBar;
 
   @NonNull
+  public final Button buttonBack;
+
+  @NonNull
   public final FloatingActionButton fab;
 
   @NonNull
@@ -35,10 +39,12 @@ public final class ActivityQrCodeScannerBinding implements ViewBinding {
   public final TextView textResult;
 
   private ActivityQrCodeScannerBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull BottomAppBar bottomAppBar, @NonNull FloatingActionButton fab,
-      @NonNull LinearLayoutCompat layoutResult, @NonNull TextView textResult) {
+      @NonNull BottomAppBar bottomAppBar, @NonNull Button buttonBack,
+      @NonNull FloatingActionButton fab, @NonNull LinearLayoutCompat layoutResult,
+      @NonNull TextView textResult) {
     this.rootView = rootView;
     this.bottomAppBar = bottomAppBar;
+    this.buttonBack = buttonBack;
     this.fab = fab;
     this.layoutResult = layoutResult;
     this.textResult = textResult;
@@ -77,6 +83,12 @@ public final class ActivityQrCodeScannerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.buttonBack;
+      Button buttonBack = ViewBindings.findChildViewById(rootView, id);
+      if (buttonBack == null) {
+        break missingId;
+      }
+
       id = R.id.fab;
       FloatingActionButton fab = ViewBindings.findChildViewById(rootView, id);
       if (fab == null) {
@@ -95,8 +107,8 @@ public final class ActivityQrCodeScannerBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityQrCodeScannerBinding((CoordinatorLayout) rootView, bottomAppBar, fab,
-          layoutResult, textResult);
+      return new ActivityQrCodeScannerBinding((CoordinatorLayout) rootView, bottomAppBar,
+          buttonBack, fab, layoutResult, textResult);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

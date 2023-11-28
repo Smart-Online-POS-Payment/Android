@@ -3,6 +3,7 @@ package com.example.myapplication
 
 import PaymentsAdapter
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,11 @@ class PaymentHistoryActivity : AppCompatActivity() {
         val paymentsRecyclerView: RecyclerView = findViewById(R.id.paymentsRecyclerView)
         paymentsRecyclerView.layoutManager = LinearLayoutManager(this)
         paymentsRecyclerView.adapter = PaymentsAdapter(generateMockPayments())
+
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()  // Closes the current activity, returning to the previous one in the stack
+        }
     }
 
     data class Payment(val explanation: String, val amount: String)
