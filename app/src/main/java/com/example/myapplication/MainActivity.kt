@@ -42,6 +42,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        clearInputFields()
+    }
+
+    private fun clearInputFields() {
+        val emailEditText: EditText = findViewById(R.id.editText1)
+        val passwordEditText: EditText = findViewById(R.id.editText2)
+
+        emailEditText.text.clear()
+        passwordEditText.text.clear()
+    }
+
     private fun signInUser(email: String, password: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
