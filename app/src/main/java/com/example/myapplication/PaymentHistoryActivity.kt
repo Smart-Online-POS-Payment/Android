@@ -59,7 +59,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
-                    val responseBody = response.body
+                    val responseBody = response.body()
                     if (responseBody != null) {
                         Log.i("Response:", responseBody.string())
                     }
