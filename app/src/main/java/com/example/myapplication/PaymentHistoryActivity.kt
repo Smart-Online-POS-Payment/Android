@@ -46,39 +46,39 @@ class PaymentHistoryActivity : AppCompatActivity() {
         }
 
     //paymentsRecyclerView.adapter = PaymentsAdapter(getPayments("",""))
-}
-private fun getPayments(customerId: String, accessToken: String): ResponseBody? {
-    val client = OkHttpClient().newBuilder().build()
-    val request = Request.Builder()
-        .url("http://172.21.135.26:8083/payment/payment-order/customer/$customerId")
-        .get()
-        .addHeader("Authorization", "Bearer $accessToken")
-        .addHeader("Content-Type", "application/json")
-        .build()
+    }
+    private fun getPayments(customerId: String, accessToken: String): ResponseBody? {
+        val client = OkHttpClient().newBuilder().build()
+        val request = Request.Builder()
+            .url("http://172.21.135.26:8083/payment/payment-order/customer/$customerId")
+            .get()
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
+            .build()
 
-    client.newCall(request).enqueue(object : Callback {
-        override fun onResponse(call: Call, response: Response) {
-            if (response.isSuccessful) {
-                val responseBody = response.body
-                if (responseBody != null) {
-                    Log.i("Response:", responseBody.string())
+        client.newCall(request).enqueue(object : Callback {
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body
+                    if (responseBody != null) {
+                        Log.i("Response:", responseBody.string())
+                    }
+                    // Process the responseBody here
+                } else {
+                    Log.e("Error", "Failed to get payments")
                 }
-                // Process the responseBody here
-            } else {
-                Log.e("Error", "Failed to get payments")
             }
-        }
 
-        override fun onFailure(call: Call, e: IOException) {
-            Log.e("Error", "Failed to get payments", e)
-        }
-    })
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("Error", "Failed to get payments", e)
+            }
+        })
 
-    return null // Replace with the actual return value
-}
+        return null // Replace with the actual return value
+    }
 
 
-data class Payment(val explanation: String, val amount: String)
+    data class Payment(val explanation: String, val amount: String)
     private fun generateMockPayments(): List<Payment> {
         return listOf(
             Payment("Payment 1", "$10"),
