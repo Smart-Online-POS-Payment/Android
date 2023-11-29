@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-63:12
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:2:1-64:12
 MERGED from [androidx.databinding:viewbinding:8.1.2] /Users/kaasimsek/.gradle/caches/transforms-3/84dcfd9f28dc9f082c5ff9ae5c5dfd2b/transformed/viewbinding-8.1.2/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/kaasimsek/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/kaasimsek/.gradle/caches/transforms-3/86bffea09fe20da788463695b9341740/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
@@ -115,8 +115,8 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gra
 	android:name
 		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:11:22-62
 application
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:14:5-61:19
-INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:14:5-61:19
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:14:5-62:19
+INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:14:5-62:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/kaasimsek/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/kaasimsek/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/kaasimsek/.gradle/caches/transforms-3/86bffea09fe20da788463695b9341740/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -182,7 +182,7 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/kaasimsek/.gradle
 	android:roundIcon
 		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:20:9-54
 	tools:targetApi
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:23:9-29
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:24:9-29
 	android:icon
 		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:18:9-43
 	android:allowBackup
@@ -191,54 +191,56 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/kaasimsek/.gradle
 		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:22:9-51
 	android:dataExtractionRules
 		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:16:9-65
+	android:usesCleartextTraffic
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:23:9-44
 activity#com.example.myapplication.QRScannerActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:25:9-27:40
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:26:9-28:40
 	android:exported
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:27:13-37
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:28:13-37
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:26:13-46
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:27:13-46
 activity#com.example.myapplication.HomePageActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:28:9-34:70
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:29:9-35:70
 	android:label
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:33:13-61
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:34:13-61
 	android:exported
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:32:13-37
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:33:13-37
 	android:theme
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:34:13-67
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:35:13-67
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:31:13-45
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:32:13-45
 activity#com.example.myapplication.MainActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:36:9-46:20
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:37:9-47:20
 	android:exported
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:38:13-36
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:39:13-36
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:37:13-41
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:38:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:39:13-43:29
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:40:13-44:29
 action#android.intent.action.MAIN
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:40:17-69
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:41:17-69
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:40:25-66
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:41:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:42:17-77
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:43:17-77
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:42:27-74
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:43:27-74
 activity#com.example.myapplication.SignUpActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:47:9-50:20
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:48:9-51:20
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:47:19-49
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:48:19-49
 activity#com.example.myapplication.PaymentHistoryActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:52:9-54:20
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:53:9-55:20
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:52:19-57
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:53:19-57
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:56:9-59:56
+ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:57:9-60:56
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:58:13-51
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:59:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
@@ -247,9 +249,9 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gra
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:59:13-54
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:60:13-54
 	android:name
-		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:57:13-74
+		ADDED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml:58:13-74
 uses-sdk
 INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/AndroidManifest.xml
