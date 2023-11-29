@@ -4,7 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/res/values-w600dp/dimens.xml",
+                    "source": "/Users/kaasimsek/Smart-Online-Post-Payment/Android/app/src/main/res/values-w600dp/dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

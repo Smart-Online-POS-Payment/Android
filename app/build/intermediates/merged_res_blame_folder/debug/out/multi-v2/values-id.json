@@ -4,7 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-id/values-id.xml",
             "map": [
                 {
-                    "source": "/Users/est/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/res/values-id/values-id.xml",
+                    "source": "/Users/kaasimsek/.gradle/caches/transforms-3/4c9a98a25f859a9d375191b98fb5c445/transformed/zxing-android-embedded-4.3.0/res/values-id/values-id.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

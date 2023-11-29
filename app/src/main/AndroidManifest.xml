@@ -57,7 +57,6 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="android:screenOrientation"/>
-        <activity android:name=".MyProfileActivity" />
 
     </application>
 
