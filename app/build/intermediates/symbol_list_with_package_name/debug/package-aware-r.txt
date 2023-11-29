@@ -3144,6 +3144,7 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id TCKNEditText
 id TOP_END
 id TOP_START
 id accelerate
@@ -3223,6 +3224,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3255,6 +3257,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id changePasswordButton
 id checkbox
 id checked
 id chronometer
@@ -3306,6 +3309,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id dobEditText
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3465,6 +3469,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nameEditText
 id nav_my_profile
 id nav_view
 id navigation_bar_item_active_indicator_view
@@ -3602,6 +3607,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id surnameEditText
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3657,6 +3663,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id verifyTCKNButton
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3807,6 +3814,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_home_page
 layout activity_main
+layout activity_my_profile
 layout activity_payment_history
 layout activity_qr_code_scanner
 layout activity_sign_up

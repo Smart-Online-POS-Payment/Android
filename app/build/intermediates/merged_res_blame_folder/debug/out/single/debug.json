@@ -60,8 +60,8 @@
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/menu/drawer_menu.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-45:/layout_activity_qr_code_scanner.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
+        "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/layout_activity_my_profile.xml.flat",
+        "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/layout/activity_my_profile.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xhdpi_ic_launcher_round.webp.flat",
@@ -110,6 +110,10 @@
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-main-47:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-45:/layout_activity_my_profile.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_my_profile.xml"
     },
     {
         "merged": "/Users/est/.gradle/daemon/8.0/com.example.myapplication.app-merged_res-45:/mipmap-xxhdpi_ic_launcher.webp.flat",

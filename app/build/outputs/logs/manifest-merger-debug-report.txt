@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-63:12
+ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-64:12
+INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:2:1-64:12
 MERGED from [androidx.databinding:viewbinding:8.1.2] /Users/est/.gradle/caches/transforms-3/84dcfd9f28dc9f082c5ff9ae5c5dfd2b/transformed/viewbinding-8.1.2/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/est/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/est/.gradle/caches/transforms-3/86bffea09fe20da788463695b9341740/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
@@ -115,8 +115,8 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/est/.gradle/ca
 	android:name
 		ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:11:22-62
 application
-ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:14:5-61:19
-INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:14:5-61:19
+ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:14:5-62:19
+INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:14:5-62:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/est/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/est/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/est/.gradle/caches/transforms-3/86bffea09fe20da788463695b9341740/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -250,6 +250,10 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /Users/est/.gradle/ca
 		ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:59:13-54
 	android:name
 		ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:57:13-74
+activity#com.example.myapplication.MyProfileActivity
+ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:60:9-55
+	android:name
+		ADDED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml:60:19-52
 uses-sdk
 INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/AndroidManifest.xml

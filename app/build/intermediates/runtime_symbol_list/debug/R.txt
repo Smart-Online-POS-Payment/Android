@@ -3143,6 +3143,7 @@ int id SHOW_ALL 0x7f080009
 int id SHOW_PATH 0x7f08000a
 int id SHOW_PROGRESS 0x7f08000b
 int id SYM 0x7f08000c
+int id TCKNEditText 0x7f08022f
 int id TOP_END 0x7f08000d
 int id TOP_START 0x7f08000e
 int id accelerate 0x7f08000f
@@ -3222,6 +3223,7 @@ int id auto 0x7f080058
 int id autoComplete 0x7f080059
 int id autoCompleteToEnd 0x7f08005a
 int id autoCompleteToStart 0x7f08005b
+int id backButton 0x7f080235
 int id barrier 0x7f08005c
 int id baseline 0x7f08005d
 int id beginOnFirstDraw 0x7f08005e
@@ -3254,6 +3256,7 @@ int id center_vertical 0x7f080078
 int id chain 0x7f080079
 int id chain2 0x7f08007a
 int id chains 0x7f08007b
+int id changePasswordButton 0x7f080230
 int id checkbox 0x7f08007c
 int id checked 0x7f08007d
 int id chronometer 0x7f08007e
@@ -3305,6 +3308,7 @@ int id disableIntraAutoTransition 0x7f0800ab
 int id disablePostScroll 0x7f0800ac
 int id disableScroll 0x7f0800ad
 int id disjoint 0x7f0800ae
+int id dobEditText 0x7f080231
 int id dragAnticlockwise 0x7f0800af
 int id dragClockwise 0x7f0800b0
 int id dragDown 0x7f0800b1
@@ -3464,6 +3468,7 @@ int id mtrl_picker_text_input_range_start 0x7f08014a
 int id mtrl_picker_title_text 0x7f08014b
 int id mtrl_view_tag_bottom_padding 0x7f08014c
 int id multiply 0x7f08014d
+int id nameEditText 0x7f080232
 int id nav_my_profile 0x7f08014e
 int id nav_view 0x7f08014f
 int id navigation_bar_item_active_indicator_view 0x7f080150
@@ -3601,6 +3606,7 @@ int id stretch 0x7f0801d3
 int id submenuarrow 0x7f0801d4
 int id submit_area 0x7f0801d5
 int id supportScrollUp 0x7f0801d6
+int id surnameEditText 0x7f080233
 int id tabMode 0x7f0801d7
 int id tag_accessibility_actions 0x7f0801d8
 int id tag_accessibility_clickable_spans 0x7f0801d9
@@ -3656,6 +3662,7 @@ int id uniform 0x7f08020a
 int id unlabeled 0x7f08020b
 int id up 0x7f08020c
 int id useLogo 0x7f08020d
+int id verifyTCKNButton 0x7f080234
 int id vertical_only 0x7f08020e
 int id view_offset_helper 0x7f08020f
 int id view_transition 0x7f080210
@@ -3806,6 +3813,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_home_page 0x7f0b001c
 int layout activity_main 0x7f0b001d
+int layout activity_my_profile 0x7f0b0076
 int layout activity_payment_history 0x7f0b001e
 int layout activity_qr_code_scanner 0x7f0b001f
 int layout activity_sign_up 0x7f0b0020
