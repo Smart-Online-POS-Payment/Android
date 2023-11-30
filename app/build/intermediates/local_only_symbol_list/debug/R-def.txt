@@ -25,7 +25,9 @@ id amountTextView
 id appName
 id backButton
 id bottomAppBar
+id buttonAddAmount
 id buttonBack
+id buttonSubmit
 id cardView2
 id changePasswordButton
 id constraintLayout
@@ -35,6 +37,11 @@ id dobEditText
 id drawer_layout
 id editText1
 id editText2
+id editTextAmount
+id editTextCVV
+id editTextCardHolderName
+id editTextCardNumber
+id editTextExpiryDate
 id emailEditText
 id explanationTextView
 id fab
@@ -56,10 +63,13 @@ id signinButton
 id surnameEditText
 id textResult
 id textViewForgotPassword
+id textViewFormattedAmount
 id textViewSignUp
 id topBar
 id verifyTCKNButton
 id walletTextView
+layout activity_choose_card
+layout activity_enter_amount
 layout activity_home_page
 layout activity_main
 layout activity_my_profile

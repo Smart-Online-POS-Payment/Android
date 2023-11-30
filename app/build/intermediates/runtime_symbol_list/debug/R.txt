@@ -3241,8 +3241,10 @@ int id browser_actions_menu_item_icon 0x7f08006b
 int id browser_actions_menu_item_text 0x7f08006c
 int id browser_actions_menu_items 0x7f08006d
 int id browser_actions_menu_view 0x7f08006e
+int id buttonAddAmount 0x7f08023d
 int id buttonBack 0x7f08006f
 int id buttonPanel 0x7f080070
+int id buttonSubmit 0x7f080236
 int id cache_measures 0x7f080071
 int id callMeasure 0x7f080072
 int id cancel_button 0x7f080073
@@ -3326,6 +3328,11 @@ int id east 0x7f0800c0
 int id edge 0x7f0800c1
 int id editText1 0x7f0800c2
 int id editText2 0x7f0800c3
+int id editTextAmount 0x7f080237
+int id editTextCVV 0x7f080238
+int id editTextCardHolderName 0x7f080239
+int id editTextCardNumber 0x7f08023a
+int id editTextExpiryDate 0x7f08023b
 int id edit_query 0x7f0800c4
 int id edit_text_id 0x7f0800c5
 int id elastic 0x7f0800c6
@@ -3630,6 +3637,7 @@ int id textSpacerNoTitle 0x7f0801f0
 int id textStart 0x7f0801f1
 int id textTop 0x7f0801f2
 int id textViewForgotPassword 0x7f0801f3
+int id textViewFormattedAmount 0x7f08023c
 int id textViewSignUp 0x7f0801f4
 int id text_input_end_icon 0x7f0801f5
 int id text_input_error_icon 0x7f0801f6
@@ -3811,6 +3819,8 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
+int layout activity_choose_card 0x7f0b0077
+int layout activity_enter_amount 0x7f0b0078
 int layout activity_home_page 0x7f0b001c
 int layout activity_main 0x7f0b001d
 int layout activity_my_profile 0x7f0b001e

@@ -4,7 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/est/.gradle/caches/transforms-3/8a0005a2cdb15e8297844e029c291584/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
+                    "source": "C:\\Users\\omerguler\\.gradle\\caches\\transforms-3\\8a0005a2cdb15e8297844e029c291584\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,14 +21,14 @@
                     }
                 },
                 {
-                    "source": "/Users/est/Desktop/FALL2023/COMP491/SOPP/Android/app/src/main/res/values-night/themes.xml",
+                    "source": "C:\\Users\\omerguler\\Desktop\\COMP491\\Android\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "100",
+                        "startOffsets": "102",
                         "endLines": "5",
                         "endColumns": "12",
-                        "endOffsets": "320"
+                        "endOffsets": "325"
                     },
                     "to": {
                         "startLines": "2",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "/Users/est/.gradle/caches/transforms-3/7f98474cbb80822c516a59c5f06c179c/transformed/material-1.10.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "C:\\Users\\omerguler\\.gradle\\caches\\transforms-3\\7f98474cbb80822c516a59c5f06c179c\\transformed\\material-1.10.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

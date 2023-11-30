@@ -31,6 +31,8 @@ class HomePageActivity : AppCompatActivity() {
         // Set OnClickListener for the Credit Card CardView
         binding.creditCardLayoutView.setOnClickListener {
             onCardViewClick("Credit Card CardView")
+            val Intent= Intent(this, EnterAmountActivity::class.java)
+            startActivity(Intent)
         }
 
         // Set OnClickListener for the Payment CardView
