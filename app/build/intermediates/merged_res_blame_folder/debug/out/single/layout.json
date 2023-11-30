@@ -1,46 +1,42 @@
 [
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\item_payment.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\item_payment.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_payment_history.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_payment_history.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_my_profile.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_my_profile.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_main.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_payment_history.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_payment_history.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_home_page.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_home_page.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_choose_card.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_choose_card.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_qr_code_scanner.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_qr_code_scanner.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_qr_code_scanner.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_qr_code_scanner.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_my_profile.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_my_profile.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\user_page_activity.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\user_page_activity.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/user_page_activity.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/user_page_activity.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_enter_amount.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_enter_amount.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_enter_amount.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_enter_amount.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_home_page.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_home_page.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/item_payment.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/item_payment.xml"
     },
     {
         "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_choose_card.xml",
         "source": "com.example.myapplication.app-main-47:/layout/activity_choose_card.xml"
     },
     {
-        "merged": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-mergeDebugResources-44:\\layout\\activity_sign_up.xml",
-        "source": "C:\\Users\\omerguler\\.gradle\\daemon\\8.0\\com.example.myapplication.app-main-47:\\layout\\activity_sign_up.xml"
+        "merged": "com.example.myapplication.app-mergeDebugResources-44:/layout/activity_sign_up.xml",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_sign_up.xml"
     }
 ]

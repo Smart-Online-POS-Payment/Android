@@ -4,13 +4,13 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\omerguler\\Desktop\\COMP491\\Android\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
+                    "source": "/Users/melihsahin/Desktop/Android-main/app/src/main/res/values-w600dp/dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "17",
+                        "startOffsets": "16",
                         "endColumns": "41",
-                        "endOffsets": "54"
+                        "endOffsets": "53"
                     },
                     "to": {
                         "startLines": "2",
