@@ -17,14 +17,14 @@ class PaymentsAdapter(private val payments: List<PaymentHistoryActivity.Payment>
     override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
         // Bind data to the ViewHolder
         val currentPayment = payments[position]
-        holder.explanationTextView.text = currentPayment.explanation
+        holder.descriptionTextView.text = currentPayment.description
         holder.amountTextView.text = currentPayment.amount
     }
 
     override fun getItemCount() = payments.size
 
     class PaymentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val explanationTextView: TextView = itemView.findViewById(R.id.explanationTextView)
+        val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         val amountTextView: TextView = itemView.findViewById(R.id.amountTextView)
     }
 }

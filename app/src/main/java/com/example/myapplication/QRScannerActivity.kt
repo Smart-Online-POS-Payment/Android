@@ -18,6 +18,8 @@ import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import com.example.myapplication.databinding.ActivityQrCodeScannerBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -49,14 +51,11 @@ class QRScannerActivity: AppCompatActivity() {
     private lateinit var binding: ActivityQrCodeScannerBinding
 
     private fun setResult(qr: String) {
-
         binding.textResult.text=qr
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser!!.getIdToken(true).addOnSuccessListener { tokenResult ->
             tokenResult.token?.let { getPaymentRequest(qr, it) }
         }
-
-
     }
     private fun showCamera() {
         val options = ScanOptions()
@@ -103,29 +102,17 @@ class QRScannerActivity: AppCompatActivity() {
     private fun getPaymentRequest(qr: String, accessToken: String): ResponseBody? {
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("http://172.21.144.238:8083/payment/payment-request/customer/$qr")
+            .url("http://192.168.128.54:8083/payment/payment-request/customer/$qr")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
             .build()
-
+        val gson = Gson()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
-                    val responseBody: ResponseBody? = response.body
-                    if (responseBody != null) {
-                        Log.i("Response:", responseBody.string())
-                        showSelectionDialog(responseBody.string(),qr)
 
-
-
-
-
-
-
-
-                    }
                     // Process the responseBody here
                 } else {
                     Log.e("Error", "Failed to get payments")
@@ -170,7 +157,7 @@ class QRScannerActivity: AppCompatActivity() {
 
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("http://172.21.144.238:8083/payment/payment-order/customer/$qr_code")
+            .url("http://192.168.128.54:8083/payment/payment-order/customer/$qr_code")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
@@ -203,4 +190,6 @@ class QRScannerActivity: AppCompatActivity() {
     private fun showMessage(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+
+    data class PaymentRequest(val amount: String, val description: String, val date: String)
 }
