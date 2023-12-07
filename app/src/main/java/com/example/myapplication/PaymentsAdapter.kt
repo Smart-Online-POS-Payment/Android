@@ -5,8 +5,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.PaymentHistoryActivity
 import com.example.myapplication.R
+import com.example.myapplication.model.PaymentDetailsModel
 
-class PaymentsAdapter(private val payments: List<PaymentHistoryActivity.Payment>) : RecyclerView.Adapter<PaymentsAdapter.PaymentViewHolder>() {
+class PaymentsAdapter(private val payments: List<PaymentDetailsModel>) : RecyclerView.Adapter<PaymentsAdapter.PaymentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentViewHolder {
         // Inflate the custom layout
@@ -18,7 +19,7 @@ class PaymentsAdapter(private val payments: List<PaymentHistoryActivity.Payment>
         // Bind data to the ViewHolder
         val currentPayment = payments[position]
         holder.descriptionTextView.text = currentPayment.description
-        holder.amountTextView.text = currentPayment.amount
+        holder.amountTextView.text = currentPayment.amount.toString()
     }
 
     override fun getItemCount() = payments.size

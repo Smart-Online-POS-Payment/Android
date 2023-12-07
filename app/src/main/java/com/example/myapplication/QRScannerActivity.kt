@@ -17,6 +17,7 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import com.example.myapplication.databinding.ActivityQrCodeScannerBinding
+import com.example.myapplication.model.PaymentDetailsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -112,8 +113,10 @@ class QRScannerActivity: AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
-
-                    // Process the responseBody here
+                    val json = response.body.toString()
+                    Log.i("Response:", json)
+                    val paymentDetails: PaymentDetailsModel = gson.fromJson(json, object : TypeToken<PaymentDetailsModel>() {}.type)
+                    showSelectionDialog(paymentDetails, qr)
                 } else {
                     Log.e("Error", "Failed to get payments")
                 }
@@ -124,12 +127,12 @@ class QRScannerActivity: AppCompatActivity() {
             }
         })
 
-        return null // Replace with the actual return value
+        return null
     }
-    private fun showSelectionDialog(input: String, qr_code: String) {
+    private fun showSelectionDialog(paymentDetails: PaymentDetailsModel, qr_code: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Select an option")
-        builder.setMessage(input)
+        //builder.setMessage(input)
 
 
         builder.setPositiveButton("Yes") { dialogInterface, _ ->

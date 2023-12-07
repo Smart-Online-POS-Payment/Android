@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityPaymentHistoryBinding
+import com.example.myapplication.model.PaymentDetailsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -67,7 +68,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
                         Log.i("Response:", json)
 
                         // Parse the JSON into a List<Payment> using Gson
-                        val paymentList: List<Payment> = gson.fromJson(json, object : TypeToken<List<Payment>>() {}.type)
+                        val paymentList: List<PaymentDetailsModel> = gson.fromJson(json, object : TypeToken<List<PaymentDetailsModel>>() {}.type)
                         runOnUiThread {
                             val paymentsRecyclerView: RecyclerView = findViewById(R.id.paymentsRecyclerView)
                             // Check if the RecyclerView and paymentList are not null
@@ -88,9 +89,4 @@ class PaymentHistoryActivity : AppCompatActivity() {
 
         return null // Replace with the actual return value
     }
-
-
-    data class Payment( val amount: String, val description: String, val date: String)
-
-
 }
