@@ -17,6 +17,7 @@
         android:layout_below="@id/editTextAmount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Add Amount" />
+        android:text="Add Amount"
+        android:background="@color/blue"/>
 
 </RelativeLayout>

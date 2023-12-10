@@ -31,7 +31,8 @@
             android:id="@+id/buttonBack"
             android:layout_width="104dp"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:text="Back"
+            android:background="@color/blue"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -40,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/cadmium_violet"
+        android:backgroundTint="@color/blue"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="10dp"
         app:fabCradleVerticalOffset="10dp" />
@@ -52,8 +53,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="KotlinQRCodeScanner"
         android:src="@drawable/qrcode"
-        app:backgroundTint="@color/cadmium_violet"
+        app:backgroundTint="@color/white"
         app:layout_anchor="@id/bottomAppBar"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/black" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

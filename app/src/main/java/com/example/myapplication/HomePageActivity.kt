@@ -9,6 +9,7 @@ import com.example.myapplication.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.core.view.GravityCompat
 import okhttp3.Call
@@ -48,9 +49,6 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         // Set OnClickListener for the Payment CardView
-        binding.financeView.setOnClickListener{
-            onCardViewClick("Financial Carview")
-        }
 
         // Set OnClickListener for the Wealth CardView
         binding.paymentsView.setOnClickListener {
@@ -59,23 +57,13 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_my_profile -> {
-                    // Handle the My Profile action
-                    val intent = Intent(this, MyProfileActivity::class.java)
-                    startActivity(intent)
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    true
-                }
-                // Add other cases for different menu items if necessary
-                else -> false
-            }
+        val profileIcon: ImageView = findViewById(R.id.profileIcon)
+
+        profileIcon.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
         }
 
-        binding.menuView.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
-        }
 
         binding.logoutView.setOnClickListener {
             logoutUser()
