@@ -7,10 +7,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
+
 import android.view.MenuItem
 import android.view.View
+
 import android.widget.ImageView
 import android.widget.PopupMenu
+
 import androidx.core.view.GravityCompat
 import okhttp3.Call
 import okhttp3.Callback
