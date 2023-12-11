@@ -20,4 +20,14 @@
         android:text="Add Amount"
         android:background="@color/blue"/>
 
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSubmit"
+        android:layout_centerHorizontal="true"
+        android:text="Back"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"/>
 </RelativeLayout>

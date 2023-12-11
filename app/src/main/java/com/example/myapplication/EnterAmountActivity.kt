@@ -28,6 +28,11 @@ class EnterAmountActivity : AppCompatActivity() {
         buttonSubmit.setOnClickListener {
             handleSubmission()
         }
+
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun handleSubmission() {

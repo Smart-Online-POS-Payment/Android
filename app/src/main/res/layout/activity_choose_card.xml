@@ -7,11 +7,10 @@
         android:id="@+id/textViewFormattedAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-
-        android:text=""
-        android:textSize="18sp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/editTextCardHolderName"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextCardHolderName"
@@ -19,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="Enter Card Holder Name"
-        android:inputType="text" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextCardNumber"
@@ -39,7 +38,8 @@
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
         android:hint="Enter CVV"
-        android:inputType="numberPassword" />
+        android:inputType="numberPassword"
+        android:maxLength="3"/>
 
     <EditText
         android:id="@+id/editTextExpiryDate"
@@ -48,8 +48,8 @@
         android:layout_below="@id/editTextCVV"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:hint="Enter Expiry Date"
-        android:inputType="number" />
+        android:hint="Enter Expiry Date (dd/mm/yyyy)"
+        android:inputType="number"/>
 
 
     <Button
@@ -62,6 +62,17 @@
         android:text="Add Amount"
         android:textColor="@color/white"
         android:background="@color/blue"/>
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonAddAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@color/blue"
+        android:text="Back"
+        android:textColor="@color/white" />
 </RelativeLayout>
 
 

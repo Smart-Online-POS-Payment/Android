@@ -60,8 +60,7 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val profileIcon: ImageView = findViewById(R.id.profileIcon)
-
+        val profileIcon = findViewById<ImageView>(R.id.profileIcon)
         profileIcon.setOnClickListener {
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)

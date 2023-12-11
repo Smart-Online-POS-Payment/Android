@@ -4,7 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityChooseCardBinding
@@ -18,6 +22,7 @@ import okhttp3.RequestBody
 import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
+import java.util.Calendar
 import kotlin.math.log
 
 class ChooseCardActivity: AppCompatActivity() {
@@ -29,7 +34,6 @@ class ChooseCardActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseCardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val amount = intent.getStringExtra("EXTRA_AMOUNT")
         binding.textViewFormattedAmount.text = "Add $amount to:"
@@ -48,6 +52,14 @@ class ChooseCardActivity: AppCompatActivity() {
                 val intent = Intent(this, HomePageActivity::class.java)
                 startActivity(intent)
             }, 1000)
+        }
+
+        setupCardHolderNameField()
+        setupExpiryDateField()
+        setupCardNumberField()
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()
         }
     }
 
@@ -78,4 +90,116 @@ class ChooseCardActivity: AppCompatActivity() {
             }
         })
     }
+
+    private fun setupCardHolderNameField() {
+        val editTextCardHolderName = findViewById<EditText>(R.id.editTextCardHolderName)
+        editTextCardHolderName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not used
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Not used
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                val filter = s.toString().filter { it.isLetter() || it.isWhitespace() }
+                if (filter != s.toString()) {
+                    editTextCardHolderName.setText(filter)
+                    editTextCardHolderName.setSelection(filter.length)
+                }
+            }
+        })
+    }
+    private fun setupCardNumberField() {
+        val editTextCardNumber = binding.editTextCardNumber
+        editTextCardNumber.addTextChangedListener(object : TextWatcher {
+            var isFormatting = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not used
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Not used
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isFormatting) return
+                isFormatting = true
+
+                val formatted = formatCardNumber(s.toString())
+                editTextCardNumber.setText(formatted)
+                editTextCardNumber.setSelection(formatted.length)
+
+                isFormatting = false
+            }
+
+            private fun formatCardNumber(text: String): String {
+                return text.replace(" ", "")
+                    .chunked(4)
+                    .joinToString(" ")
+                    .take(19)
+            }
+        })
+    }
+
+    private fun setupExpiryDateField() {
+        val editTextExpiryDate = findViewById<EditText>(R.id.editTextExpiryDate)
+        editTextExpiryDate.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+            private val ddmmyyyy = "DDMMYYYY"
+            private val cal = Calendar.getInstance()
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString() != current) {
+                    var clean = s.toString().replace(Regex("[^\\d.]|\\."), "")
+                    val cleanC = current.replace(Regex("[^\\d.]|\\."), "")
+
+                    val cl = clean.length
+                    var sel = cl
+                    var i = 2
+                    while (i <= cl && i < 6) {
+                        sel++
+                        i += 2
+                    }
+                    //Fix for pressing delete next to a forward slash
+                    if (clean == cleanC) sel--
+
+                    if (clean.length < 8) {
+                        clean = clean + ddmmyyyy.substring(clean.length)
+                    } else {
+                        //This part makes sure that when we finish entering numbers
+                        //the date is correct, fixing it otherwise
+                        var day = Integer.parseInt(clean.substring(0, 2))
+                        var mon = Integer.parseInt(clean.substring(2, 4))
+                        var year = Integer.parseInt(clean.substring(4, 8))
+
+                        mon = if (mon < 1) 1 else if (mon > 12) 12 else mon
+                        cal.set(Calendar.MONTH, mon - 1)
+                        year = if (year < 2023) 2023 else if (year > 2100) 2100 else year
+                        cal.set(Calendar.YEAR, year)
+                        // ^ first set year for the line below to work correctly
+                        //with leap years - otherwise, it will crash
+                        day = if (day > cal.getActualMaximum(Calendar.DATE)) cal.getActualMaximum(Calendar.DATE) else day
+                        clean = String.format("%02d%02d%02d", day, mon, year)
+                    }
+
+                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
+                        clean.substring(2, 4),
+                        clean.substring(4, 8))
+
+                    sel = if (sel < 0) 0 else sel
+                    current = clean
+                    editTextExpiryDate.setText(current)
+                    editTextExpiryDate.setSelection(if (sel < current.length) sel else current.length)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
 }
