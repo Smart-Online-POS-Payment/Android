@@ -5,7 +5,11 @@ package com.example.myapplication
 import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
@@ -28,6 +32,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.ResponseBody
 import java.io.IOException
+
 
 class QRScannerActivity: AppCompatActivity() {
     private val requestPermissionLauncher= this.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -131,11 +136,24 @@ class QRScannerActivity: AppCompatActivity() {
     }
     private fun showSelectionDialog(paymentDetails: PaymentDetailsModel, qr_code: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Select an option")
-        //builder.setMessage(input)
+        builder.setTitle("Payment Needs Confirmation")
 
 
-        builder.setPositiveButton("Yes") { dialogInterface, _ ->
+        val amount1=paymentDetails.amount
+        val description1=paymentDetails.description
+        val date1=paymentDetails.date
+
+        val formattedMessage = SpannableString("Date: $date1\nDescription: $description1\nAmount: $amount1")
+
+
+        formattedMessage.setSpan(StyleSpan(Typeface.BOLD), 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        formattedMessage.setSpan(StyleSpan(Typeface.BOLD), 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        formattedMessage.setSpan(StyleSpan(Typeface.BOLD), 0, formattedMessage.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        builder.setMessage(formattedMessage)
+
+
+        builder.setPositiveButton("Confirm") { dialogInterface, _ ->
 
             val currentUser = FirebaseAuth.getInstance().currentUser
             currentUser!!.getIdToken(true).addOnSuccessListener { tokenResult ->
@@ -146,7 +164,7 @@ class QRScannerActivity: AppCompatActivity() {
         }
 
 
-        builder.setNegativeButton("No") { dialogInterface, _ ->
+        builder.setNegativeButton("Cancel") { dialogInterface, _ ->
 
             dialogInterface.dismiss() // Close the dialog
         }
