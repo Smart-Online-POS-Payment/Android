@@ -20,6 +20,12 @@ class EnterAmountActivity : AppCompatActivity() {
         binding = ActivityEnterAmountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (!isUserVerified()) {
+            startActivity(Intent(this, MyProfileActivity::class.java))
+            finish()
+            return
+        }
+
 
         editTextAmount = binding.editTextAmount
         buttonSubmit = binding.buttonSubmit
@@ -35,6 +41,11 @@ class EnterAmountActivity : AppCompatActivity() {
         }
     }
 
+    private fun isUserVerified(): Boolean {
+        // Implement the logic to check if the user is verified
+        // This could involve checking SharedPreferences or making a network request
+        return false
+    }
     private fun handleSubmission() {
         val amount = editTextAmount.text.toString()
 

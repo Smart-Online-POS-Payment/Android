@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -23,12 +24,24 @@ class PaymentHistoryActivity : AppCompatActivity() {
         binding = ActivityPaymentHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (!isUserVerified()) {
+            startActivity(Intent(this, MyProfileActivity::class.java))
+            finish()
+            return
+        }
+
         binding.buttonBack.setOnClickListener {
             finish() // Return to the previous activity
         }
 
         setupRecyclerView()
         loadPaymentsFromBackend()
+    }
+
+    private fun isUserVerified(): Boolean {
+        // Implement the logic to check if the user is verified
+        // This could involve checking SharedPreferences or making a network request
+        return false
     }
 
     private fun setupRecyclerView() {

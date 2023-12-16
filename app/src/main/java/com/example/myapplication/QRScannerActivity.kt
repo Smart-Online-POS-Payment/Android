@@ -4,6 +4,7 @@ package com.example.myapplication
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.os.Bundle
@@ -75,6 +76,11 @@ class QRScannerActivity: AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!isUserVerified()) {
+            startActivity(Intent(this, MyProfileActivity::class.java))
+            finish()
+            return
+        }
         initBinding()
         initViews()
 
@@ -83,6 +89,13 @@ class QRScannerActivity: AppCompatActivity() {
             finish()  // Closes the current activity, returning to the previous one in the stack
         }
     }
+
+    private fun isUserVerified(): Boolean {
+        // Implement the logic to check if the user is verified
+        // This could involve checking SharedPreferences or making a network request
+        return false
+    }
+
     private fun initViews() {
         binding.fab.setOnClickListener {
             checkPermissionCamera(this)
