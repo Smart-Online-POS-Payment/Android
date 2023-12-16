@@ -15,7 +15,6 @@ import java.io.IOException
 import java.util.Calendar
 
 class MyProfileActivity : AppCompatActivity() {
-    private val tcknValue: Long = tcknEditText.text.toString().toLongOrNull() ?: 0L
     private lateinit var tcknEditText: EditText
     private lateinit var nameEditText: EditText
     private lateinit var surnameEditText: EditText

@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +9,6 @@ import com.example.myapplication.databinding.ActivityHomePageBinding
 import com.google.firebase.auth.FirebaseAuth
 import okhttp3.*
 import org.json.JSONObject
-
 import java.io.IOException
 
 class HomePageActivity : AppCompatActivity() {
@@ -23,7 +21,9 @@ class HomePageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val currentUser = FirebaseAuth.getInstance().currentUser
-        getBalance(currentUser!!.uid)
+        currentUser?.let {
+            getBalance(it.uid)
+        }
 
         setupOnClickListeners()
     }
@@ -41,10 +41,8 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this, PaymentHistoryActivity::class.java))
         }
 
-        val profileIcon = findViewById<ImageView>(R.id.profileIcon)
-        profileIcon.setOnClickListener {
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
+        binding.profileIcon.setOnClickListener {
+            startActivity(Intent(this, MyProfileActivity::class.java))
         }
 
         binding.logoutView.setOnClickListener {
@@ -53,7 +51,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun getBalance(customerId: String) {
-        val client = OkHttpClient().newBuilder().build()
+        val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
             .url("http://192.168.1.107:8070/wallet/$customerId")
             .get()
@@ -61,28 +59,18 @@ class HomePageActivity : AppCompatActivity() {
             .build()
 
         client.newCall(request).enqueue(object : Callback {
-            @SuppressLint("SetTextI18n")
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body
-                    if (responseBody != null) {
-                        try {
-                            val jsonObject = JSONObject(responseBody.string())
-                            val balance = jsonObject.getDouble("balance")
-                            runOnUiThread {
-                                binding.walletTextView.text = "Balance: $balance"
-                            }
-                        } catch (e: Exception) {
-                            Log.e("Error", "Failed to parse JSON", e)
-                        }
-                    }
-                } else {
-                    Log.e("Error", "Failed to get balance")
-                }
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("HomePageActivity", "Failed to get balance", e)
             }
 
-            override fun onFailure(call: Call, e: IOException) {
-                Log.e("Error", "Failed to get balance", e)
+            override fun onResponse(call: Call, response: Response) {
+                response.body?.let { responseBody ->
+                    val jsonObject = JSONObject(responseBody.string())
+                    val balance = jsonObject.getDouble("balance")
+                    runOnUiThread {
+                        binding.walletTextView.text = "Balance: $balance"
+                    }
+                } ?: Log.e("HomePageActivity", "Response body is null")
             }
         })
     }
@@ -92,6 +80,6 @@ class HomePageActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish() // This line is added to close the current activity
+        finish()
     }
 }

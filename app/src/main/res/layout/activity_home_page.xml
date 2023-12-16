@@ -75,8 +75,8 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="Wallet\n\nBalance: Otl"
-                            android:textSize="20dp"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/white"
+                            android:textSize="20dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -192,7 +192,6 @@
 
 
         </LinearLayout>
-
 
         <ImageView
             android:id="@+id/profileIcon"
