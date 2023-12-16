@@ -79,14 +79,14 @@ class MyProfileActivity : AppCompatActivity() {
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), jsonRequest)
         val cuid = currentUser?.uid
         val request = Request.Builder()
-            .url("http://172.20.18.2:8081/verify/customer/$cuid") // Replace with your verification endpoint
+            .url("http://192.168.1.107:8081/verify/customer/$cuid") // Replace with your verification endpoint
             .post(requestBody)
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
-                    Toast.makeText(applicationContext, "Verification request failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Verification request failed0: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -95,7 +95,7 @@ class MyProfileActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "Verification request sent successfully", Toast.LENGTH_LONG).show()
                     } else {
-                        Toast.makeText(applicationContext, "Verification request failed: ${response.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Verification request failed1: ${response.message}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
