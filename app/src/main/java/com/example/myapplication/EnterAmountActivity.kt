@@ -49,7 +49,7 @@ class EnterAmountActivity : AppCompatActivity() {
     private fun handleSubmission() {
         val amount = editTextAmount.text.toString()
 
-        val intent = Intent(this, ChooseCardActivity::class.java)
+        val intent = Intent(this, CreditCardActivity::class.java)
 
         intent.putExtra("EXTRA_AMOUNT", amount)
 

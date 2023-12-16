@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/standard_margin">
+
+    <!-- Credit Card Number -->
+    <TextView
+        android:id="@+id/textViewCreditCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="@android:color/black"
+        android:text="Card Number: XXXX-XXXX-XXXX-1234" />
+
+    <!-- Other Credit Card Details (e.g., expiration date, cardholder name) -->
+    <!-- Add more TextViews as needed -->
+
+</LinearLayout>
