@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -33,11 +34,19 @@ class MyProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_profile)
 
         initializeViews()
+        setupEditTextsAndListeners()
+    }
 
-
+    private fun setupEditTextsAndListeners() {
+        // Set texts to email and password EditTexts
         emailEditText.setText(currentUser?.email)
         passwordEditText.setText("********")
 
+        // Set onClickListeners to your buttons
+        setupButtonListeners()
+    }
+
+    private fun setupButtonListeners() {
         verifyTcknButton.setOnClickListener {
             val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
             verifyTckn(tcknValue, nameEditText.text.toString(), surnameEditText.text.toString(), emailEditText.text.toString(),
@@ -49,7 +58,7 @@ class MyProfileActivity : AppCompatActivity() {
         }
 
         backButton.setOnClickListener {
-            finish() // This will close MyProfileActivity and return to HomePageActivity
+            finish() // Close the activity
         }
     }
     private fun initializeViews() {
@@ -94,72 +103,30 @@ class MyProfileActivity : AppCompatActivity() {
                 runOnUiThread {
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "Verification request sent successfully", Toast.LENGTH_LONG).show()
+                        saveVerificationStatus(true)
                     } else {
                         Toast.makeText(applicationContext, "Verification request failed1: ${response.message}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         })
+
+    }
+    companion object {
+        fun isUserVerified(context: Context): Boolean {
+            val sharedPrefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+            return sharedPrefs.getBoolean("IsUserVerified", false)
+        }
     }
 
-
-    private fun setupDateField() {
-        val setupDateField = findViewById<EditText>(R.id.editTextExpiryDate)
-        setupDateField.addTextChangedListener(object : TextWatcher {
-            private var current = ""
-            private val ddmmyyyy = "DDMMYYYY"
-            private val cal = Calendar.getInstance()
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString() != current) {
-                    var clean = s.toString().replace(Regex("[^\\d.]|\\."), "")
-                    val cleanC = current.replace(Regex("[^\\d.]|\\."), "")
-
-                    val cl = clean.length
-                    var sel = cl
-                    var i = 2
-                    while (i <= cl && i < 6) {
-                        sel++
-                        i += 2
-                    }
-                    //Fix for pressing delete next to a forward slash
-                    if (clean == cleanC) sel--
-
-                    if (clean.length < 8) {
-                        clean = clean + ddmmyyyy.substring(clean.length)
-                    } else {
-                        //This part makes sure that when we finish entering numbers
-                        //the date is correct, fixing it otherwise
-                        var day = Integer.parseInt(clean.substring(0, 2))
-                        var mon = Integer.parseInt(clean.substring(2, 4))
-                        var year = Integer.parseInt(clean.substring(4, 8))
-
-                        mon = if (mon < 1) 1 else if (mon > 12) 12 else mon
-                        cal.set(Calendar.MONTH, mon - 1)
-                        year = if (year < 2023) 2023 else if (year > 2100) 2100 else year
-                        cal.set(Calendar.YEAR, year)
-                        // ^ first set year for the line below to work correctly
-                        //with leap years - otherwise, it will crash
-                        day = if (day > cal.getActualMaximum(Calendar.DATE)) cal.getActualMaximum(Calendar.DATE) else day
-                        clean = String.format("%02d%02d%02d", day, mon, year)
-                    }
-
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
-                        clean.substring(2, 4),
-                        clean.substring(4, 8))
-
-                    sel = if (sel < 0) 0 else sel
-                    current = clean
-                    setupDateField.setText(current)
-                    setupDateField.setSelection(if (sel < current.length) sel else current.length)
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
+    private fun saveVerificationStatus(isVerified: Boolean) {
+        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        sharedPrefs.edit().apply {
+            putBoolean("IsUserVerified", isVerified)
+            apply()
+        }
     }
+
 }
 
 data class TcknVerifyRequest(

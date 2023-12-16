@@ -24,11 +24,6 @@ class PaymentHistoryActivity : AppCompatActivity() {
         binding = ActivityPaymentHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!isUserVerified()) {
-            startActivity(Intent(this, MyProfileActivity::class.java))
-            finish()
-            return
-        }
 
         binding.buttonBack.setOnClickListener {
             finish() // Return to the previous activity
@@ -36,6 +31,14 @@ class PaymentHistoryActivity : AppCompatActivity() {
 
         setupRecyclerView()
         loadPaymentsFromBackend()
+
+        if (!MyProfileActivity.isUserVerified(this)) {
+            // Redirect to MyProfileActivity for verification
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
     }
 
     private fun isUserVerified(): Boolean {

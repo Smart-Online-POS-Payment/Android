@@ -20,12 +20,6 @@ class EnterAmountActivity : AppCompatActivity() {
         binding = ActivityEnterAmountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!isUserVerified()) {
-            startActivity(Intent(this, MyProfileActivity::class.java))
-            finish()
-            return
-        }
-
 
         editTextAmount = binding.editTextAmount
         buttonSubmit = binding.buttonSubmit
@@ -38,6 +32,13 @@ class EnterAmountActivity : AppCompatActivity() {
         val backButton: Button = findViewById(R.id.buttonBack)
         backButton.setOnClickListener {
             finish()
+        }
+        if (!MyProfileActivity.isUserVerified(this)) {
+            // Redirect to MyProfileActivity for verification
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
         }
     }
 
