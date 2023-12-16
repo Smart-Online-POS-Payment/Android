@@ -77,6 +77,13 @@ class QRScannerActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (!MyProfileActivity.isUserVerified(this)) {
+            // User not verified, redirect to MyProfileActivity
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
         initBinding()
         initViews()
 
@@ -85,19 +92,6 @@ class QRScannerActivity: AppCompatActivity() {
             finish()  // Closes the current activity, returning to the previous one in the stack
         }
 
-        if (!MyProfileActivity.isUserVerified(this)) {
-            // Redirect to MyProfileActivity for verification
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-    }
-
-    private fun isUserVerified(): Boolean {
-        // Implement the logic to check if the user is verified
-        // This could involve checking SharedPreferences or making a network request
-        return false
     }
 
     private fun initViews() {

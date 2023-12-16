@@ -2,8 +2,6 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -13,7 +11,6 @@ import com.google.gson.Gson
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.IOException
-import java.util.Calendar
 
 class MyProfileActivity : AppCompatActivity() {
     private lateinit var tcknEditText: EditText
@@ -28,39 +25,16 @@ class MyProfileActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var changePasswordButton: Button
     private lateinit var backButton: Button
-    val currentUser = FirebaseAuth.getInstance().currentUser
+    private val currentUser = FirebaseAuth.getInstance().currentUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
 
         initializeViews()
-        setupEditTextsAndListeners()
-    }
-
-    private fun setupEditTextsAndListeners() {
-        // Set texts to email and password EditTexts
-        emailEditText.setText(currentUser?.email)
-        passwordEditText.setText("********")
-
-        // Set onClickListeners to your buttons
         setupButtonListeners()
     }
 
-    private fun setupButtonListeners() {
-        verifyTcknButton.setOnClickListener {
-            val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
-            verifyTckn(tcknValue, nameEditText.text.toString(), surnameEditText.text.toString(), emailEditText.text.toString(),
-                dobEditText.text.toString(), phoneNumberEditText.text.toString(), openAddressEditText.text.toString(), cityEditText.text.toString())
-        }
-
-        changePasswordButton.setOnClickListener {
-            // Implementation for changing password
-        }
-
-        backButton.setOnClickListener {
-            finish() // Close the activity
-        }
-    }
     private fun initializeViews() {
         tcknEditText = findViewById(R.id.TCKNEditText)
         nameEditText = findViewById(R.id.nameEditText)
@@ -74,8 +48,28 @@ class MyProfileActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         changePasswordButton = findViewById(R.id.changePasswordButton)
         backButton = findViewById(R.id.backButton)
+
+        emailEditText.setText(currentUser?.email)
+        passwordEditText.setText("********")
     }
 
+    private fun setupButtonListeners() {
+        verifyTcknButton.setOnClickListener {
+            val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
+            verifyTckn(tcknValue, nameEditText.text.toString(), surnameEditText.text.toString(),
+                emailEditText.text.toString(), dobEditText.text.toString(),
+                phoneNumberEditText.text.toString(), openAddressEditText.text.toString(),
+                cityEditText.text.toString())
+        }
+
+        changePasswordButton.setOnClickListener {
+            // Implementation for changing password
+        }
+
+        backButton.setOnClickListener {
+            finish() // Close the activity
+        }
+    }
 
     private fun verifyTckn(tckn: Long, name: String, surname: String, email: String, dob: String, phoneNumber: String, openAddress: String, city: String) {
         val verifyRequest = TcknVerifyRequest(tckn, name, surname, email, dob, phoneNumber, openAddress, city)
@@ -86,7 +80,8 @@ class MyProfileActivity : AppCompatActivity() {
         val gson = Gson()
         val jsonRequest = gson.toJson(verifyRequest)
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), jsonRequest)
-        val cuid = currentUser?.uid
+        val cuid = currentUser?.uid ?: return // If currentUser is null, return early
+
         val request = Request.Builder()
             .url("http://192.168.1.107:8081/verify/customer/$cuid") // Replace with your verification endpoint
             .post(requestBody)
@@ -110,23 +105,22 @@ class MyProfileActivity : AppCompatActivity() {
                 }
             }
         })
-
     }
+
+    private fun saveVerificationStatus(isVerified: Boolean) {
+        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        with(sharedPrefs.edit()) {
+            putBoolean("IsUserVerified", isVerified)
+            apply()
+        }
+    }
+
     companion object {
         fun isUserVerified(context: Context): Boolean {
             val sharedPrefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
             return sharedPrefs.getBoolean("IsUserVerified", false)
         }
     }
-
-    private fun saveVerificationStatus(isVerified: Boolean) {
-        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-        sharedPrefs.edit().apply {
-            putBoolean("IsUserVerified", isVerified)
-            apply()
-        }
-    }
-
 }
 
 data class TcknVerifyRequest(

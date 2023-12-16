@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         setupOnClickListeners()
+        checkUserVerificationStatus()
     }
 
     private fun setupOnClickListeners() {
@@ -48,6 +50,46 @@ class HomePageActivity : AppCompatActivity() {
         binding.logoutView.setOnClickListener {
             logoutUser()
         }
+    }
+
+    private fun checkUserVerificationStatus() {
+        val currentUser = FirebaseAuth.getInstance().currentUser ?: return // If currentUser is null, return early
+        val cuid = currentUser.uid
+
+        val request = Request.Builder()
+            .url("http://192.168.1.107:8081/customer/$cuid/is-verified") // Replace with the correct endpoint
+            .get()
+            .build()
+
+        OkHttpClient().newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Log.e("Verification Check", "Failed to check verification status: ${e.message}")
+                    // Handle failure case, such as displaying an error message
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val isVerified = response.body?.string().toBoolean()
+                    runOnUiThread {
+                        if (isVerified) {
+                            // User is verified, proceed as normal
+                        } else {
+                            // User is not verified, redirect to MyProfileActivity for verification
+                            val intent = Intent(this@HomePageActivity, MyProfileActivity::class.java)
+                            startActivity(intent)
+                            finish() // Optionally finish the current activity
+                        }
+                    }
+                } else {
+                    runOnUiThread {
+                        Log.e("Verification Check", "Failed to check verification status: ${response.message}")
+                        // Handle error response
+                    }
+                }
+            }
+        })
     }
 
     private fun getBalance(customerId: String) {
@@ -76,10 +118,25 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun logoutUser() {
+        // Sign out from Firebase
         FirebaseAuth.getInstance().signOut()
+
+        // Reset verification status
+        //resetVerificationStatus()
+
+        // Redirect to MainActivity (Sign-in Screen)
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish()
+        finish() // This line is added to close the current activity
     }
+
+    private fun resetVerificationStatus() {
+        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        sharedPrefs.edit().apply {
+            putBoolean("IsUserVerified", false)
+            apply()
+        }
+    }
+
 }

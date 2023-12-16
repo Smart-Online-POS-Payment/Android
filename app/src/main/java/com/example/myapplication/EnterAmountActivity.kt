@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -19,6 +20,13 @@ class EnterAmountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEnterAmountBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (!MyProfileActivity.isUserVerified(this)) {
+            // User not verified, redirect to MyProfileActivity
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
 
 
         editTextAmount = binding.editTextAmount
@@ -33,20 +41,10 @@ class EnterAmountActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             finish()
         }
-        if (!MyProfileActivity.isUserVerified(this)) {
-            // Redirect to MyProfileActivity for verification
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
+
+
     }
 
-    private fun isUserVerified(): Boolean {
-        // Implement the logic to check if the user is verified
-        // This could involve checking SharedPreferences or making a network request
-        return false
-    }
     private fun handleSubmission() {
         val amount = editTextAmount.text.toString()
 
