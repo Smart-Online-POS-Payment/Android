@@ -29,6 +29,12 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Con
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val creditCard: CreditCard = creditCardList[position]
 
+
+        // Set the last 4 digits dynamically
+        val last4Digits = creditCard.cardNumber.takeLast(4)
+        val formattedCreditCardNumber = "Card Number: XXXX-XXXX-XXXX-$last4Digits"
+
+        holder.textViewCreditCardNumber.text = formattedCreditCardNumber
         holder.radioButtonChooseCard.isChecked = position == selectedPosition
 
         holder.itemView.setOnClickListener {
@@ -38,7 +44,6 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Con
         holder.radioButtonChooseCard.setOnClickListener {
             handleItemClick(position)
         }
-
 
         // Bind other data to the ViewHolder as needed
     }
@@ -60,6 +65,7 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Con
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var radioButtonChooseCard: RadioButton = itemView.findViewById(R.id.radioButtonChooseCard)
+        var textViewCreditCardNumber: TextView = itemView.findViewById(R.id.textViewCreditCardNumber)
         // Other views as needed
     }
     private fun showMessage(context: Context, message: String) {
