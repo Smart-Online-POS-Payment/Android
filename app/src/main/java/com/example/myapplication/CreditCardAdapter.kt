@@ -2,15 +2,21 @@ package com.example.myapplication
 
 // CreditCardAdapter.kt
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class CreditCardAdapter(private val creditCardList: List<CreditCard>) :
+class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Context) :
     RecyclerView.Adapter<CreditCardAdapter.ViewHolder>() {
+
+    private var selectedPosition = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context: Context = parent.context
@@ -19,12 +25,33 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>) :
         return ViewHolder(creditCardView)
     }
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val creditCard: CreditCard = creditCardList[position]
 
-        // Bind data to the ViewHolder
-        holder.textViewCreditCardNumber.text = "Card Number: ${creditCard.cardNumber}"
-        // Bind other credit card details as needed
+        holder.radioButtonChooseCard.isChecked = position == selectedPosition
+
+        holder.itemView.setOnClickListener {
+            handleItemClick(position)
+        }
+
+        holder.radioButtonChooseCard.setOnClickListener {
+            handleItemClick(position)
+        }
+
+
+        // Bind other data to the ViewHolder as needed
+    }
+    private fun handleItemClick(position: Int) {
+        // Update your data model or perform any actions based on the selection
+        val selectedCard = creditCardList[position]
+        // Handle the selected card...
+
+        // Update the selected position and notify data set changed
+        if (selectedPosition != position) {
+            selectedPosition = position
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +59,19 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>) :
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textViewCreditCardNumber: TextView = itemView.findViewById(R.id.textViewCreditCardNumber)
-        // Initialize other TextViews as needed
+        var radioButtonChooseCard: RadioButton = itemView.findViewById(R.id.radioButtonChooseCard)
+        // Other views as needed
+    }
+    private fun showMessage(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+    fun getSelectedCreditCard(): CreditCard? {
+        return if (selectedPosition != RecyclerView.NO_POSITION) {
+            creditCardList[selectedPosition]
+        } else {
+            null
+        }
     }
 }
+
+

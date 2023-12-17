@@ -1,35 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/standard_margin">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- Informational TextView -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:title="Credit Cards"
-        android:titleTextColor="@android:color/white" />
+        android:layout_height="wrap_content"
+        android:text="Please choose the credit card with which you want to make the payment."
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Custom Title TextView -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Credit Cards"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp" />
 
     <!-- RecyclerView for Credit Cards -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCreditCards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="@dimen/standard_margin" />
 
+    <!-- Add another Credit Card Button -->
     <Button
         android:id="@+id/addnewcard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextAmount"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="Add another Credit Card"
         android:background="@color/blue"
         tools:ignore="NotSibling" />
 
-</RelativeLayout>
+    <!-- Make the Payment Button -->
+    <Button
+        android:id="@+id/btnMakePayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Make the Payment"
+        android:onClick="onMakePaymentButtonClick" />
+
+</LinearLayout>
+
+
+
+
+

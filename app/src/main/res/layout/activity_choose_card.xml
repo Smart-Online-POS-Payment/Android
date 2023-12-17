@@ -51,15 +51,14 @@
         android:hint="Enter Expiry Date (dd/mm/yyyy)"
         android:inputType="number"/>
 
-
     <Button
-        android:id="@+id/buttonAddAmount"
+        android:id="@+id/buttonAddCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextExpiryDate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Add Amount"
+        android:text="Add the Card"
         android:textColor="@color/white"
         android:background="@color/blue"/>
 
@@ -67,7 +66,7 @@
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddAmount"
+        android:layout_below="@id/buttonAddCard"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@color/blue"

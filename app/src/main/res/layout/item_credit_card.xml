@@ -2,17 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="@dimen/standard_margin">
 
     <!-- Credit Card Number -->
     <TextView
         android:id="@+id/textViewCreditCardNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="@dimen/text_size_large"
         android:textColor="@android:color/black"
         android:text="Card Number: XXXX-XXXX-XXXX-1234" />
+
+    <!-- Choosing Circle (RadioButton) -->
+    <RadioButton
+        android:id="@+id/radioButtonChooseCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:buttonTint="@color/colorPrimary"
+        android:focusable="false" />
 
     <!-- Other Credit Card Details (e.g., expiration date, cardholder name) -->
     <!-- Add more TextViews as needed -->
