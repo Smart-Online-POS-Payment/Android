@@ -7,7 +7,11 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityHomePageBinding
+import com.example.myapplication.model.PaymentDetailsModel
+import com.example.myapplication.util.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -23,11 +27,32 @@ class HomePageActivity : AppCompatActivity() {
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser?.let {
+            isUserVerified(it.uid)
             getBalance(it.uid)
         }
 
         setupOnClickListeners()
         checkUserVerificationStatus()
+    }
+
+    private fun isUserVerified(customerId: String){
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("${Constants.BASE_URL}:8081/verify/customer/$customerId/is-verified")
+            .get()
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val responseBodyString = response.body?.string()
+                val isVerified = responseBodyString?.toBoolean() ?: false
+                MyProfileActivity.setIsUserVerified(isVerified)
+                Log.i("Is verified: ", isVerified.toString())
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("Error", "Failed to get payments", e)
+            }
+        })
     }
 
     private fun setupOnClickListeners() {

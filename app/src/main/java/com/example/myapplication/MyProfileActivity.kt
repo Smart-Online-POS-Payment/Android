@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -91,21 +92,25 @@ class MyProfileActivity : AppCompatActivity() {
         val gson = Gson()
         val jsonRequest = gson.toJson(verifyRequest)
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), jsonRequest)
-        val cuid = currentUser?.uid ?: return // If currentUser is null, return early
+        Log.i("aa", "entered")
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/verify/customer/$cuid") // Replace with your verification endpoint
+            .url("${Constants.BASE_URL}:8081/verify") // Replace with your verification endpoint
             .post(requestBody)
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
+                    Log.i("aa", "fail")
                     Toast.makeText(applicationContext, "Verification request failed0: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onResponse(call: Call, response: Response) {
+                val responseBodyString = response.body?.string()
+                val isVerified = responseBodyString?.toBoolean() ?: false
+                Log.i("Is verified", isVerified.toString())
                 runOnUiThread {
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "Verification request sent successfully", Toast.LENGTH_LONG).show()
@@ -127,9 +132,16 @@ class MyProfileActivity : AppCompatActivity() {
     }
 
     companion object {
+
+        private var userVerified = false
+
         fun isUserVerified(context: Context): Boolean {
             val sharedPrefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-            return sharedPrefs.getBoolean("IsUserVerified", false)
+            return sharedPrefs.getBoolean("IsUserVerified", userVerified)
+        }
+
+        fun setIsUserVerified(boolean: Boolean){
+            userVerified = boolean
         }
     }
 }
