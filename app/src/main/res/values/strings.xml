@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">SOPP</string>
     <string name="sign_in">Sign in</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="tab_text_1">Tab 1</string>
