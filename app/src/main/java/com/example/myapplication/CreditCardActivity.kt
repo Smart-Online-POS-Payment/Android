@@ -42,6 +42,13 @@ class CreditCardActivity : AppCompatActivity() {
         //  val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         // setSupportActionBar(toolbar)
 
+
+
+
+
+        // Set click listener for the back button
+
+
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerViewCreditCards)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -49,6 +56,8 @@ class CreditCardActivity : AppCompatActivity() {
         val creditCardList = generateSampleCreditCards()
         creditCardAdapter = CreditCardAdapter(creditCardList, this)
         recyclerView.adapter = creditCardAdapter
+
+
 
         val buttonMakePayment: Button = findViewById(R.id.btnMakePayment)
         buttonMakePayment.text = "Make the Payment of "+paymentAmount.toString()
@@ -83,6 +92,7 @@ class CreditCardActivity : AppCompatActivity() {
 
             // Perform actions with the selected credit card...
         }
+
 
     }
 
