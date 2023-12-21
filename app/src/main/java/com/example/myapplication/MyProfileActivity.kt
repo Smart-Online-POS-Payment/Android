@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import okhttp3.*
@@ -56,10 +57,10 @@ class MyProfileActivity : AppCompatActivity() {
     private fun setupButtonListeners() {
         verifyTcknButton.setOnClickListener {
             val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
-            verifyTckn(tcknValue, nameEditText.text.toString(), surnameEditText.text.toString(),
-                emailEditText.text.toString(), dobEditText.text.toString(),
-                phoneNumberEditText.text.toString(), openAddressEditText.text.toString(),
-                cityEditText.text.toString())
+            verifyTckn(userId = currentUser?.uid!!, tc = tcknValue, name = nameEditText.text.toString(), surname = surnameEditText.text.toString(),
+                email = emailEditText.text.toString(),
+                phoneNumber = phoneNumberEditText.text.toString(), birthYear = dobEditText.text.toString().toInt(), openAddress = openAddressEditText.text.toString(),
+                city = cityEditText.text.toString())
         }
 
         changePasswordButton.setOnClickListener {
@@ -71,8 +72,18 @@ class MyProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun verifyTckn(tckn: Long, name: String, surname: String, email: String, dob: String, phoneNumber: String, openAddress: String, city: String) {
-        val verifyRequest = TcknVerifyRequest(tckn, name, surname, email, dob, phoneNumber, openAddress, city)
+    private fun verifyTckn(
+        userId: String,
+        tc: Long,
+        name: String,
+        surname: String,
+        email: String,
+        phoneNumber: String,
+        birthYear: Int,
+        openAddress: String,
+        city: String
+    ) {
+        val verifyRequest = TcknVerifyRequest(userId = userId , tc = tc, firstname = name, surname = surname, email = email, phoneNumber = phoneNumber, birthYear = birthYear, openAddress = openAddress, city = city)
         sendVerificationRequest(verifyRequest)
     }
 
@@ -83,7 +94,7 @@ class MyProfileActivity : AppCompatActivity() {
         val cuid = currentUser?.uid ?: return // If currentUser is null, return early
 
         val request = Request.Builder()
-            .url("http://192.168.1.107:8081/verify/customer/$cuid") // Replace with your verification endpoint
+            .url("${Constants.BASE_URL}:8081/verify/customer/$cuid") // Replace with your verification endpoint
             .post(requestBody)
             .build()
 
@@ -124,12 +135,14 @@ class MyProfileActivity : AppCompatActivity() {
 }
 
 data class TcknVerifyRequest(
-    val tckn: Long,
+    val userId: String,
+    val tc: Long,
     val firstname: String,
     val surname: String,
-    val dob: String,
     val email: String,
     val phoneNumber: String,
+    val birthYear: Int,
     val openAddress: String,
-    val city: String
+    val city: String,
+    val country: String = "Turkey"
 )
