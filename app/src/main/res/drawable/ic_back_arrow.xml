@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0"
+    android:tint="#99ccff"> <!-- Use the hex color code for light blue -->
+
+    <!-- Triangle shape pointing to the left -->
+    <path
+        android:fillColor="#99ccff"
+        android:pathData="M20,2L4,12L20,22Z"/>
+
+</vector>

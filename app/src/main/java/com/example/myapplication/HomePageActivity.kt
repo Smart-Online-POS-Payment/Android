@@ -75,6 +75,10 @@ class HomePageActivity : AppCompatActivity() {
         binding.logoutView.setOnClickListener {
             logoutUser()
         }
+        binding.notificationView.setOnClickListener {
+            startActivity(Intent(this, NotificationsActivity::class.java))
+
+        }
     }
 
     private fun checkUserVerificationStatus() {
