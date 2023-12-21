@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,7 +58,8 @@ class CreditCardActivity : AppCompatActivity() {
         creditCardAdapter = CreditCardAdapter(creditCardList, this)
         recyclerView.adapter = creditCardAdapter
 
-
+        val backButton: ImageView = findViewById(R.id.back_button)
+        backButton.setOnClickListener { onBackPressed() }
 
         val buttonMakePayment: Button = findViewById(R.id.btnMakePayment)
         buttonMakePayment.text = "Make the Payment of "+paymentAmount.toString()
