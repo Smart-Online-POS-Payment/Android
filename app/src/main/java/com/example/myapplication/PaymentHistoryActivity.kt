@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.ActivityPaymentHistoryBinding
 import com.example.myapplication.model.PaymentDetailsModel
+import com.example.myapplication.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -63,7 +63,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
     private fun getPayments(customerId: String, accessToken: String) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://192.168.128.54:8083/payment/payment-order/customer/$customerId")
+            .url("${Constants.BASE_URL}:8083/payment/payment-order/customer/$customerId")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")

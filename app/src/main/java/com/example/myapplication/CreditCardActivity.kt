@@ -110,7 +110,7 @@ class CreditCardActivity : AppCompatActivity() {
     private fun addMoney(customerId: String, amount: Long, token: String){
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("http://192.168.128.54:8082/wallet/$customerId/amount/$amount")
+            .url("${Constants.BASE_URL}:8082/wallet/$customerId/amount/$amount")
             .put(RequestBody.create(null, ByteArray(0))) // Empty request body
             .addHeader("Content-Type", "application/json")
             .build()

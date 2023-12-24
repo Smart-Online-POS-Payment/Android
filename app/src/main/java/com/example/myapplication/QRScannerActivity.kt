@@ -203,7 +203,7 @@ class QRScannerActivity: AppCompatActivity() {
 
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("http://192.168.128.54:8083/payment/payment-order/customer/$qr_code")
+            .url("${Constants.BASE_URL}:8083/payment/payment-order/customer/$qr_code")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
