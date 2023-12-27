@@ -38,7 +38,18 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    private fun isPasswordValid(password: String): Boolean {
+        val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"
+        val pattern = Regex(passwordPattern)
+        return pattern.matches(password)
+    }
+
     private fun createAccount(email: String, password: String) {
+        if (!isPasswordValid(password)) {
+            Toast.makeText(this, "Password must be at least 8 characters long and include a number, a lowercase letter, an uppercase letter, and a special character.", Toast.LENGTH_LONG).show()
+            return
+        }
+
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -49,6 +60,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
     }
+
 
     private fun sendEmailVerification(user: FirebaseUser?) {
         user?.sendEmailVerification()?.addOnCompleteListener { task ->
