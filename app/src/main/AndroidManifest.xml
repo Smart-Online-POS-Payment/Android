@@ -31,7 +31,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,18 +45,22 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity android:name=".SignUpActivity">
 
-            <!-- Add any additional configuration here. -->
-        </activity>
+
+        <!-- Add any additional configuration here. -->
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".PaymentHistoryActivity" />
         <activity android:name=".EnterAmountActivity" />
         <activity android:name=".ChooseCardActivity" />
+        <activity android:name=".MyProfileActivity" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="android:screenOrientation" />
-        <activity android:name=".MyProfileActivity" />
+
     </application>
 
 </manifest>

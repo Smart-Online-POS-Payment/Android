@@ -68,6 +68,10 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this, PaymentHistoryActivity::class.java))
         }
 
+        binding.dashboardView.setOnClickListener{
+            startActivity(Intent(this, DashboardActivity::class.java))
+        }
+
         binding.profileIcon.setOnClickListener {
             startActivity(Intent(this, MyProfileActivity::class.java))
         }
@@ -124,7 +128,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun getBalance(customerId: String) {
         val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
-            .url(":8070/wallet/$customerId")
+            .url("${Constants.BASE_URL}:8070/wallet/$customerId")
             .get()
             .addHeader("Content-Type", "application/json")
             .build()

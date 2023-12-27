@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="24dp"
+    android:width="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24"
+    android:tint="@color/white">
+
+    <!-- Top left panel -->
+    <path android:fillColor="@android:color/white"
+        android:pathData="M3,3h8v8H3z"/>
+
+    <!-- Top right panel -->
+    <path android:fillColor="@android:color/white"
+        android:pathData="M13,3h8v8h-8z"/>
+
+    <!-- Bottom left panel -->
+    <path android:fillColor="@android:color/white"
+        android:pathData="M3,13h8v8H3z"/>
+
+    <!-- Bottom right panel -->
+    <path android:fillColor="@android:color/white"
+        android:pathData="M13,13h8v8h-8z"/>
+
+    <!-- Optional: Additional decorative elements can be added here -->
+
+</vector>

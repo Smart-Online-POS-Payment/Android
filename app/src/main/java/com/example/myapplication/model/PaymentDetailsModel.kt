@@ -6,5 +6,6 @@ import java.util.Date
 data class PaymentDetailsModel(
     val amount: BigDecimal,
     val description: String,
+    val category: String,
     val date: Date
 )
