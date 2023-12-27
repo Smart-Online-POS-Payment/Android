@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,18 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (!MyProfileActivity.isUserVerified(this)) {
+            // User not verified, redirect to MyProfileActivity
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+
+        binding.buttonBack.setOnClickListener {
+            finish()
+        }
 
         setupRecyclerViews()
         loadPaymentsFromBackend()

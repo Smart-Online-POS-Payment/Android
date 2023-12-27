@@ -61,7 +61,7 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         binding.creditCardLayoutView.setOnClickListener {
-            startActivity(Intent(this, CreditCardActivity::class.java))
+            startActivity(Intent(this, EnterAmountActivity::class.java))
         }
 
         binding.paymentsView.setOnClickListener {
