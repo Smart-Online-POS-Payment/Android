@@ -14,9 +14,12 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.ActivityEnterAmountBinding
+import com.example.myapplication.model.CreditCard
+import com.example.myapplication.model.PaymentDetailsModel
 import com.example.myapplication.util.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -29,12 +32,16 @@ class CreditCardActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var creditCardAdapter: CreditCardAdapter
+    private val client = OkHttpClient().newBuilder().build()
+    private var cardList = mutableListOf<CreditCard>()
 
     //val paymentAmount = intent.getDoubleExtra("paymentAmount", 0.0)
     val paymentAmount=10
 
 
 
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -55,21 +62,22 @@ class CreditCardActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewCreditCards)
         recyclerView.layoutManager = LinearLayoutManager(this)
         // Replace the following line with your actual list of credit cards
-        val creditCardList = generateSampleCreditCards()
-        creditCardAdapter = CreditCardAdapter(creditCardList, this)
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val uid =  currentUser!!.uid
+        setCards(uid)
+        creditCardAdapter = CreditCardAdapter(cardList, this)
         recyclerView.adapter = creditCardAdapter
 
         val backButton: ImageView = findViewById(R.id.back_button)
         backButton.setOnClickListener { onBackPressed() }
 
         val buttonMakePayment: Button = findViewById(R.id.btnMakePayment)
-        buttonMakePayment.text = "Make the Payment of "+paymentAmount.toString()
+        buttonMakePayment.text = "Make the Payment of $paymentAmount"
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
 
         buttonMakePayment.setOnClickListener() {
-            currentUser!!.getIdToken(true).addOnSuccessListener { tokenResult ->
-                tokenResult.token?.let { addMoney(currentUser.uid, paymentAmount!!.toLong(), it) }
+            currentUser.getIdToken(true).addOnSuccessListener { tokenResult ->
+                tokenResult.token?.let { addMoney(uid, paymentAmount.toLong(), it) }
             }
             Handler().postDelayed({
                 val intent = Intent(this, HomePageActivity::class.java)
@@ -89,9 +97,9 @@ class CreditCardActivity : AppCompatActivity() {
         if (selectedCreditCard != null) {
             // Use the selected credit card information as needed
             val cardNumber = selectedCreditCard.cardNumber
-            val expirationDate = selectedCreditCard.expirationDate
-            val cardholderName = selectedCreditCard.cardholderName
-            val cvvcode=selectedCreditCard.CVVcode
+            val expirationDate = selectedCreditCard.expiryDate
+            val cardholderName = selectedCreditCard.cardHolderName
+            val cvvcode=selectedCreditCard.cvvCode
 
             // Perform actions with the selected credit card...
         }
@@ -100,19 +108,43 @@ class CreditCardActivity : AppCompatActivity() {
     }
 
     // Replace this function with your actual logic to fetch or generate credit card data
-    private fun generateSampleCreditCards(): List<CreditCard> {
-        return listOf(
-            CreditCard("XXXX-XXXX-XXXX-1111", "2023", "Kaan","1111"),
-            CreditCard("XXXX-XXXX-XXXX-2222", "2023", "Kaan","1111"),
-            CreditCard("XXXX-XXXX-XXXX-3333", "2023", "Kaan","1111")
-            // Add more credit cards as needed
-        )
+    private fun setCards(customerId: String) {
+        val request = Request.Builder()
+            .url("${Constants.BASE_URL}:8082/wallet/${customerId}/cards")
+            .get()
+            .addHeader("Content-Type", "application/json")
+            .build()
+        client.newCall(request).enqueue(object : Callback{
+            @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body
+                    if (responseBody != null) {
+                        val gson = Gson()
+                        val cardListType = object : TypeToken<List<CreditCard>>() {}.type
+                        val list: List<CreditCard> = gson.fromJson(responseBody.string(), cardListType)
+                        runOnUiThread {
+                            cardList.clear()
+                            cardList.addAll(list)
+                            creditCardAdapter.notifyDataSetChanged()
+                        }
+                    }
+                } else {
+                    Log.e("error->", response.toString())
+                    Log.e("Error", "Failed to get credit cards")
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("Error", "Failed to get payments", e)
+            }
+        })
     }
     private fun addMoney(customerId: String, amount: Long, token: String){
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
             .url("${Constants.BASE_URL}:8082/wallet/$customerId/amount/$amount")
-            .put(RequestBody.create(null, ByteArray(0))) // Empty request body
+            .put(RequestBody.create(null, ByteArray(0)))
             .addHeader("Content-Type", "application/json")
             .build()
 

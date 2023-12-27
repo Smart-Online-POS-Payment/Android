@@ -98,7 +98,6 @@ class HomePageActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
                     Log.e("Verification Check", "Failed to check verification status: ${e.message}")
-                    // Handle failure case, such as displaying an error message
                 }
             }
 
@@ -128,7 +127,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun getBalance(customerId: String) {
         val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8070/wallet/$customerId")
+            .url("${Constants.BASE_URL}:8082/wallet/$customerId")
             .get()
             .addHeader("Content-Type", "application/json")
             .build()

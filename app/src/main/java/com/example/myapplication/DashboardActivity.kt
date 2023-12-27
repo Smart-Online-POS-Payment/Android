@@ -30,6 +30,8 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         if (!MyProfileActivity.isUserVerified(this)) {
             // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
@@ -37,6 +39,8 @@ class DashboardActivity : AppCompatActivity() {
             finish()
             return
         }
+
+       
 
         binding.buttonBack.setOnClickListener {
             finish()
@@ -70,8 +74,9 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun getPayments(customerId: String, accessToken: String) {
         val client = OkHttpClient()
+        Log.i("customerId", customerId)
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}/payment/payment-order/customer/$customerId")
+            .url("${Constants.BASE_URL}:8083/payment/statistics/expenses/customer/$customerId/category")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
@@ -79,14 +84,14 @@ class DashboardActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    response.body?.string()?.let { json ->
-                        val gson = Gson()
-                        val type = object : TypeToken<List<PaymentDetailsModel>>() {}.type
-                        paymentsList = gson.fromJson(json, type)
+                val responseBody = response.body?.string()
 
-                        processAndDisplayPayments()
-                    }
+                if (response.isSuccessful && responseBody != null) {
+                    Log.i("response:", responseBody)
+                    val gson = Gson()
+                    val type = object : TypeToken<Map<String, Double>>() {}.type
+                    val paymentsMap: Map<String, Double> = gson.fromJson(responseBody, type)
+                    Log.i("stats:", paymentsMap.toString())
                 } else {
                     Log.e("DashboardActivity", "Failed to fetch payments: ${response.message}")
                 }
