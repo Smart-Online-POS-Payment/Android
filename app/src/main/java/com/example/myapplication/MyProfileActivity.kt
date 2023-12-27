@@ -95,7 +95,7 @@ class MyProfileActivity : AppCompatActivity() {
         Log.i("aa", "entered")
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/verify") // Replace with your verification endpoint
+            .url("${Constants.BASE_URL}:3000/verify")
             .post(requestBody)
             .build()
 

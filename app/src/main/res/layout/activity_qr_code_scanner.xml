@@ -32,7 +32,7 @@
             android:layout_width="104dp"
             android:layout_height="wrap_content"
             android:text="Back"
-            android:background="@color/blue"/>
+            android:backgroundTint="@color/blue"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

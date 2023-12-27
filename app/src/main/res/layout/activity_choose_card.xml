@@ -60,7 +60,7 @@
         android:layout_marginTop="16dp"
         android:text="Add the Card"
         android:textColor="@color/white"
-        android:background="@color/blue"/>
+        android:backgroundTint="@color/blue"/>
 
     <Button
         android:id="@+id/buttonBack"
@@ -69,7 +69,7 @@
         android:layout_below="@id/buttonAddCard"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
         android:text="Back"
         android:textColor="@color/white" />
 </RelativeLayout>

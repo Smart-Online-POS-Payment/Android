@@ -18,7 +18,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Add Amount"
-        android:background="@color/blue"/>
+        android:backgroundTint="@color/blue"
+        />
 
     <Button
         android:id="@+id/buttonBack"
@@ -26,8 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonSubmit"
         android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/blue"
         android:text="Back"
-        android:background="@color/blue"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"/>
 </RelativeLayout>

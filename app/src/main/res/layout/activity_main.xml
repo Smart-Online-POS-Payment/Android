@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Giriş Yap"
-        android:background="@color/blue"/>
+        android:backgroundTint="@color/blue"/>
     <TextView
         android:id="@+id/textViewForgotPassword"
         android:layout_width="wrap_content"

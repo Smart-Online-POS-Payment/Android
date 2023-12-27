@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Verify TCKN"
-            android:background="@color/blue"/>
+            android:backgroundTint="@color/blue"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,14 +100,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Change Password"
-            android:background="@color/blue"/>
+            android:backgroundTint="@color/blue"/>
 
         <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Back"
-            android:background="@color/blue"/>
+            android:backgroundTint="@color/blue"/>
 
     </LinearLayout>
 </ScrollView>

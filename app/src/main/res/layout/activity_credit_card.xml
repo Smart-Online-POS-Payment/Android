@@ -60,7 +60,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="Add another Credit Card"
-        android:background="@color/blue"
+        android:backgroundTint="@color/blue"
         tools:ignore="NotSibling" />
 
     <!-- Make the Payment Button -->
@@ -70,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Make the Payment"
+        android:backgroundTint="@color/blue"
         android:onClick="onMakePaymentButtonClick" />
 
 </LinearLayout>
