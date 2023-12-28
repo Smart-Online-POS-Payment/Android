@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.*
+import org.eazegraph.lib.models.PieModel
 import java.io.IOException
 import java.util.*
 
@@ -54,11 +55,6 @@ class DashboardActivity : AppCompatActivity() {
         categorizedPaymentsAdapter = CategorizedPaymentsAdapter(mapOf())
         lastMonthPaymentsAdapter = LastMonthPaymentsAdapter(listOf())
 
-        binding.categorizedPaymentsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(this@DashboardActivity)
-            adapter = categorizedPaymentsAdapter
-        }
-
         binding.lastMonthsPaymentsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@DashboardActivity)
             adapter = lastMonthPaymentsAdapter
@@ -91,6 +87,9 @@ class DashboardActivity : AppCompatActivity() {
                     val gson = Gson()
                     val type = object : TypeToken<Map<String, Double>>() {}.type
                     val paymentsMap: Map<String, Double> = gson.fromJson(responseBody, type)
+                    runOnUiThread {
+                        updatePieChart(paymentsMap)
+                    }
                     Log.i("stats:", paymentsMap.toString())
                 } else {
                     Log.e("DashboardActivity", "Failed to fetch payments: ${response.message}")
@@ -102,7 +101,28 @@ class DashboardActivity : AppCompatActivity() {
             }
         })
     }
-
+    private fun updatePieChart(data: Map<String, Double>) {
+        data.forEach { (category, amount) ->
+            val pieModel = PieModel(category, amount.toFloat(), getColorForCategory(category))
+            binding.piechart.addPieSlice(pieModel)
+        }
+        binding.piechart.startAnimation()
+    }
+    private fun getColorForCategory(category: String): Int {
+        return when (category) {
+            "Groceries" -> resources.getColor(R.color.colorGroceries)
+            "Clothing" -> resources.getColor(R.color.colorClothing)
+            "Electronics" -> resources.getColor(R.color.colorElectronics)
+            "Tickets" -> resources.getColor(R.color.colorTickets)
+            "CarRentals" -> resources.getColor(R.color.colorCarRentals)
+            "Restaurants" -> resources.getColor(R.color.colorRestaurants)
+            "Coffee" -> resources.getColor(R.color.colorCoffee)
+            "Charity" -> resources.getColor(R.color.colorCharity)
+            "Rent" -> resources.getColor(R.color.colorRent)
+            "Gaming" -> resources.getColor(R.color.colorGaming)
+            else -> resources.getColor(R.color.colorOther)
+        }
+    }
     private fun processAndDisplayPayments() {
         val categorizedPayments = paymentsList.groupBy { it.category }
         val lastMonth = Calendar.getInstance().apply { add(Calendar.MONTH, -1) }.time

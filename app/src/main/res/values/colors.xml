@@ -4,4 +4,17 @@
     <color name="blue">#007bff</color>
     <color name="white">#FFFFFF</color>
     <color name="colorPrimary">#3F51B5</color>
+
+    <color name="colorGroceries">#FFA500</color> <!-- Orange -->
+    <color name="colorClothing">#FFC0CB</color>  <!-- Pink -->
+    <color name="colorElectronics">#8A2BE2</color>  <!-- BlueViolet -->
+    <color name="colorTickets">#00FF00</color>  <!-- Lime -->
+    <color name="colorCarRentals">#FFD700</color>  <!-- Gold -->
+    <color name="colorRestaurants">#FF4500</color>  <!-- OrangeRed -->
+    <color name="colorCoffee">#6B8E23</color>  <!-- OliveDrab -->
+    <color name="colorCharity">#4682B4</color>  <!-- SteelBlue -->
+    <color name="colorRent">#D2691E</color>  <!-- Chocolate -->
+    <color name="colorGaming">#DA70D6</color>  <!-- Orchid -->
+    <color name="colorOther">#808080</color>  <!-- Gray -->
 </resources>
+
