@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.ActivityPaymentHistoryBinding
@@ -25,7 +26,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
         binding = ActivityPaymentHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!MyProfileActivity.isUserVerified(this)) {
+        if (false) { //!MyProfileActivity.isUserVerified(this)
             // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
@@ -33,9 +34,8 @@ class PaymentHistoryActivity : AppCompatActivity() {
             return
         }
 
-        binding.buttonBack.setOnClickListener {
-            finish() // Return to the previous activity
-        }
+        val backButton: ImageView = findViewById(R.id.back_button)
+        backButton.setOnClickListener { onBackPressed() }
 
         setupRecyclerView()
         loadPaymentsFromBackend()
