@@ -16,5 +16,13 @@
     <color name="colorRent">#D2691E</color>  <!-- Chocolate -->
     <color name="colorGaming">#DA70D6</color>  <!-- Orchid -->
     <color name="colorOther">#808080</color>  <!-- Gray -->
+
+    <color name="primaryBlue">#2196F3</color>
+    <color name="darkBlue">#0D47A1</color>
+    <color name="lightBlue">#64B5F6</color>
+    <color name="accentBlue">#1976D2</color>
+    <color name="complementaryOrange">#5AC8E8</color>
+
+
 </resources>
 

@@ -60,7 +60,7 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this, QRScannerActivity::class.java))
         }
 
-        binding.creditCardLayoutView.setOnClickListener {
+        binding.creditCardView.setOnClickListener {
             startActivity(Intent(this, EnterAmountActivity::class.java))
         }
 
@@ -68,7 +68,7 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this, PaymentHistoryActivity::class.java))
         }
 
-        binding.dashboardView.setOnClickListener{
+        binding.dashboard.setOnClickListener{
             startActivity(Intent(this, DashboardActivity::class.java))
         }
 
