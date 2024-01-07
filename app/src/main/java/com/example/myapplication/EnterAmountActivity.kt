@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityEnterAmountBinding
 
@@ -20,7 +21,7 @@ class EnterAmountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEnterAmountBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (!MyProfileActivity.isUserVerified(this)) { //!MyProfileActivity.isUserVerified(this)
+        if (!MyProfileActivity.isUserVerified(this)) {
             // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
@@ -37,10 +38,8 @@ class EnterAmountActivity : AppCompatActivity() {
             handleSubmission()
         }
 
-        val backButton: Button = findViewById(R.id.buttonBack)
-        backButton.setOnClickListener {
-            finish()
-        }
+        val backButton: ImageView = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener { onBackPressed() }
 
 
     }

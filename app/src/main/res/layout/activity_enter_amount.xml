@@ -1,12 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="top">
+
+    <ImageView
+        android:id="@+id/buttonBack"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_arrow" />
 
     <EditText
         android:id="@+id/editTextAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/buttonBack"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="218dp"
         android:hint="Enter Amount"
         android:inputType="numberDecimal" />
 
@@ -16,19 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextAmount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_centerVertical="true"
         android:text="Add Amount"
         android:backgroundTint="@color/blue"
         />
-
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonSubmit"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/blue"
-        android:text="Back"
-        android:textColor="@color/white"
-        android:layout_marginTop="16dp"/>
 </RelativeLayout>
