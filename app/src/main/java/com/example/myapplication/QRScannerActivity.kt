@@ -79,7 +79,7 @@ class QRScannerActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!MyProfileActivity.isUserVerified(this)) {
+        if ((!MyProfileActivity.isUserVerified(this))) { //(!MyProfileActivity.isUserVerified(this))
             // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
@@ -87,7 +87,8 @@ class QRScannerActivity: AppCompatActivity() {
             return
         }
         initBinding()
-        initViews()
+        checkPermissionCamera(this)
+        //initViews()
 
         val backButton: Button = findViewById(R.id.buttonBack)
         backButton.setOnClickListener {
