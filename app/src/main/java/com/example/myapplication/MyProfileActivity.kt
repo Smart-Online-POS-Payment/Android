@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.util.Constants
@@ -26,7 +27,7 @@ class MyProfileActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var changePasswordButton: Button
-    private lateinit var backButton: Button
+    private lateinit var backButton: ImageView
     private val currentUser = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,9 +69,7 @@ class MyProfileActivity : AppCompatActivity() {
             // Implementation for changing password
         }
 
-        backButton.setOnClickListener {
-            finish() // Close the activity
-        }
+        backButton.setOnClickListener { onBackPressed() }
     }
 
     private fun verifyTckn(

@@ -35,8 +35,8 @@ class CreditCardActivity : AppCompatActivity() {
     private val client = OkHttpClient().newBuilder().build()
     private var cardList = mutableListOf<CreditCard>()
 
-    //val paymentAmount = intent.getDoubleExtra("paymentAmount", 0.0)
-    val paymentAmount=10
+    private var paymentAmount: Double = 0.0
+
 
 
 
@@ -50,6 +50,7 @@ class CreditCardActivity : AppCompatActivity() {
         // Toolbar setup (optional)
         //  val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         // setSupportActionBar(toolbar)
+        paymentAmount = intent.getDoubleExtra("EXTRA_AMOUNT", 0.0)
 
 
 

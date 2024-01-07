@@ -20,7 +20,7 @@ class EnterAmountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEnterAmountBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (!MyProfileActivity.isUserVerified(this)) {
+        if (!MyProfileActivity.isUserVerified(this)) { //!MyProfileActivity.isUserVerified(this)
             // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
@@ -46,7 +46,11 @@ class EnterAmountActivity : AppCompatActivity() {
     }
 
     private fun handleSubmission() {
-        val amount = editTextAmount.text.toString()
+        val amountString = editTextAmount.text.toString()
+
+
+        val amount = amountString.toDoubleOrNull() ?: 0.0
+
 
         val intent = Intent(this, CreditCardActivity::class.java)
 
