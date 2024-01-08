@@ -1,5 +1,3 @@
-package com.example.myapplication
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +5,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.model.PaymentDetailsModel
 import com.example.myapplication.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PaymentsAdapter(
     private val payments: List<PaymentDetailsModel>,
@@ -21,8 +21,9 @@ class PaymentsAdapter(
     override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
         val currentPayment = payments[position]
         holder.descriptionTextView.text = currentPayment.description
-        holder.amountTextView.text = currentPayment.amount.toString()
-        holder.dateTextView.text = currentPayment.date.toString() // Assuming PaymentDetailsModel includes a 'date' field
+        holder.categoryTextView.text = currentPayment.category.toString()
+        holder.amountTextView.text = String.format("$%.2f", currentPayment.amount)
+        holder.dateTextView.text = formatDateTime(currentPayment.date)
 
         // Set a long click listener for refund request
         holder.itemView.setOnLongClickListener {
@@ -31,11 +32,17 @@ class PaymentsAdapter(
         }
     }
 
+    private fun formatDateTime(date: Date): String {
+        val dateFormat = SimpleDateFormat("MMM dd, yyyy HH.mm", Locale.getDefault())
+        return dateFormat.format(date)
+    }
+
     override fun getItemCount(): Int = payments.size
 
     class PaymentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         val amountTextView: TextView = itemView.findViewById(R.id.amountTextView)
-        val dateTextView: TextView = itemView.findViewById(R.id.dateTextView) // Make sure this ID exists in item_payment.xml
+        val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
+        val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
     }
 }
