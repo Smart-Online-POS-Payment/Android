@@ -15,14 +15,14 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E postanızı girin"/>
+        android:hint="Enter email here"/>
 
     <!-- Second Text Input -->
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Şifrenizi Girin"
+        android:hint="Enter password here"
         android:layout_marginTop="16dp"
         android:inputType="textPassword" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Kayıt Ol"
+        android:text="Sign up"
         android:backgroundTint="@color/blue"/>
     <Button
         android:id="@+id/buttonBack"
