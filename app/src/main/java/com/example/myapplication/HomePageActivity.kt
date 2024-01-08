@@ -57,7 +57,8 @@ class HomePageActivity : AppCompatActivity() {
 
     private fun setupOnClickListeners() {
         binding.qrView.setOnClickListener {
-            startActivity(Intent(this, QRScannerActivity::class.java))
+            val intent = Intent(this, QRScannerActivity::class.java)
+            startActivity(intent)
         }
 
         binding.creditCardView.setOnClickListener {

@@ -86,15 +86,23 @@ class QRScannerActivity: AppCompatActivity() {
             finish()
             return
         }
-        initBinding()
-        checkPermissionCamera(this)
+        //initBinding()
+        //checkPermissionCamera(this)
         //initViews()
 
+        val options = ScanOptions()
+        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+        options.setPrompt("Scan QR code")
+        options.setBeepEnabled(false)
+        options.setBarcodeImageEnabled(true)
+        options.setOrientationLocked(false)
+        scanLauncher.launch(options)
+/*
         val backButton: Button = findViewById(R.id.buttonBack)
         backButton.setOnClickListener {
             finish()  // Closes the current activity, returning to the previous one in the stack
         }
-
+*/
     }
 
     private fun initViews() {
