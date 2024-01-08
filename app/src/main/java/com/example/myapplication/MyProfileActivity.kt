@@ -35,9 +35,41 @@ class MyProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_profile)
 
         initializeViews()
-        setupButtonListeners()
+
+        if (isUserVerified(this)) {
+            makeFieldsNonEditable()
+            loadUserData()
+            setupButtonListeners()
+        } else {
+            setupButtonListeners()
+        }
+    }
+    private fun loadUserData() {
+        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        tcknEditText.setText(sharedPrefs.getString("TCKN", ""))
+        nameEditText.setText(sharedPrefs.getString("Name", ""))
+        surnameEditText.setText(sharedPrefs.getString("Surname", ""))
+        dobEditText.setText(sharedPrefs.getString("DOB", ""))
+        phoneNumberEditText.setText(sharedPrefs.getString("PhoneNumber", ""))
+        openAddressEditText.setText(sharedPrefs.getString("OpenAddress", ""))
+        cityEditText.setText(sharedPrefs.getString("City", ""))
+        emailEditText.setText(currentUser?.email)
+        passwordEditText.setText("********")
     }
 
+    private fun makeFieldsNonEditable() {
+        tcknEditText.isEnabled = false
+        nameEditText.isEnabled = false
+        surnameEditText.isEnabled = false
+        dobEditText.isEnabled = false
+        phoneNumberEditText.isEnabled = false
+        openAddressEditText.isEnabled = false
+        cityEditText.isEnabled = false
+        emailEditText.isEnabled = false
+        passwordEditText.isEnabled = false
+        verifyTcknButton.isEnabled = false
+        changePasswordButton.isEnabled = false
+    }
     private fun initializeViews() {
         tcknEditText = findViewById(R.id.TCKNEditText)
         nameEditText = findViewById(R.id.nameEditText)
@@ -51,9 +83,6 @@ class MyProfileActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         changePasswordButton = findViewById(R.id.changePasswordButton)
         backButton = findViewById(R.id.backButton)
-
-        emailEditText.setText(currentUser?.email)
-        passwordEditText.setText("********")
     }
 
     private fun setupButtonListeners() {
@@ -69,7 +98,7 @@ class MyProfileActivity : AppCompatActivity() {
             // Implementation for changing password
         }
 
-        backButton.setOnClickListener { onBackPressed() }
+        backButton.setOnClickListener{ onBackPressed() }
     }
 
     private fun verifyTckn(
