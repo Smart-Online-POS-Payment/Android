@@ -37,25 +37,60 @@ class MyProfileActivity : AppCompatActivity() {
         initializeViews()
 
         if (isUserVerified(this)) {
-            makeFieldsNonEditable()
             loadUserData()
-            setupButtonListeners()
+            makeFieldsNonEditable()
         } else {
             setupButtonListeners()
         }
+
+        backButton.setOnClickListener{ onBackPressed() }
     }
     private fun loadUserData() {
-        val sharedPrefs = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-        tcknEditText.setText(sharedPrefs.getString("TCKN", ""))
-        nameEditText.setText(sharedPrefs.getString("Name", ""))
-        surnameEditText.setText(sharedPrefs.getString("Surname", ""))
-        dobEditText.setText(sharedPrefs.getString("DOB", ""))
-        phoneNumberEditText.setText(sharedPrefs.getString("PhoneNumber", ""))
-        openAddressEditText.setText(sharedPrefs.getString("OpenAddress", ""))
-        cityEditText.setText(sharedPrefs.getString("City", ""))
-        emailEditText.setText(currentUser?.email)
-        passwordEditText.setText("********")
+        val request = Request.Builder()
+            .url("${Constants.BASE_URL}:8081/verify/customer/${currentUser?.uid}")
+            .get()
+            .build()
+
+        OkHttpClient().newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(applicationContext, "Failed to load user data: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                try {
+                    val userData = Gson().fromJson(responseBody, UserData::class.java)
+                    runOnUiThread {
+                        tcknEditText.setText(userData.tckn.toString())
+                        nameEditText.setText(userData.firstname)
+                        surnameEditText.setText(userData.surname)
+                        dobEditText.setText(userData.birthYear.toString())
+                        phoneNumberEditText.setText(userData.phoneNumber)
+                        openAddressEditText.setText(userData.openAddress)
+                        cityEditText.setText(userData.city)
+                        emailEditText.setText(currentUser?.email)
+                        passwordEditText.setText("********")
+                    }
+                } catch (e: Exception) {
+                    Log.e("MyProfileActivity", "Error parsing user data", e)
+                }
+            }
+        })
     }
+
+    data class UserData(
+        val tckn: Long,
+        val firstname: String,
+        val surname: String,
+        val birthYear: Int,
+        val phoneNumber: String,
+        val openAddress: String,
+        val city: String,
+        val email: String
+    )
+
 
     private fun makeFieldsNonEditable() {
         tcknEditText.isEnabled = false
@@ -98,7 +133,6 @@ class MyProfileActivity : AppCompatActivity() {
             // Implementation for changing password
         }
 
-        backButton.setOnClickListener{ onBackPressed() }
     }
 
     private fun verifyTckn(
@@ -123,7 +157,7 @@ class MyProfileActivity : AppCompatActivity() {
         Log.i("aa", "entered")
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:3000/verify")
+            .url("${Constants.BASE_URL}:8081/verify")
             .post(requestBody)
             .build()
 
