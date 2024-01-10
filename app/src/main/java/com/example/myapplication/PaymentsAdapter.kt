@@ -1,6 +1,7 @@
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.model.PaymentDetailsModel
@@ -27,11 +28,25 @@ class PaymentsAdapter(
 
         // Set a long click listener for refund request
         holder.itemView.setOnLongClickListener {
-            onRefundRequested(currentPayment)
-            true // Indicates the click was handled
+            showRefundPopup(holder.itemView, currentPayment)
+            true
         }
     }
 
+    private fun showRefundPopup(view: View, payment: PaymentDetailsModel) {
+        val popup = PopupMenu(view.context, view)
+        popup.inflate(R.menu.refund_request_menu) // Assume you have a menu XML for this
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.request_refund -> {
+                    onRefundRequested(payment)
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
     private fun formatDateTime(date: Date): String {
         val dateFormat = SimpleDateFormat("MMM dd, yyyy HH.mm", Locale.getDefault())
         return dateFormat.format(date)

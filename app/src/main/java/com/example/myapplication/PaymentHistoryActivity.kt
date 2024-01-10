@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.ActivityPaymentHistoryBinding
@@ -15,6 +16,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.*
 import java.io.IOException
+import java.math.BigDecimal
+import java.text.SimpleDateFormat
 
 class PaymentHistoryActivity : AppCompatActivity() {
 
@@ -40,9 +43,21 @@ class PaymentHistoryActivity : AppCompatActivity() {
 
         setupRecyclerView()
         loadPaymentsFromBackend()
-
+        //loadMockPayments()
     }
 
+    private fun loadMockPayments() {
+        // Mock data
+        val mockPayments = listOf(
+            PaymentDetailsModel("75494", BigDecimal("80.49"), "Mock Payment #58", "Clothing", SimpleDateFormat("yyyy-MM-dd").parse("2023-12-23")),
+            PaymentDetailsModel("12677", BigDecimal("194.29"), "Mock Payment #65", "Electronics", SimpleDateFormat("yyyy-MM-dd").parse("2023-12-12")),
+            // Add the rest of your mock payments here
+        )
+
+        paymentsList.clear()
+        paymentsList.addAll(mockPayments)
+        paymentsAdapter.notifyDataSetChanged()
+    }
     private fun setupRecyclerView() {
         paymentsAdapter = PaymentsAdapter(paymentsList) { payment ->
             requestRefund(payment)
@@ -92,7 +107,32 @@ class PaymentHistoryActivity : AppCompatActivity() {
     }
 
     private fun requestRefund(payment: PaymentDetailsModel) {
-        // Implement refund request logic here
-        Log.i("Refund Request", "Refund requested for: ${payment.description}")
+        val client = OkHttpClient()
+        val requestBody = FormBody.Builder()
+            .add("paymentId", payment.paymentId)  // Use the newly added paymentId field
+            .build()
+
+        val request = Request.Builder()
+            .url("${Constants.BASE_URL}:8083/refund-request")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@PaymentHistoryActivity, "Refund request failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                runOnUiThread {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@PaymentHistoryActivity, "Refund request sent", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@PaymentHistoryActivity, "Failed to request refund", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 }
