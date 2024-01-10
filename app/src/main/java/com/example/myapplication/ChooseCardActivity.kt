@@ -128,19 +128,12 @@ class ChooseCardActivity: AppCompatActivity() {
                 if (isFormatting) return
                 isFormatting = true
 
-                val formatted = formatCardNumber(s.toString())
-                editTextCardNumber.setText(formatted)
-                editTextCardNumber.setSelection(formatted.length)
+                editTextCardNumber.setText(s.toString())
+                editTextCardNumber.setSelection(s.toString().length)
 
                 isFormatting = false
             }
 
-            private fun formatCardNumber(text: String): String {
-                return text.replace(" ", "")
-                    .chunked(4)
-                    .joinToString(" ")
-                    .take(19)
-            }
         })
     }
 

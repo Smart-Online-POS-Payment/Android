@@ -30,6 +30,7 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -86,9 +87,9 @@ class QRScannerActivity: AppCompatActivity() {
             finish()
             return
         }
-        //initBinding()
+        initBinding()
         //checkPermissionCamera(this)
-        //initViews()
+        initViews()
 
         val options = ScanOptions()
         options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
@@ -208,12 +209,14 @@ class QRScannerActivity: AppCompatActivity() {
         dialog.show()
     }
     private fun verify_the_payment(qr_code: String, accessToken: String): ResponseBody? {
-        val cont=this
-
+        val cont = this
+        val currentUser = FirebaseAuth.getInstance().currentUser
         val client = OkHttpClient().newBuilder().build()
+        val requestBody = FormBody.Builder()
+            .build()
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/payment-order/customer/$qr_code")
-            .get()
+            .url("${Constants.PAYMENT_URL}/payment/payment-order/$qr_code/customer/${currentUser?.uid}")
+            .post(requestBody)
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
             .build()
@@ -225,9 +228,7 @@ class QRScannerActivity: AppCompatActivity() {
                     val responseBody: ResponseBody? = response.body
                     if (responseBody != null) {
                         Log.i("Response:", responseBody.string())
-                        showMessage(cont, "payment is succesfull")
-
-
+                        finish()
                     }
                     // Process the responseBody here
                 } else {
