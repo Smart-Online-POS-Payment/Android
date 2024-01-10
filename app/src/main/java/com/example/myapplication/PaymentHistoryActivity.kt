@@ -78,7 +78,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
     private fun getPayments(customerId: String, accessToken: String) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8083/payment/payment-order/customer/$customerId")
+            .url("${Constants.PAYMENT_URL}/payment/payment-order/customer/$customerId")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
@@ -112,7 +112,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8083/refund-request")
+            .url("${Constants.PAYMENT_URL}/refund-request")
             .post(requestBody)
             .build()
 

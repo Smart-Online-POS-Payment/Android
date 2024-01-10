@@ -111,7 +111,7 @@ class CreditCardActivity : AppCompatActivity() {
     // Replace this function with your actual logic to fetch or generate credit card data
     private fun setCards(customerId: String) {
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8082/wallet/${customerId}/cards")
+            .url("${Constants.WALLET_URL}/wallet/${customerId}/cards")
             .get()
             .addHeader("Content-Type", "application/json")
             .build()
@@ -144,7 +144,7 @@ class CreditCardActivity : AppCompatActivity() {
     private fun addMoney(customerId: String, amount: Long, token: String){
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8082/wallet/$customerId/amount/$amount")
+            .url("${Constants.WALLET_URL}/wallet/$customerId/amount/$amount")
             .put(RequestBody.create(null, ByteArray(0)))
             .addHeader("Content-Type", "application/json")
             .build()

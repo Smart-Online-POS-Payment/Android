@@ -48,7 +48,7 @@ class MyProfileActivity : AppCompatActivity() {
     }
     private fun loadUserData() {
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/verify/customer/${currentUser?.uid}")
+            .url("${Constants.AUTH_URL}/verify/customer/${currentUser?.uid}")
             .get()
             .build()
 
@@ -161,7 +161,7 @@ class MyProfileActivity : AppCompatActivity() {
         Log.i("aa", "entered")
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/verify")
+            .url("${Constants.AUTH_URL}/verify")
             .post(requestBody)
             .build()
 

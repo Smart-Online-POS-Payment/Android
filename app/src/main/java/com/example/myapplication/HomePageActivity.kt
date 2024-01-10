@@ -38,7 +38,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun isUserVerified(customerId: String){
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/verify/customer/$customerId/is-verified")
+            .url("${Constants.AUTH_URL}/verify/customer/$customerId/is-verified")
             .get()
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -91,7 +91,7 @@ class HomePageActivity : AppCompatActivity() {
         val cuid = currentUser.uid
 
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8081/customer/$cuid/is-verified") // Replace with the correct endpoint
+            .url("${Constants.AUTH_URL}/customer/$cuid/is-verified") // Replace with the correct endpoint
             .get()
             .build()
 
@@ -128,7 +128,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun getBalance(customerId: String) {
         val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
-            .url("${Constants.BASE_URL}:8082/wallet/$customerId")
+            .url("${Constants.WALLET_URL}/wallet/$customerId")
             .get()
             .addHeader("Content-Type", "application/json")
             .build()
