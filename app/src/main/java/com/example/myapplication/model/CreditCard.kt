@@ -2,4 +2,9 @@ package com.example.myapplication.model
 
 
 
-data class CreditCard(val cardNumber: String, val expiryDate:String, val cardHolderName:String, val cvvCode:String)
+data class CardModel(
+    val cardholderName: String,
+    val cardNumber: String,
+    val cvvCode: String,
+    val expiryDate: String
+)

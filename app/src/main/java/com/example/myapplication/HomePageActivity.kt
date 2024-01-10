@@ -33,8 +33,19 @@ class HomePageActivity : AppCompatActivity() {
 
         setupOnClickListeners()
         checkUserVerificationStatus()
+        fetchBalance()
     }
 
+    private fun fetchBalance() {
+        // Implement your network request logic here
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+            tokenResult.token?.let { token ->
+                // Replace with your actual balance request logic
+                getBalance(currentUser.uid)
+            }
+        }
+    }
     private fun isUserVerified(customerId: String){
         val client = OkHttpClient()
         val request = Request.Builder()

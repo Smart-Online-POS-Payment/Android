@@ -108,11 +108,10 @@ class PaymentHistoryActivity : AppCompatActivity() {
     private fun requestRefund(payment: PaymentDetailsModel) {
         val client = OkHttpClient()
         val requestBody = FormBody.Builder()
-            .add("paymentId", payment.paymentId)  // Use the newly added paymentId field
             .build()
 
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/refund-request")
+            .url("${Constants.PAYMENT_URL}/payment/refund/${payment.orderId}")
             .post(requestBody)
             .build()
 

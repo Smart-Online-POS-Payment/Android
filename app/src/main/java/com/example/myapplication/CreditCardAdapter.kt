@@ -10,9 +10,9 @@ import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.model.CreditCard
+import com.example.myapplication.model.CardModel
 
-class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Context) :
+class CreditCardAdapter(private val creditCardList: List<CardModel>, val c: Context) :
     RecyclerView.Adapter<CreditCardAdapter.ViewHolder>() {
 
     private var selectedPosition = RecyclerView.NO_POSITION
@@ -26,7 +26,7 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Con
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val creditCard: CreditCard = creditCardList[position]
+        val creditCard: CardModel = creditCardList[position]
 
 
         // Set the last 4 digits dynamically
@@ -70,7 +70,7 @@ class CreditCardAdapter(private val creditCardList: List<CreditCard>, val c: Con
     private fun showMessage(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
-    fun getSelectedCreditCard(): CreditCard? {
+    fun getSelectedCreditCard(): CardModel? {
         return if (selectedPosition != RecyclerView.NO_POSITION) {
             creditCardList[selectedPosition]
         } else {

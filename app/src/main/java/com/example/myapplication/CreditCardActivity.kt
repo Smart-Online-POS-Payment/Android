@@ -14,7 +14,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.model.CreditCard
+import com.example.myapplication.model.CardModel
 import com.example.myapplication.model.PaymentDetailsModel
 import com.example.myapplication.util.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +22,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
@@ -33,13 +34,9 @@ class CreditCardActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var creditCardAdapter: CreditCardAdapter
     private val client = OkHttpClient().newBuilder().build()
-    private var cardList = mutableListOf<CreditCard>()
+    private var cardList = mutableListOf<CardModel>()
 
     private var paymentAmount: Double = 0.0
-
-
-
-
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +48,6 @@ class CreditCardActivity : AppCompatActivity() {
         //  val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         // setSupportActionBar(toolbar)
         paymentAmount = intent.getDoubleExtra("EXTRA_AMOUNT", 0.0)
-
-
-
-
-
         // Set click listener for the back button
 
 
@@ -78,7 +70,8 @@ class CreditCardActivity : AppCompatActivity() {
 
         buttonMakePayment.setOnClickListener() {
             currentUser.getIdToken(true).addOnSuccessListener { tokenResult ->
-                tokenResult.token?.let { addMoney(uid, paymentAmount.toLong(), it) }
+                tokenResult.token?.let { creditCardAdapter.getSelectedCreditCard()
+                    ?.let { it1 -> addMoney(uid, paymentAmount.toLong(), it , it1) } }
             }
             Handler().postDelayed({
                 val intent = Intent(this, HomePageActivity::class.java)
@@ -99,7 +92,7 @@ class CreditCardActivity : AppCompatActivity() {
             // Use the selected credit card information as needed
             val cardNumber = selectedCreditCard.cardNumber
             val expirationDate = selectedCreditCard.expiryDate
-            val cardholderName = selectedCreditCard.cardHolderName
+            val cardholderName = selectedCreditCard.cardholderName
             val cvvcode=selectedCreditCard.cvvCode
 
             // Perform actions with the selected credit card...
@@ -122,8 +115,8 @@ class CreditCardActivity : AppCompatActivity() {
                     val responseBody = response.body
                     if (responseBody != null) {
                         val gson = Gson()
-                        val cardListType = object : TypeToken<List<CreditCard>>() {}.type
-                        val list: List<CreditCard> = gson.fromJson(responseBody.string(), cardListType)
+                        val cardListType = object : TypeToken<List<CardModel>>() {}.type
+                        val list: List<CardModel> = gson.fromJson(responseBody.string(), cardListType)
                         runOnUiThread {
                             cardList.clear()
                             cardList.addAll(list)
@@ -141,11 +134,14 @@ class CreditCardActivity : AppCompatActivity() {
             }
         })
     }
-    private fun addMoney(customerId: String, amount: Long, token: String){
+    private fun addMoney(customerId: String, amount: Long, token: String, cardModel: CardModel){
         val client = OkHttpClient().newBuilder().build()
+        val gson = Gson()
+        val json = gson.toJson(cardModel)
+        val bodyRequest = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), json)
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/$customerId/amount/$amount")
-            .put(RequestBody.create(null, ByteArray(0)))
+            .url("${Constants.WALLET_URL}/wallet/card-payment/$customerId/amount/$amount")
+            .put(bodyRequest)
             .addHeader("Content-Type", "application/json")
             .build()
 
