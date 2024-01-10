@@ -31,7 +31,6 @@ class PaymentHistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (!MyProfileActivity.isUserVerified(this)) {
-            // User not verified, redirect to MyProfileActivity
             val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
             finish()

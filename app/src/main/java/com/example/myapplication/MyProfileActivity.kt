@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -129,6 +130,9 @@ class MyProfileActivity : AppCompatActivity() {
                 city = cityEditText.text.toString())
         }
 
+        emailEditText.setText(currentUser?.email)
+        passwordEditText.setText("********")
+
         changePasswordButton.setOnClickListener {
             // Implementation for changing password
         }
@@ -172,13 +176,14 @@ class MyProfileActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 val responseBodyString = response.body?.string()
                 val isVerified = responseBodyString?.toBoolean() ?: false
-                Log.i("Is verified", isVerified.toString())
+
                 runOnUiThread {
-                    if (response.isSuccessful) {
-                        Toast.makeText(applicationContext, "Verification request sent successfully", Toast.LENGTH_LONG).show()
-                        saveVerificationStatus(true)
+                    if (response.isSuccessful && isVerified) {
+                        Toast.makeText(applicationContext, "Verification successful", Toast.LENGTH_LONG).show()
+                        MyProfileActivity.setUserVerified(this@MyProfileActivity, true)
                     } else {
-                        Toast.makeText(applicationContext, "Verification request failed1: ${response.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Verification failed: ${response.message}", Toast.LENGTH_LONG).show()
+                        MyProfileActivity.setUserVerified(this@MyProfileActivity, false)
                     }
                 }
             }
@@ -194,18 +199,20 @@ class MyProfileActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        private var userVerified = false
+        private const val PREFS_NAME = "MyAppPrefs"
+        private const val VERIFIED_KEY = "IsUserVerified"
 
         fun isUserVerified(context: Context): Boolean {
-            val sharedPrefs = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-            return sharedPrefs.getBoolean("IsUserVerified", userVerified)
+            val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            return prefs.getBoolean(VERIFIED_KEY, false)
         }
 
-        fun setIsUserVerified(boolean: Boolean){
-            userVerified = boolean
+        fun setUserVerified(context: Context, isVerified: Boolean) {
+            val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            prefs.edit().putBoolean(VERIFIED_KEY, isVerified).apply()
         }
     }
+
 }
 
 data class TcknVerifyRequest(
