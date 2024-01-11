@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.adapter.CategorizedPaymentsAdapter
@@ -52,12 +53,6 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setupRecyclerViews() {
         categorizedPaymentsAdapter = CategorizedPaymentsAdapter(mapOf())
-        lastMonthPaymentsAdapter = LastMonthPaymentsAdapter(listOf())
-
-        binding.lastMonthsPaymentsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(this@DashboardActivity)
-            adapter = lastMonthPaymentsAdapter
-        }
     }
 
     private fun loadPaymentsFromBackend() {
@@ -104,9 +99,14 @@ class DashboardActivity : AppCompatActivity() {
         data.forEach { (category, amount) ->
             val pieModel = PieModel(category, amount.toFloat(), getColorForCategory(category))
             binding.piechart.addPieSlice(pieModel)
+
+            val amountTextViewId = resources.getIdentifier("${category.toLowerCase()}Amount", "id", packageName)
+            val amountTextView: TextView? = findViewById(amountTextViewId)
+            amountTextView?.text = String.format("%.2f", amount)
         }
         binding.piechart.startAnimation()
     }
+
     private fun getColorForCategory(category: String): Int {
         return when (category) {
             "Groceries" -> resources.getColor(R.color.colorGroceries)
@@ -133,3 +133,4 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 }
+

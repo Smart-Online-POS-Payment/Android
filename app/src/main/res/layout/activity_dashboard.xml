@@ -21,10 +21,9 @@
         <org.eazegraph.lib.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:layout_marginTop="16dp"/>
 
-        <!-- Category Labels -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,214 +31,288 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <!-- Add a LinearLayout for each category with its corresponding color and label -->
-            <!-- Example for Groceries -->
+            <!-- Groceries Category -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorGroceries"/>
+                    android:background="@color/colorGroceries" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Groceries"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/groceriesAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorClothing"/>
+                    android:background="@color/colorClothing" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Clothing"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/clothingAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorElectronics"/>
+                    android:background="@color/colorElectronics" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Electronics"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/electronicsAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorTickets"/>
+                    android:background="@color/colorTickets" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tickets"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/ticketsAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorCarRentals"/>
+                    android:background="@color/colorCarRentals" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Car Rentals"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/carRentalsAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorRestaurants"/>
+                    android:background="@color/colorRestaurants" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Restaurants"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/restaurantsAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorCoffee"/>
+                    android:background="@color/colorCoffee" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Coffee"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/coffeeAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorCharity"/>
+                    android:background="@color/colorCharity" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Charity"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/charityAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorRent"/>
+                    android:background="@color/colorRent" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rent"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/rentAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorGaming"/>
+                    android:background="@color/colorGaming" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gaming"
-                    android:paddingLeft="10dp"/>
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/gamingAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_margin="4dp"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="@color/colorOther"/>
+                    android:background="@color/colorOther" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Others"
-                    android:paddingLeft="10dp"/>
+                    android:text="Other"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/otherAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="end"
+                android:paddingRight="10dp" />
 
         </GridLayout>
 
-        <!-- Last Month's Payments Summary -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last Month's Payments"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_marginTop="16dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lastMonthsPaymentsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp"/>
-
-
     </LinearLayout>
 </ScrollView>
+
 
