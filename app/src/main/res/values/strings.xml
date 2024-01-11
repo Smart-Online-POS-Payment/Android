@@ -10,4 +10,5 @@
     <string name="still_don_t_have_an_account_create_here">Still don\'t have an account? Create here</string>
     <string name="sign_up">Sign up</string>
     <string name="back">Back</string>
+    <string name="balance_text">Balance: %1$s</string>
 </resources>

@@ -1,25 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePageActivity">
+    android:layout_weight="8"
+    android:padding="16dp">
+
+    <!-- Header Section: Notifications, App Name, Logo, Logout -->
+    <LinearLayout
+        android:id="@+id/headerSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/logo"
+            />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Smart Online POS Payment"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textStyle="bold" />
 
 
+        <ImageView
+            android:id="@+id/logoutView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/logout" />
+    </LinearLayout>
 
-        <LinearLayout
+    <!-- Feature Buttons Section: QR, Upload Money, Payments, Dashboard -->
+
+
+    <!-- Profile Icon -->
+
+    <LinearLayout
+        android:id="@+id/walletView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerSection"
+        android:layout_alignStart="@+id/headerSection"
+        android:layout_alignEnd="@+id/headerSection"
+        android:layout_marginTop="66dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/walletImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/wallet3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/walletTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/walletView"
+        android:layout_alignStart="@+id/walletView"
+        android:layout_alignEnd="@+id/walletView"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/walletText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:text="Balance: 0TL"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/stat_notify_chat"
-                app:tint="@color/blue" />
-        </LinearLayout>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/QRandUploadMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/walletTextView"
+        android:layout_alignStart="@+id/walletTextView"
+        android:layout_alignEnd="@+id/walletTextView"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/qrView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/qr"
+            app:tint="@color/blue" />
+
+        <ImageView
+            android:id="@+id/creditCardView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/credit_card"
+            app:tint="@color/blue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/QRandUploadMoneyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_below="@id/QRandUploadMoney"
+        android:layout_alignStart="@+id/QRandUploadMoney"
+        android:layout_alignEnd="@+id/QRandUploadMoney">
+
+        <TextView
+            android:id="@+id/QRText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QR Payment"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/UploadMoneyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Money"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/PaymentsHistoryandDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/QRandUploadMoney"
+        android:layout_alignStart="@+id/QRandUploadMoney"
+        android:layout_alignEnd="@+id/QRandUploadMoney"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/paymentsView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/payments"
+            app:tint="@color/blue" />
+
+        <ImageView
+            android:id="@+id/dashboard"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/dashboard"
+            app:tint="@color/blue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PaymentsHistoryandDashboardTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_below="@id/PaymentsHistoryandDashboard"
+        android:layout_alignStart="@+id/PaymentsHistoryandDashboard"
+        android:layout_alignEnd="@+id/PaymentsHistoryandDashboard">
+
+        <TextView
+            android:id="@+id/PaymentsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payments"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/DashboardText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dashboard"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="83dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/PaymentsHistoryandDashboard"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:src="@drawable/ic_profile" />
+
+</RelativeLayout>

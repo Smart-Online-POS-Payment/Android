@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.databinding.ActivityHomePage1Binding
 import com.example.myapplication.databinding.ActivityHomePageBinding
 import com.example.myapplication.model.PaymentDetailsModel
 import com.example.myapplication.util.Constants
@@ -19,14 +21,14 @@ import java.io.IOException
 
 class HomePageActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomePageBinding
+    private lateinit var binding: ActivityHomePage1Binding
+    private val currentUser = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomePageBinding.inflate(layoutInflater)
+        binding = ActivityHomePage1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser?.let {
             isUserVerified(it.uid)
             getBalance(it.uid)
@@ -75,7 +77,7 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
 
-        binding.walletView.setOnClickListener {
+        binding.walletImage.setOnClickListener {
             refreshData()
         }
 
@@ -85,10 +87,6 @@ class HomePageActivity : AppCompatActivity() {
 
         binding.logoutView.setOnClickListener {
             logoutUser()
-        }
-        binding.notificationView.setOnClickListener {
-            startActivity(Intent(this, NotificationsActivity::class.java))
-
         }
     }
 
@@ -132,26 +130,42 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun getBalance(customerId: String) {
+        val userId = currentUser?.uid ?: return // Return early if UID is null
         val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/$customerId")
+            .url("${Constants.WALLET_URL}/wallet/$userId")
             .get()
             .addHeader("Content-Type", "application/json")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@HomePageActivity, "Failed to get balance: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
                 Log.e("HomePageActivity", "Failed to get balance", e)
             }
 
             override fun onResponse(call: Call, response: Response) {
-                response.body?.let { responseBody ->
+                if (!response.isSuccessful) {
+                    runOnUiThread {
+                        Toast.makeText(this@HomePageActivity, "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                    }
+                    Log.e("HomePageActivity", "Error response code: ${response.code}")
+                    return
+                }
+
+                response.body?.use { responseBody ->
                     val jsonObject = JSONObject(responseBody.string())
                     val balance = jsonObject.getDouble("balance")
                     runOnUiThread {
-                        binding.walletTextView.text = "Balance: $balance"
+                        binding.walletText.text = "Balance: $balance"
+                        Log.e("Updated Balance", "Successful")
                     }
-                } ?: Log.e("HomePageActivity", "Response body is null")
+                } ?: runOnUiThread {
+                    Toast.makeText(this@HomePageActivity, "No response from server", Toast.LENGTH_SHORT).show()
+                    Log.e("HomePageActivity", "Response body is null")
+                }
             }
         })
     }
