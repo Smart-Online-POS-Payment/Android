@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.*
+import okhttp3.internal.wait
 import org.json.JSONObject
 import java.io.IOException
 
@@ -33,19 +34,9 @@ class HomePageActivity : AppCompatActivity() {
 
         setupOnClickListeners()
         checkUserVerificationStatus()
-        fetchBalance()
+        refreshData()
     }
 
-    private fun fetchBalance() {
-        // Implement your network request logic here
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
-            tokenResult.token?.let { token ->
-                // Replace with your actual balance request logic
-                getBalance(currentUser.uid)
-            }
-        }
-    }
     private fun isUserVerified(customerId: String){
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -82,6 +73,10 @@ class HomePageActivity : AppCompatActivity() {
 
         binding.dashboard.setOnClickListener{
             startActivity(Intent(this, DashboardActivity::class.java))
+        }
+
+        binding.walletView.setOnClickListener {
+            refreshData()
         }
 
         binding.profileIcon.setOnClickListener {
@@ -181,6 +176,15 @@ class HomePageActivity : AppCompatActivity() {
             putBoolean("IsUserVerified", false)
             apply()
         }
+    }
+
+    private fun refreshData() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.let {
+            isUserVerified(it.uid)
+            getBalance(it.uid)
+        }
+        // Add any other data refresh logic here
     }
 
 }

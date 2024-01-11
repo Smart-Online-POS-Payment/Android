@@ -261,7 +261,7 @@
                     android:background="@drawable/background_2">
 
                     <ImageView
-                        android:id="@+id/imageView6"
+                        android:id="@+id/walletView"
                         android:layout_width="270dp"
                         android:layout_height="107dp"
 
@@ -277,9 +277,9 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                        app:layout_constraintStart_toStartOf="@+id/imageView6"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                        app:layout_constraintEnd_toEndOf="@+id/walletView"
+                        app:layout_constraintStart_toStartOf="@+id/walletView"
+                        app:layout_constraintTop_toBottomOf="@+id/walletView" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
