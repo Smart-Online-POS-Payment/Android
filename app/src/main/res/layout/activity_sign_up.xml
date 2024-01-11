@@ -10,35 +10,46 @@
     android:gravity="center"
     tools:context=".SignUpActivity">
 
-    <!-- First Text Input -->
+    <!-- Email Input -->
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter email here"/>
+        android:inputType="textEmailAddress"
+        android:hint="@string/enter_email_here"
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Second Text Input -->
+    <!-- Password Input -->
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter password here"
-        android:layout_marginTop="16dp"
-        android:inputType="textPassword" />
+        android:hint="@string/enter_password_here"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp" />
 
-    <!-- Button -->
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Sign up"
-        android:backgroundTint="@color/blue"/>
+        android:text="@string/sign_up"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Back Button -->
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
         android:backgroundTint="@color/blue"/>
 
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 </LinearLayout>

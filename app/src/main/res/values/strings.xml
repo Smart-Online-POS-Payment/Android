@@ -8,4 +8,6 @@
     <string name="enter_password_here">Enter password here</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="still_don_t_have_an_account_create_here">Still don\'t have an account? Create here</string>
+    <string name="sign_up">Sign up</string>
+    <string name="back">Back</string>
 </resources>
