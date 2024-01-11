@@ -23,27 +23,34 @@ class HomePageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomePage1Binding
     private val currentUser = FirebaseAuth.getInstance().currentUser
+    private var accessToken = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomePage1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        currentUser?.let {
-            isUserVerified(it.uid)
-            getBalance(it.uid)
+        val uid = currentUser!!.uid
+        currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+            tokenResult.token?.let {
+                accessToken = it
+                isUserVerified(uid, it)
+                getBalance(uid, it)
+                checkUserVerificationStatus(uid, it)
+            }
         }
 
+
         setupOnClickListeners()
-        checkUserVerificationStatus()
         refreshData()
     }
 
-    private fun isUserVerified(customerId: String){
+    private fun isUserVerified(customerId: String, accessToken: String){
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("${Constants.AUTH_URL}/verify/customer/$customerId/is-verified")
+            .url("${Constants.GATEWAY_URL}/verify/customer/$customerId/is-verified")
             .get()
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
@@ -90,13 +97,12 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkUserVerificationStatus() {
-        val currentUser = FirebaseAuth.getInstance().currentUser ?: return // If currentUser is null, return early
-        val cuid = currentUser.uid
-
+    private fun checkUserVerificationStatus(cuid: String, accessToken: String) {
         val request = Request.Builder()
-            .url("${Constants.AUTH_URL}/customer/$cuid/is-verified") // Replace with the correct endpoint
+            .url("${Constants.GATEWAY_URL}/verify/customer/$cuid/is-verified")
             .get()
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {
@@ -129,12 +135,12 @@ class HomePageActivity : AppCompatActivity() {
         })
     }
 
-    private fun getBalance(customerId: String) {
-        val userId = currentUser?.uid ?: return // Return early if UID is null
+    private fun getBalance(customerId: String, accessToken: String) {
         val client = OkHttpClient.Builder().build()
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/$userId")
+            .url("${Constants.GATEWAY_URL}/wallet/$customerId")
             .get()
+            .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
             .build()
 
@@ -194,11 +200,22 @@ class HomePageActivity : AppCompatActivity() {
 
     private fun refreshData() {
         val currentUser = FirebaseAuth.getInstance().currentUser
+        if(accessToken==""){
+            setAccessToken()
+        }
         currentUser?.let {
-            isUserVerified(it.uid)
-            getBalance(it.uid)
+            isUserVerified(it.uid, accessToken)
+            getBalance(it.uid, accessToken)
         }
         // Add any other data refresh logic here
+    }
+
+    private fun setAccessToken(){
+        currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+            tokenResult.token?.let {
+                accessToken = it
+            }
+        }
     }
 
 }

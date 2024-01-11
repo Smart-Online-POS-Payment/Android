@@ -37,19 +37,25 @@ class MyProfileActivity : AppCompatActivity() {
 
         initializeViews()
 
-        if (isUserVerified(this)) {
-            loadUserData()
-            makeFieldsNonEditable()
-        } else {
-            setupButtonListeners()
+        currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+            tokenResult.token?.let {
+                if (isUserVerified(this)) {
+                    loadUserData(it)
+                    makeFieldsNonEditable()
+                } else {
+                    setupButtonListeners(it)
+                }
+            }
         }
 
         backButton.setOnClickListener{ onBackPressed() }
     }
-    private fun loadUserData() {
+    private fun loadUserData(accessToken: String) {
         val request = Request.Builder()
-            .url("${Constants.AUTH_URL}/verify/customer/${currentUser?.uid}")
+            .url("${Constants.GATEWAY_URL}/verify/customer/${currentUser?.uid}")
             .get()
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {
@@ -121,13 +127,13 @@ class MyProfileActivity : AppCompatActivity() {
         backButton = findViewById(R.id.backButton)
     }
 
-    private fun setupButtonListeners() {
+    private fun setupButtonListeners(accessToken: String) {
         verifyTcknButton.setOnClickListener {
             val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
             verifyTckn(userId = currentUser?.uid!!, tc = tcknValue, name = nameEditText.text.toString(), surname = surnameEditText.text.toString(),
                 email = emailEditText.text.toString(),
                 phoneNumber = phoneNumberEditText.text.toString(), birthYear = dobEditText.text.toString().toInt(), openAddress = openAddressEditText.text.toString(),
-                city = cityEditText.text.toString())
+                city = cityEditText.text.toString(), accessToken)
         }
 
         emailEditText.setText(currentUser?.email)
@@ -148,21 +154,24 @@ class MyProfileActivity : AppCompatActivity() {
         phoneNumber: String,
         birthYear: Int,
         openAddress: String,
-        city: String
+        city: String,
+        accessToken: String
     ) {
         val verifyRequest = TcknVerifyRequest(userId = userId , tc = tc, firstname = name, surname = surname, email = email, phoneNumber = phoneNumber, birthYear = birthYear, openAddress = openAddress, city = city)
-        sendVerificationRequest(verifyRequest)
+        sendVerificationRequest(verifyRequest, accessToken)
     }
 
-    private fun sendVerificationRequest(verifyRequest: TcknVerifyRequest) {
+    private fun sendVerificationRequest(verifyRequest: TcknVerifyRequest, accessToken: String) {
         val gson = Gson()
         val jsonRequest = gson.toJson(verifyRequest)
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), jsonRequest)
         Log.i("aa", "entered")
 
         val request = Request.Builder()
-            .url("${Constants.AUTH_URL}/verify")
+            .url("${Constants.GATEWAY_URL}/verify")
             .post(requestBody)
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {

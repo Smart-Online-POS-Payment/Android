@@ -131,7 +131,7 @@ class QRScannerActivity: AppCompatActivity() {
     private fun getPaymentRequest(qr: String, accessToken: String, uid: String): ResponseBody? {
         val client = OkHttpClient().newBuilder().build()
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/payment-request/$qr/customer/$uid")
+            .url("${Constants.GATEWAY_URL}/payment/payment-request/$qr/customer/$uid")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
@@ -215,7 +215,7 @@ class QRScannerActivity: AppCompatActivity() {
         val requestBody = FormBody.Builder()
             .build()
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/payment-order/$qr_code/customer/${currentUser?.uid}")
+            .url("${Constants.GATEWAY_URL}/payment/payment-order/$qr_code/customer/${currentUser?.uid}")
             .post(requestBody)
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")

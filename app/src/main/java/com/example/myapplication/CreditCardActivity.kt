@@ -57,7 +57,11 @@ class CreditCardActivity : AppCompatActivity() {
         // Replace the following line with your actual list of credit cards
         val currentUser = FirebaseAuth.getInstance().currentUser
         val uid =  currentUser!!.uid
-        setCards(uid)
+        currentUser.getIdToken(true).addOnSuccessListener { tokenResult ->
+            tokenResult.token?.let {
+                setCards(uid, it)
+            }
+        }
         creditCardAdapter = CreditCardAdapter(cardList, this)
         recyclerView.adapter = creditCardAdapter
 
@@ -101,11 +105,11 @@ class CreditCardActivity : AppCompatActivity() {
 
     }
 
-    // Replace this function with your actual logic to fetch or generate credit card data
-    private fun setCards(customerId: String) {
+    private fun setCards(customerId: String, accessToken: String) {
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/${customerId}/cards")
+            .url("${Constants.GATEWAY_URL}/wallet/${customerId}/cards")
             .get()
+            .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
             .build()
         client.newCall(request).enqueue(object : Callback{
@@ -134,15 +138,16 @@ class CreditCardActivity : AppCompatActivity() {
             }
         })
     }
-    private fun addMoney(customerId: String, amount: Long, token: String, cardModel: CardModel){
+    private fun addMoney(customerId: String, amount: Long, accessToken: String, cardModel: CardModel){
         val client = OkHttpClient().newBuilder().build()
         val gson = Gson()
         val json = gson.toJson(cardModel)
         val bodyRequest = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), json)
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/card-payment/$customerId/amount/$amount")
+            .url("${Constants.GATEWAY_URL}/wallet/card-payment/$customerId/amount/$amount")
             .put(bodyRequest)
             .addHeader("Content-Type", "application/json")
+            .addHeader("Authorization", "Bearer $accessToken")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

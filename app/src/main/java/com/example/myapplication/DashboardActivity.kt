@@ -71,7 +71,7 @@ class DashboardActivity : AppCompatActivity() {
         val client = OkHttpClient()
         Log.i("customerId", customerId)
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/statistics/expenses/customer/$customerId/category")
+            .url("${Constants.GATEWAY_URL}/payment/statistics/expenses/customer/$customerId/category")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")

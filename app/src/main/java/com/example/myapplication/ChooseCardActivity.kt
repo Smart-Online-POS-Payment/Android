@@ -54,7 +54,12 @@ class ChooseCardActivity: AppCompatActivity() {
             val cvv = binding.editTextCVV.text.toString()
             val expiryDate = binding.editTextExpiryDate.text.toString()
             val currentUser = FirebaseAuth.getInstance().currentUser
-            addCard(currentUser?.uid, CardModel(cardHolderName, cardNumber, cvv, expiryDate))
+            currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+                tokenResult.token?.let {
+                    addCard(currentUser.uid, CardModel(cardHolderName, cardNumber, cvv, expiryDate), it)
+
+                }
+            }
         }
         val backButton: Button = findViewById(R.id.buttonBack)
         backButton.setOnClickListener {
@@ -62,15 +67,17 @@ class ChooseCardActivity: AppCompatActivity() {
         }
     }
 
-    private fun addCard(uid: String?, cardModel: CardModel) {
+    private fun addCard(uid: String?, cardModel: CardModel, accessToken: String) {
         val client = OkHttpClient()
         val gson = Gson()
         val json = gson.toJson(cardModel)
 
         val bodyRequest = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), json)
         val request = Request.Builder()
-            .url("${Constants.WALLET_URL}/wallet/${uid}/cards")
+            .url("${Constants.GATEWAY_URL}/wallet/${uid}/cards")
             .post(bodyRequest)
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

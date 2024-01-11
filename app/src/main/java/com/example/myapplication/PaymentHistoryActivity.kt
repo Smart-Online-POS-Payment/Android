@@ -42,24 +42,14 @@ class PaymentHistoryActivity : AppCompatActivity() {
 
         setupRecyclerView()
         loadPaymentsFromBackend()
-        //loadMockPayments()
     }
 
-    private fun loadMockPayments() {
-        // Mock data
-        val mockPayments = listOf(
-            PaymentDetailsModel("75494", BigDecimal("80.49"), "Mock Payment #58", "Clothing", SimpleDateFormat("yyyy-MM-dd").parse("2023-12-23")),
-            PaymentDetailsModel("12677", BigDecimal("194.29"), "Mock Payment #65", "Electronics", SimpleDateFormat("yyyy-MM-dd").parse("2023-12-12")),
-            // Add the rest of your mock payments here
-        )
-
-        paymentsList.clear()
-        paymentsList.addAll(mockPayments)
-        paymentsAdapter.notifyDataSetChanged()
-    }
     private fun setupRecyclerView() {
         paymentsAdapter = PaymentsAdapter(paymentsList) { payment ->
-            requestRefund(payment)
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
+                tokenResult.token?.let { requestRefund(payment, it) }
+            }
         }
         binding.paymentsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@PaymentHistoryActivity)
@@ -78,7 +68,7 @@ class PaymentHistoryActivity : AppCompatActivity() {
     private fun getPayments(customerId: String, accessToken: String) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/payment-order/customer/$customerId")
+            .url("${Constants.GATEWAY_URL}/payment/payment-order/customer/$customerId")
             .get()
             .addHeader("Authorization", "Bearer $accessToken")
             .addHeader("Content-Type", "application/json")
@@ -105,14 +95,16 @@ class PaymentHistoryActivity : AppCompatActivity() {
         })
     }
 
-    private fun requestRefund(payment: PaymentDetailsModel) {
+    private fun requestRefund(payment: PaymentDetailsModel, accessToken: String) {
         val client = OkHttpClient()
         val requestBody = FormBody.Builder()
             .build()
 
         val request = Request.Builder()
-            .url("${Constants.PAYMENT_URL}/payment/refund/${payment.orderId}")
+            .url("${Constants.GATEWAY_URL}/payment/refund/${payment.orderId}")
             .post(requestBody)
+            .addHeader("Authorization", "Bearer $accessToken")
+            .addHeader("Content-Type", "application/json")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
