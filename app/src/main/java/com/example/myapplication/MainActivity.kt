@@ -8,7 +8,7 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -19,28 +19,19 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Make sure this matches your layout file name
+        setContentView(R.layout.activity_main) // Ensure this matches your layout file name
 
-        setupSignUpTextView()
+        setupClickableTextViews()
 
-        val signInButton: Button = findViewById(R.id.signinButton)
+        val emailEditText = findViewById<EditText>(R.id.editText1)
+        val passwordEditText = findViewById<EditText>(R.id.editText2)
+        val signInButton = findViewById<Button>(R.id.signinButton)
+
         signInButton.setOnClickListener {
-            val emailEditText = findViewById<EditText>(R.id.editText1)
-            val passwordEditText = findViewById<EditText>(R.id.editText2)
-
-            val email = emailEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                signInUser(email, password)
-            } else {
-                Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
-            }
+            attemptSignIn(emailEditText, passwordEditText)
         }
-        val forgotPasswordTextView: TextView = findViewById(R.id.textViewForgotPassword)
-        forgotPasswordTextView.setOnClickListener {
-            sendPasswordResetEmail()
-        }
+
+        setupEditorActions(emailEditText, passwordEditText)
     }
 
     override fun onResume() {
@@ -48,14 +39,38 @@ class MainActivity : AppCompatActivity() {
         clearInputFields()
     }
 
-    private fun clearInputFields() {
-        val emailEditText: EditText = findViewById(R.id.editText1)
-        val passwordEditText: EditText = findViewById(R.id.editText2)
-
-        emailEditText.text.clear()
-        passwordEditText.text.clear()
+    private fun setupClickableTextViews() {
+        setupSignUpTextView()
+        setupForgotPasswordTextView()
     }
 
+    private fun setupEditorActions(emailEditText: EditText, passwordEditText: EditText) {
+        val editorActionListener = TextView.OnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                attemptSignIn(emailEditText, passwordEditText)
+                return@OnEditorActionListener true
+            }
+            false
+        }
+        emailEditText.setOnEditorActionListener(editorActionListener)
+        passwordEditText.setOnEditorActionListener(editorActionListener)
+    }
+
+    private fun clearInputFields() {
+        findViewById<EditText>(R.id.editText1).text.clear()
+        findViewById<EditText>(R.id.editText2).text.clear()
+    }
+
+    private fun attemptSignIn(emailEditText: EditText, passwordEditText: EditText) {
+        val email = emailEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            signInUser(email, password)
+        } else {
+            Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_LONG).show()
+        }
+    }
     private fun signInUser(email: String, password: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -76,26 +91,32 @@ class MainActivity : AppCompatActivity() {
             }
     }
     private fun setupSignUpTextView() {
-        val textViewSignUp: TextView = findViewById(R.id.textViewSignUp)
-        val spannableString = SpannableString(textViewSignUp.text)
+        val signUpTextView = findViewById<TextView>(R.id.textViewSignUp)
+        val spannableString = SpannableString(signUpTextView.text)
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val intent = Intent(this@MainActivity, SignUpActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
             }
 
             override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.isUnderlineText = false // Set to true if you want underline
-                ds.color = ds.linkColor // Set your custom color if needed
+                ds.isUnderlineText = false
+                ds.color = ds.linkColor // Customize this as needed
             }
         }
 
         val signUpTextStart = spannableString.indexOf("Create here")
         spannableString.setSpan(clickableSpan, signUpTextStart, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textViewSignUp.text = spannableString
-        textViewSignUp.movementMethod = LinkMovementMethod.getInstance()
+        signUpTextView.text = spannableString
+        signUpTextView.movementMethod = LinkMovementMethod.getInstance()
     }
+
+    private fun setupForgotPasswordTextView() {
+        val forgotPasswordTextView = findViewById<TextView>(R.id.textViewForgotPassword)
+        forgotPasswordTextView.setOnClickListener {
+            sendPasswordResetEmail()
+        }
+    }
+
     private fun sendPasswordResetEmail() {
         val emailEditText = findViewById<EditText>(R.id.editText1)
         val email = emailEditText.text.toString().trim()
@@ -113,4 +134,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_LONG).show()
         }
     }
+
 }

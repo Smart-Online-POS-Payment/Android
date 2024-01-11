@@ -15,16 +15,19 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter email here"/>
+        android:hint="@string/enter_email_here"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionDone" />
 
     <!-- Second Text Input -->
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter password here"
+        android:hint="@string/enter_password_here"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
+        android:imeOptions="actionDone"
+        android:layout_marginTop="16dp" />
 
 
     <!-- Button -->
@@ -33,13 +36,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Sign in"
+        android:text="@string/sign_in"
         android:backgroundTint="@color/blue"/>
     <TextView
         android:id="@+id/textViewForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -51,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Still don't have an account? Create here"
+        android:text="@string/still_don_t_have_an_account_create_here"
         android:textColor="@color/black"
     android:textSize="16sp" />
 
