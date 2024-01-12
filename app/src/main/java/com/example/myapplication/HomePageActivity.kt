@@ -41,7 +41,7 @@ class HomePageActivity : AppCompatActivity() {
 
 
         setupOnClickListeners()
-        refreshData()
+        //refreshData()
     }
 
     private fun isUserVerified(customerId: String, accessToken: String){

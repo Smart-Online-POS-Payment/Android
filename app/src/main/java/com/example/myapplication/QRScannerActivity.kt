@@ -60,8 +60,31 @@ class QRScannerActivity: AppCompatActivity() {
         }
     private lateinit var binding: ActivityQrCodeScannerBinding
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if ((!MyProfileActivity.isUserVerified(this))) { //(!MyProfileActivity.isUserVerified(this))
+            // User not verified, redirect to MyProfileActivity
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+        //initBinding()
+        //checkPermissionCamera(this)
+        initViews()
+
+/*
+        val backButton: Button = findViewById(R.id.buttonBack)
+        backButton.setOnClickListener {
+            finish()  // Closes the current activity, returning to the previous one in the stack
+        }
+*/
+    }
+
     private fun setResult(qr: String) {
-        binding.textResult.text=qr
+        //binding.textResult.text=qr
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser!!.getIdToken(true).addOnSuccessListener { tokenResult ->
             tokenResult.token?.let { getPaymentRequest(qr, it, currentUser.uid) }
@@ -77,39 +100,8 @@ class QRScannerActivity: AppCompatActivity() {
         options.setOrientationLocked(false)
         scanLauncher.launch(options)
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if ((!MyProfileActivity.isUserVerified(this))) { //(!MyProfileActivity.isUserVerified(this))
-            // User not verified, redirect to MyProfileActivity
-            val intent = Intent(this, MyProfileActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-        initBinding()
-        //checkPermissionCamera(this)
-        initViews()
-
-        val options = ScanOptions()
-        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-        options.setPrompt("Scan QR code")
-        options.setBeepEnabled(false)
-        options.setBarcodeImageEnabled(true)
-        options.setOrientationLocked(false)
-        scanLauncher.launch(options)
-/*
-        val backButton: Button = findViewById(R.id.buttonBack)
-        backButton.setOnClickListener {
-            finish()  // Closes the current activity, returning to the previous one in the stack
-        }
-*/
-    }
-
     private fun initViews() {
-        binding.fab.setOnClickListener {
             checkPermissionCamera(this)
-        }
 
     }
     private fun checkPermissionCamera(context: Context) {
@@ -125,8 +117,8 @@ class QRScannerActivity: AppCompatActivity() {
         }
     }
     private fun initBinding(){
-        binding=ActivityQrCodeScannerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //binding=ActivityQrCodeScannerBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
     }
     private fun getPaymentRequest(qr: String, accessToken: String, uid: String): ResponseBody? {
         val client = OkHttpClient().newBuilder().build()
