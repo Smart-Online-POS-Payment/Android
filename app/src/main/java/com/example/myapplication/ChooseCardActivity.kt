@@ -60,6 +60,7 @@ class ChooseCardActivity: AppCompatActivity() {
 
                 }
             }
+            startActivity(Intent(this, CreditCardActivity::class.java))
         }
         val backButton: Button = findViewById(R.id.buttonBack)
         backButton.setOnClickListener {

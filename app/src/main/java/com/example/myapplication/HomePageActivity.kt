@@ -56,7 +56,7 @@ class HomePageActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 val responseBodyString = response.body?.string()
                 val isVerified = responseBodyString?.toBoolean() ?: false
-                //MyProfileActivity.setUserVerified(this@HomePageActivity, isVerified)
+                MyProfileActivity.setUserVerified(this@HomePageActivity, isVerified)
                 Log.i("Is verified: ", isVerified.toString())
             }
 
