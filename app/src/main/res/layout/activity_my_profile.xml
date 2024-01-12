@@ -53,11 +53,10 @@
             android:hint="Surname" />
 
         <EditText
-            android:id="@+id/dobEditText"
+            android:id="@+id/birthYear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date of Birth"
-            android:inputType="date" />
+            android:hint="Birth Year" />
 
         <EditText
             android:id="@+id/phoneNumberEditText"

@@ -20,7 +20,7 @@ class MyProfileActivity : AppCompatActivity() {
     private lateinit var tcknEditText: EditText
     private lateinit var nameEditText: EditText
     private lateinit var surnameEditText: EditText
-    private lateinit var dobEditText: EditText
+    private lateinit var birthYear: EditText
     private lateinit var phoneNumberEditText: EditText
     private lateinit var openAddressEditText: EditText
     private lateinit var cityEditText: EditText
@@ -40,8 +40,8 @@ class MyProfileActivity : AppCompatActivity() {
         currentUser?.getIdToken(true)?.addOnSuccessListener { tokenResult ->
             tokenResult.token?.let {
                 if (isUserVerified(this)) {
-                    loadUserData(it)
                     makeFieldsNonEditable()
+                    loadUserData(it)
                 } else {
                     setupButtonListeners(it)
                 }
@@ -67,13 +67,16 @@ class MyProfileActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 val responseBody = response.body?.string()
+                Log.d("MyProfileActivity", "Response: $responseBody")
                 try {
                     val userData = Gson().fromJson(responseBody, UserData::class.java)
                     runOnUiThread {
-                        tcknEditText.setText(userData.tckn.toString())
+                        Log.d("MyProfileActivity", "UserData: $userData")
+                        tcknEditText.setText(userData.tc.toString())
                         nameEditText.setText(userData.firstname)
                         surnameEditText.setText(userData.surname)
-                        dobEditText.setText(userData.birthYear.toString())
+                        //birthYear.setText(userData.birthYear.toString())
+                        birthYear.setText("2001")
                         phoneNumberEditText.setText(userData.phoneNumber)
                         openAddressEditText.setText(userData.openAddress)
                         cityEditText.setText(userData.city)
@@ -88,7 +91,8 @@ class MyProfileActivity : AppCompatActivity() {
     }
 
     data class UserData(
-        val tckn: Long,
+        val userId: String,
+        val tc: Long,
         val firstname: String,
         val surname: String,
         val birthYear: Int,
@@ -103,7 +107,7 @@ class MyProfileActivity : AppCompatActivity() {
         tcknEditText.isEnabled = false
         nameEditText.isEnabled = false
         surnameEditText.isEnabled = false
-        dobEditText.isEnabled = false
+        birthYear.isEnabled = false
         phoneNumberEditText.isEnabled = false
         openAddressEditText.isEnabled = false
         cityEditText.isEnabled = false
@@ -116,7 +120,7 @@ class MyProfileActivity : AppCompatActivity() {
         tcknEditText = findViewById(R.id.TCKNEditText)
         nameEditText = findViewById(R.id.nameEditText)
         surnameEditText = findViewById(R.id.surnameEditText)
-        dobEditText = findViewById(R.id.dobEditText)
+        birthYear = findViewById(R.id.birthYear)
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText)
         openAddressEditText = findViewById(R.id.openAddressEditText)
         cityEditText = findViewById(R.id.cityEditText)
@@ -132,7 +136,7 @@ class MyProfileActivity : AppCompatActivity() {
             val tcknValue = tcknEditText.text.toString().toLongOrNull() ?: 0L
             verifyTckn(userId = currentUser?.uid!!, tc = tcknValue, name = nameEditText.text.toString(), surname = surnameEditText.text.toString(),
                 email = emailEditText.text.toString(),
-                phoneNumber = phoneNumberEditText.text.toString(), birthYear = dobEditText.text.toString().toInt(), openAddress = openAddressEditText.text.toString(),
+                phoneNumber = phoneNumberEditText.text.toString(), birthYear = birthYear.text.toString().toInt(), openAddress = openAddressEditText.text.toString(),
                 city = cityEditText.text.toString(), accessToken)
         }
 
@@ -187,7 +191,7 @@ class MyProfileActivity : AppCompatActivity() {
                 val isVerified = responseBodyString?.toBoolean() ?: false
 
                 runOnUiThread {
-                    if (response.isSuccessful && isVerified) {
+                    if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "Verification successful", Toast.LENGTH_LONG).show()
                         MyProfileActivity.setUserVerified(this@MyProfileActivity, true)
                     } else {

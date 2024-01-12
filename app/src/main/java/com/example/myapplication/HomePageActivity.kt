@@ -56,7 +56,7 @@ class HomePageActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 val responseBodyString = response.body?.string()
                 val isVerified = responseBodyString?.toBoolean() ?: false
-                MyProfileActivity.setUserVerified(this@HomePageActivity, isVerified)
+                //MyProfileActivity.setUserVerified(this@HomePageActivity, isVerified)
                 Log.i("Is verified: ", isVerified.toString())
             }
 
@@ -120,9 +120,9 @@ class HomePageActivity : AppCompatActivity() {
                             // User is verified, proceed as normal
                         } else {
                             // User is not verified, redirect to MyProfileActivity for verification
-                            val intent = Intent(this@HomePageActivity, MyProfileActivity::class.java)
-                            startActivity(intent)
-                            finish() // Optionally finish the current activity
+                            //val intent = Intent(this@HomePageActivity, MyProfileActivity::class.java)
+                            //startActivity(intent)
+                            //finish() // Optionally finish the current activity
                         }
                     }
                 } else {
@@ -155,9 +155,9 @@ class HomePageActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 if (!response.isSuccessful) {
                     runOnUiThread {
-                        Toast.makeText(this@HomePageActivity, "Error: ${response.code}", Toast.LENGTH_SHORT).show()
+                        Log.e( "Error: ", "${response.code}")
                     }
-                    Log.e("HomePageActivity", "Error response code: ${response.code}")
+                    Log.i("HomePageActivity", "Error response code: ${response.code}")
                     return
                 }
 
